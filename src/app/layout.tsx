@@ -18,12 +18,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://techcraftsolutions.com"),
+  metadataBase: new URL("https://lotusly.com"),
   title: {
     default: `${siteConfig.name} — ${siteConfig.tagline}`,
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  icons: {
+    icon: [
+      { url: "/favicon.ico", rel: "icon" },
+      { url: "/lotusly-favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: ["/lotusly-favicon.svg"],
+  },
   keywords: [
     "mobile app development",
     "web development",
@@ -39,20 +47,20 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: siteConfig.name }],
   alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://techcraftsolutions.com",
-    siteName: siteConfig.name,
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description: siteConfig.description,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.name} — ${siteConfig.tagline}`,
-    description: siteConfig.description,
-    creator: "@techcraft_sol",
-  },
+      openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: "https://lotusly.com",
+      siteName: siteConfig.name,
+      title: `${siteConfig.name} — ${siteConfig.tagline}`,
+      description: siteConfig.description,
+    },
+      twitter: {
+      card: "summary_large_image",
+      title: `${siteConfig.name} — ${siteConfig.tagline}`,
+      description: siteConfig.description,
+      creator: "@lotusly_tech",
+    },
 };
 
 export default function RootLayout({
@@ -75,7 +83,7 @@ export default function RootLayout({
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: siteConfig.name,
-            url: 'https://techcraftsolutions.com',
+            url: 'https://lotusly.com',
             description: siteConfig.description,
             contactPoint: [{
               '@type': 'ContactPoint',
