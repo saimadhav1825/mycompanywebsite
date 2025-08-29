@@ -18,26 +18,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL("https://techcraftsolutions.com"),
   title: {
     default: `${siteConfig.name} — ${siteConfig.tagline}`,
     template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
-    "web development",
     "mobile app development",
+    "web development",
     "backend development",
+    "Jetpack Compose Multiplatform",
+    "React Native",
+    "Flutter",
     "Next.js",
     "React",
     "Node.js",
+    "Python",
+    "Java",
   ],
   authors: [{ name: siteConfig.name }],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    locale: siteConfig.locale,
-    url: siteConfig.url,
+    locale: "en_US",
+    url: "https://techcraftsolutions.com",
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
@@ -46,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
-    creator: "@acmedevstudio",
+    creator: "@techcraft_sol",
   },
 };
 
@@ -70,15 +75,15 @@ export default function RootLayout({
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: siteConfig.name,
-            url: siteConfig.url,
+            url: 'https://techcraftsolutions.com',
             description: siteConfig.description,
             contactPoint: [{
               '@type': 'ContactPoint',
-              email: siteConfig.contactEmail,
-              telephone: siteConfig.contactPhone,
+              email: siteConfig.email,
+              telephone: siteConfig.phone,
               contactType: 'customer service',
             }],
-            sameAs: [siteConfig.socials.linkedin, siteConfig.socials.github, siteConfig.socials.twitter],
+            sameAs: [siteConfig.social.linkedin, siteConfig.social.github, siteConfig.social.twitter],
           })}
         </Script>
       </body>
