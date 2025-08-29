@@ -5,6 +5,7 @@ import { Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/siteConfig";
 import React from "react";
+import Image from "next/image";
 
 const SECTIONS = ["home", "about", "services", "projects", "process", "contact"] as const;
 
@@ -88,7 +89,7 @@ export function Navbar(): React.JSX.Element {
           >
             <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
               <div className="absolute inset-0 animate-shimmer"></div>
-              <span className="text-white font-bold text-xl relative z-10">D</span>
+              <Image src="/lotusly-favicon.svg" alt="Lotusly logo" width={24} height={24} className="relative z-10" priority />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent">
               {siteConfig.name}
