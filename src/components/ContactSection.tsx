@@ -113,7 +113,7 @@ export function ContactSection(): React.JSX.Element {
                 <div className="font-medium text-gray-900 mb-4">Follow Us</div>
                 <div className="flex gap-4">
                   <a 
-                    href={siteConfig.socials.linkedin} 
+                    href={siteConfig.social.linkedin} 
                     target="_blank" 
                     rel="noreferrer"
                     className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300 relative overflow-hidden group"
@@ -122,7 +122,7 @@ export function ContactSection(): React.JSX.Element {
                     <Linkedin className="h-5 w-5 relative z-10" />
                   </a>
                   <a 
-                    href={siteConfig.socials.github} 
+                    href={siteConfig.social.github} 
                     target="_blank" 
                     rel="noreferrer"
                     className="w-10 h-10 bg-gradient-to-r from-gray-700 to-gray-800 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300 relative overflow-hidden group"
@@ -131,7 +131,7 @@ export function ContactSection(): React.JSX.Element {
                     <Github className="h-5 w-5 relative z-10" />
                   </a>
                   <a 
-                    href={siteConfig.socials.twitter} 
+                    href={siteConfig.social.twitter} 
                     target="_blank" 
                     rel="noreferrer"
                     className="w-10 h-10 bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform hover:scale-110 transition-all duration-300 relative overflow-hidden group"
