@@ -55,7 +55,7 @@ export function Footer(): React.JSX.Element {
               {/* Social Links */}
               <div className="flex gap-4">
                 <motion.a 
-                  href={siteConfig.socials.linkedin} 
+                  href={siteConfig.social.linkedin} 
                   target="_blank" 
                   rel="noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
@@ -67,7 +67,7 @@ export function Footer(): React.JSX.Element {
                   </svg>
                 </motion.a>
                 <motion.a 
-                  href={siteConfig.socials.github} 
+                  href={siteConfig.social.github} 
                   target="_blank" 
                   rel="noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
@@ -79,7 +79,7 @@ export function Footer(): React.JSX.Element {
                   </svg>
                 </motion.a>
                 <motion.a 
-                  href={siteConfig.socials.twitter} 
+                  href={siteConfig.social.twitter} 
                   target="_blank" 
                   rel="noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
