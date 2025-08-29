@@ -127,9 +127,9 @@ export function Footer(): React.JSX.Element {
           >
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
             <div className="space-y-3">
-              {siteConfig.services.map((service) => (
+              {siteConfig.services.map((service, idx) => (
                 <motion.div
-                  key={service.key}
+                  key={service.title ?? idx}
                   whileHover={{ x: 5 }}
                   className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
                 >

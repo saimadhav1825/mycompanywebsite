@@ -24,17 +24,17 @@ export type SiteConfig = {
 };
 
 export const siteConfig = {
-  name: "TechCraft Solutions",
-  tagline: "Leading Software Development Agency",
+  name: "Lotusly",
+  tagline: "Where Innovation Blooms",
   description: "We specialize in mobile app development, backend systems, and modern web applications using cutting-edge technologies.",
-  email: "hello@techcraftsolutions.com",
+  email: "hello@lotusly.com",
   phone: "+1 (555) 123-4567",
   address: "123 Innovation Drive, Tech City, TC 12345",
   
   social: {
-    linkedin: "https://linkedin.com/company/techcraft-solutions",
-    github: "https://github.com/techcraft-solutions",
-    twitter: "https://twitter.com/techcraft_sol",
+    linkedin: "https://linkedin.com/company/lotusly",
+    github: "https://github.com/lotusly",
+    twitter: "https://twitter.com/lotusly_tech",
   },
 
   services: [
@@ -123,7 +123,7 @@ export const siteConfig = {
       title: "Discovery & Planning",
       description: "We analyze your requirements, define project scope, and create a detailed roadmap.",
       icon: "Search",
-      color: "from-blue-500 to-blue-600"
+      color: "from-pink-500 to-pink-600"
     },
     {
       number: 2,

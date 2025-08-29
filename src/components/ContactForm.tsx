@@ -63,14 +63,17 @@ export function ContactForm(): React.JSX.Element {
       </div>
       <div>
         <Label>Service</Label>
-        <Select defaultValue={siteConfig.services[0]?.key ?? "web"} onValueChange={(v) => setValue("service", v)}>
+        <Select defaultValue={(siteConfig.services[0]?.title ?? "Website Development").toLowerCase().replace(/\s+/g, "-")} onValueChange={(v) => setValue("service", v)}>
           <SelectTrigger>
             <SelectValue placeholder="Choose a service" />
           </SelectTrigger>
           <SelectContent>
-            {siteConfig.services.map((s) => (
-              <SelectItem key={s.key} value={s.key}>{s.title}</SelectItem>
-            ))}
+            {siteConfig.services.map((s, idx) => {
+              const value = (s.title ?? `service-${idx}`).toLowerCase().replace(/\s+/g, "-");
+              return (
+                <SelectItem key={value} value={value}>{s.title}</SelectItem>
+              );
+            })}
           </SelectContent>
         </Select>
       </div>

@@ -37,7 +37,7 @@ export function Hero(): React.JSX.Element {
               className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium shadow-lg"
             >
               <Sparkles className="h-4 w-4" />
-              Award-winning development studio
+              Where Innovation Blooms
             </motion.div>
             
             <motion.h1 
