@@ -8,11 +8,11 @@ import { Smartphone, Database, Globe, FolderOpen, Rocket, ArrowRight } from "luc
 
 export function ProjectsSection(): React.JSX.Element {
   return (
-    <section id="projects" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
+    <section id="projects" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-emerald-50 overflow-hidden">
 
       {/* Background Glassmorphic Elements */}
-      <div className="absolute top-20 left-1/4 w-32 h-32 bg-blue-400/10 backdrop-blur-md rounded-full border border-blue-300/20 animate-float"></div>
-      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-purple-400/10 backdrop-blur-md rounded-full border border-purple-300/20 animate-float delay-1000"></div>
+      <div className="absolute top-20 left-1/4 w-32 h-32 bg-emerald-400/10 backdrop-blur-md rounded-full border border-emerald-300/20 animate-float"></div>
+      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-teal-400/10 backdrop-blur-md rounded-full border border-teal-300/20 animate-float delay-1000"></div>
       <div className="absolute top-1/2 left-10 w-20 h-20 bg-green-400/10 backdrop-blur-md rounded-full border border-green-300/20 animate-float delay-2000"></div>
 
       <motion.div
@@ -33,7 +33,7 @@ export function ProjectsSection(): React.JSX.Element {
           Our Tech Stack
         </motion.div>
         
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent">
           Technologies We Master
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -52,7 +52,7 @@ export function ProjectsSection(): React.JSX.Element {
           className="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-6 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
               <Smartphone className="h-6 w-6 text-white" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900">Mobile Development</h3>
@@ -60,7 +60,7 @@ export function ProjectsSection(): React.JSX.Element {
           <div className="space-y-2">
             {siteConfig.techStack.mobile.map((tech, idx) => (
               <div key={idx} className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
                 <span className="text-gray-700 text-sm">{tech}</span>
               </div>
             ))}
@@ -100,7 +100,7 @@ export function ProjectsSection(): React.JSX.Element {
           className="bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-6 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300"
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-teal-600 rounded-xl flex items-center justify-center">
               <Globe className="h-6 w-6 text-white" />
             </div>
             <h3 className="text-xl font-semibold text-gray-900">Frontend Development</h3>
@@ -108,7 +108,7 @@ export function ProjectsSection(): React.JSX.Element {
           <div className="space-y-2">
             {siteConfig.techStack.frontend.map((tech, idx) => (
               <div key={idx} className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
                 <span className="text-gray-700 text-sm">{tech}</span>
               </div>
             ))}
@@ -124,7 +124,7 @@ export function ProjectsSection(): React.JSX.Element {
         transition={{ duration: 0.8 }}
         className="text-center bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl p-12 shadow-xl relative z-10"
       >
-        <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="w-20 h-20 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-6">
           <Rocket className="h-10 w-10 text-white" />
         </div>
         <h3 className="text-3xl font-bold text-gray-900 mb-4">Portfolio Coming Soon</h3>
@@ -134,7 +134,7 @@ export function ProjectsSection(): React.JSX.Element {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transform transition-all duration-300"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transform transition-all duration-300"
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
         >
           Start Your Project

@@ -2,27 +2,45 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/lib/siteConfig";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Heart, ArrowUp } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export function Footer(): React.JSX.Element {
   const year = new Date().getFullYear();
+  const [showScrollTop, setShowScrollTop] = useState(false);
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when user scrolls down more than 300px
+      const scrollY = window.scrollY;
+      setShowScrollTop(scrollY > 300);
+    };
+
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Check initial scroll position
+    handleScroll();
+
+    // Cleanup
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-slate-800 via-gray-800 to-emerald-900 text-white overflow-hidden">
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.1),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.1),transparent_50%)]" />
       
       {/* Floating Glassmorphic Elements */}
-      <div className="absolute top-20 left-1/4 w-32 h-32 bg-blue-400/10 backdrop-blur-md rounded-full border border-blue-300/20 animate-float"></div>
-      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-purple-400/10 backdrop-blur-md rounded-full border border-purple-300/20 animate-float delay-1000"></div>
-      <div className="absolute top-1/2 left-10 w-20 h-20 bg-green-400/10 backdrop-blur-md rounded-full border border-green-300/20 animate-float delay-2000"></div>
+      <div className="absolute top-20 left-1/4 w-32 h-32 bg-emerald-400/10 backdrop-blur-md rounded-full border border-emerald-300/20 animate-float"></div>
+      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-teal-400/10 backdrop-blur-md rounded-full border border-teal-300/20 animate-float delay-1000"></div>
+      <div className="absolute top-1/2 left-10 w-20 h-20 bg-cyan-400/10 backdrop-blur-md rounded-full border border-cyan-300/20 animate-float delay-2000"></div>
       
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid lg:grid-cols-4 gap-8 mb-12">
@@ -36,15 +54,15 @@ export function Footer(): React.JSX.Element {
               className="space-y-6"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden">
+                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden">
                   <div className="absolute inset-0 animate-shimmer"></div>
                   <span className="text-white font-bold text-2xl relative z-10">D</span>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">
                     {siteConfig.name}
                   </h3>
-                  <p className="text-blue-200 text-sm">{siteConfig.tagline}</p>
+                  <p className="text-emerald-200 text-sm">{siteConfig.tagline}</p>
                 </div>
               </div>
               
@@ -59,7 +77,7 @@ export function Footer(): React.JSX.Element {
                   target="_blank" 
                   rel="noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-12 h-12 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform transition-all duration-300 relative overflow-hidden group"
+                  className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform transition-all duration-300 relative overflow-hidden group"
                 >
                   <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <svg className="h-6 w-6 relative z-10" fill="currentColor" viewBox="0 0 24 24">
@@ -71,7 +89,7 @@ export function Footer(): React.JSX.Element {
                   target="_blank" 
                   rel="noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-12 h-12 bg-gradient-to-r from-gray-700 to-gray-800 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform transition-all duration-300 relative overflow-hidden group"
+                  className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform transition-all duration-300 relative overflow-hidden group"
                 >
                   <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <svg className="h-6 w-6 relative z-10" fill="currentColor" viewBox="0 0 24 24">
@@ -83,7 +101,7 @@ export function Footer(): React.JSX.Element {
                   target="_blank" 
                   rel="noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
-                  className="w-12 h-12 bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform transition-all duration-300 relative overflow-hidden group"
+                  className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-xl flex items-center justify-center text-white hover:shadow-lg transform transition-all duration-300 relative overflow-hidden group"
                 >
                   <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <svg className="h-6 w-6 relative z-10" fill="currentColor" viewBox="0 0 24 24">
@@ -166,20 +184,28 @@ export function Footer(): React.JSX.Element {
       </div>
       
       {/* Scroll to Top Button */}
-      <motion.button
-        onClick={scrollToTop}
-        whileHover={{ scale: 1.1, y: -2 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-full shadow-2xl hover:shadow-3xl transform transition-all duration-300 z-40 flex items-center justify-center group"
-        aria-label="Scroll to top"
-      >
-        <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
-        <ArrowUp className="h-6 w-6 relative z-10" />
-      </motion.button>
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            onClick={scrollToTop}
+            initial={{ opacity: 0, scale: 0, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0, y: 20 }}
+            whileHover={{ scale: 1.1, y: -2 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.3, type: "spring" }}
+            className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 text-white rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 z-45 flex items-center justify-center group border-2 border-white/20 backdrop-blur-sm"
+            aria-label="Scroll to top"
+          >
+            <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+            <ArrowUp className="h-6 w-6 relative z-10" />
+          </motion.button>
+        )}
+      </AnimatePresence>
       
       {/* Decorative Glassmorphic Elements */}
-      <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-to-r from-blue-400/5 to-purple-400/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-gradient-to-r from-green-400/5 to-blue-400/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-to-r from-emerald-400/5 to-teal-400/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-gradient-to-r from-cyan-400/5 to-emerald-400/5 rounded-full blur-3xl"></div>
     </footer>
   );
 }

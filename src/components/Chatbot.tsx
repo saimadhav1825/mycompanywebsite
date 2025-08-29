@@ -80,7 +80,7 @@ export function Chatbot(): React.JSX.Element {
     <>
       {/* Floating Chat Button */}
       <motion.div
-        className="fixed bottom-6 right-6 z-50"
+        className="fixed bottom-6 right-24 z-50"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: "spring" }}
@@ -120,7 +120,7 @@ export function Chatbot(): React.JSX.Element {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 z-50 w-80 max-h-96"
+            className="fixed bottom-24 right-24 z-50 w-80 max-h-96"
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -142,10 +142,10 @@ export function Chatbot(): React.JSX.Element {
                       initial={{ opacity: 0, x: message.sender === "user" ? 20 : -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3 }}
-                      className={`flex gap-2 ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+                      className={`flex items-start gap-2 ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                     >
                       {message.sender === "bot" && (
-                        <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
+                        <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <Bot className="h-3 w-3 text-primary" />
                         </div>
                       )}
@@ -159,7 +159,7 @@ export function Chatbot(): React.JSX.Element {
                         {message.text}
                       </div>
                       {message.sender === "user" && (
-                        <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
+                        <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <User className="h-3 w-3 text-primary" />
                         </div>
                       )}

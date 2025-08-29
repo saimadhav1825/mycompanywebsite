@@ -130,7 +130,7 @@ export const siteConfig = {
       title: "Design & Prototyping",
       description: "Create wireframes, mockups, and interactive prototypes for your approval.",
       icon: "Palette",
-      color: "from-purple-500 to-purple-600"
+      color: "from-rose-500 to-pink-600"
     },
     {
       number: 3,

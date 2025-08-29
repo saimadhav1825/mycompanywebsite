@@ -77,7 +77,7 @@ export function Navbar(): React.JSX.Element {
       }`}
     >
       {/* Background Glassmorphic Elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -87,11 +87,11 @@ export function Navbar(): React.JSX.Element {
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => scrollToSection("home")}
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
+            <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
               <div className="absolute inset-0 animate-shimmer"></div>
               <Image src="/lotusly-favicon.svg" alt="Lotusly logo" width={24} height={24} className="relative z-10" priority />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent">
               {siteConfig.name}
             </span>
           </motion.div>
@@ -106,15 +106,15 @@ export function Navbar(): React.JSX.Element {
                 onClick={() => scrollToSection(section)}
                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   activeSection === section
-                    ? "text-blue-600"
-                    : "text-gray-700 hover:text-blue-600"
+                    ? "text-emerald-600"
+                    : "text-gray-700 hover:text-emerald-600"
                 }`}
               >
                 {section.charAt(0).toUpperCase() + section.slice(1)}
                 {activeSection === section && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
                     initial={false}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
@@ -128,7 +128,7 @@ export function Navbar(): React.JSX.Element {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection("contact")}
-            className="hidden lg:inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300"
+            className="hidden lg:inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300"
           >
             Get Started
           </motion.button>
@@ -165,8 +165,8 @@ export function Navbar(): React.JSX.Element {
                     onClick={() => scrollToSection(section)}
                     className={`text-left px-4 py-3 rounded-xl transition-all duration-300 ${
                       activeSection === section
-                        ? "bg-blue-50 text-blue-600 border-l-4 border-blue-500"
-                        : "text-gray-700 hover:bg-gray-50 hover:text-blue-600"
+                        ? "bg-emerald-50 text-emerald-600 border-l-4 border-emerald-500"
+                        : "text-gray-700 hover:bg-gray-50 hover:text-emerald-600"
                     }`}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -175,7 +175,7 @@ export function Navbar(): React.JSX.Element {
                 <motion.button
                   whileHover={{ x: 10 }}
                   onClick={() => scrollToSection("contact")}
-                  className="mt-4 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg"
+                  className="mt-4 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-xl shadow-lg"
                 >
                   Get Started
                 </motion.button>

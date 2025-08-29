@@ -9,17 +9,17 @@ import { Code, Smartphone, Database, Palette, Globe, Zap, Shield, Users, ArrowRi
 
 export function AboutSection(): React.JSX.Element {
   const stats = [
-    { number: "100+", label: "Projects Delivered", icon: Globe, color: "from-blue-500 to-blue-600" },
-    { number: "50+", label: "Happy Clients", icon: Users, color: "from-green-500 to-green-600" },
-    { number: "24/7", label: "Support", icon: Shield, color: "from-purple-500 to-purple-600" },
-    { number: "5+", label: "Years Experience", icon: Zap, color: "from-orange-500 to-orange-600" }
+    { number: "100+", label: "Projects Delivered", icon: Globe, color: "from-emerald-500 to-emerald-600" },
+    { number: "50+", label: "Happy Clients", icon: Users, color: "from-teal-500 to-teal-600" },
+    { number: "24/7", label: "Support", icon: Shield, color: "from-cyan-500 to-cyan-600" },
+    { number: "5+", label: "Years Experience", icon: Zap, color: "from-rose-500 to-pink-600" }
   ];
 
   return (
-    <section id="about" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
+    <section id="about" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-emerald-50 overflow-hidden">
       {/* Background Glassmorphic Elements */}
-      <div className="absolute top-20 left-1/4 w-32 h-32 bg-blue-400/10 backdrop-blur-md rounded-full border border-blue-300/20 animate-float"></div>
-      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-purple-400/10 backdrop-blur-md rounded-full border border-purple-300/20 animate-float delay-1000"></div>
+      <div className="absolute top-20 left-1/4 w-32 h-32 bg-emerald-400/10 backdrop-blur-md rounded-full border border-emerald-300/20 animate-float"></div>
+      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-teal-400/10 backdrop-blur-md rounded-full border border-teal-300/20 animate-float delay-1000"></div>
       <div className="absolute top-1/2 left-10 w-20 h-20 bg-green-400/10 backdrop-blur-md rounded-full border border-green-300/20 animate-float delay-2000"></div>
       
       <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
@@ -47,7 +47,7 @@ export function AboutSection(): React.JSX.Element {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent"
+            className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent"
           >
             We're a team of passionate developers, designers, and strategists
           </motion.h2>
@@ -70,11 +70,11 @@ export function AboutSection(): React.JSX.Element {
             className="space-y-4"
           >
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
               <span className="text-gray-700">Custom software development tailored to your needs</span>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+              <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
               <span className="text-gray-700">Agile methodology ensuring rapid delivery and flexibility</span>
             </div>
             <div className="flex items-center gap-3">
@@ -103,11 +103,11 @@ export function AboutSection(): React.JSX.Element {
             >
               <div className="relative bg-white/20 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/30 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                 {/* Glassmorphic Background Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
                 {/* Floating Particles */}
-                <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400/40 rounded-full animate-ping"></div>
-                <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-purple-400/40 rounded-full animate-ping delay-1000"></div>
+                <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400/40 rounded-full animate-ping"></div>
+                <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/40 rounded-full animate-ping delay-1000"></div>
                 
                 <div className="relative z-10 text-center">
                   <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 relative overflow-hidden`}>
@@ -115,7 +115,7 @@ export function AboutSection(): React.JSX.Element {
                     <div className="absolute inset-0 animate-shimmer"></div>
                     <stat.icon className="h-8 w-8 text-gray-800 relative z-10" />
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
+                  <div className="text-3xl font-bold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors duration-300">
                     {stat.number}
                   </div>
                   <div className="text-sm text-gray-600 font-medium">
@@ -124,7 +124,7 @@ export function AboutSection(): React.JSX.Element {
                 </div>
                 
                 {/* Hover Glow Effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             </motion.div>
           ))}
@@ -132,8 +132,8 @@ export function AboutSection(): React.JSX.Element {
       </div>
       
       {/* Decorative Glassmorphic Elements */}
-      <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-to-r from-blue-400/5 to-purple-400/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-gradient-to-r from-green-400/5 to-blue-400/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-to-r from-emerald-400/5 to-teal-400/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-gradient-to-r from-cyan-400/5 to-emerald-400/5 rounded-full blur-3xl"></div>
     </section>
   );
 }
@@ -142,10 +142,10 @@ export function ServicesSection(): React.JSX.Element {
   const serviceIcons = [Code, Smartphone, Database, Palette];
   
   return (
-    <section id="services" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
+    <section id="services" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-emerald-50 overflow-hidden">
       {/* Background Glassmorphic Elements */}
-      <div className="absolute top-20 left-1/4 w-32 h-32 bg-blue-400/10 backdrop-blur-md rounded-full border border-blue-300/20 animate-float"></div>
-      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-purple-400/10 backdrop-blur-md rounded-full border border-purple-300/20 animate-float delay-1000"></div>
+      <div className="absolute top-20 left-1/4 w-32 h-32 bg-emerald-400/10 backdrop-blur-md rounded-full border border-emerald-300/20 animate-float"></div>
+      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-teal-400/10 backdrop-blur-md rounded-full border border-teal-300/20 animate-float delay-1000"></div>
       <div className="absolute top-1/2 left-10 w-20 h-20 bg-green-400/10 backdrop-blur-md rounded-full border border-green-300/20 animate-float delay-2000"></div>
       
       <motion.div
@@ -166,7 +166,7 @@ export function ServicesSection(): React.JSX.Element {
           Our Services
         </motion.div>
         
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent">
           What We Do Best
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -186,31 +186,31 @@ export function ServicesSection(): React.JSX.Element {
           >
             <div className="relative overflow-hidden rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full">
               {/* Glassmorphic Background Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
               {/* Floating Particles */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400/40 rounded-full animate-ping"></div>
-              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-purple-400/40 rounded-full animate-ping delay-1000"></div>
+              <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400/40 rounded-full animate-ping"></div>
+              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/40 rounded-full animate-ping delay-1000"></div>
               
               <div className="relative p-6 h-full flex flex-col">
                 <div className="text-center pb-4">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 relative overflow-hidden">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 relative overflow-hidden">
                     {/* Shimmer Effect */}
                     <div className="absolute inset-0 animate-shimmer"></div>
                     {React.createElement(serviceIcons[idx], { className: "h-8 w-8 text-gray-800 relative z-10" })}
                   </div>
-                  <div className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  <div className="text-xl font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
                     {service.title}
                   </div>
                 </div>
                 
-                <div className="flex-1 text-center">
-                  <div className="text-sm text-gray-600 leading-relaxed mb-6">
+                <div className="flex-1 flex flex-col">
+                  <div className="text-sm text-gray-600 leading-relaxed mb-6 text-center flex-1">
                     {service.description}
                   </div>
                   
-                  <div className="pt-4 border-t border-white/20">
-                    <div className="inline-flex items-center gap-2 text-blue-600 font-medium text-sm group-hover:gap-3 transition-all duration-300">
+                  <div className="pt-4 border-t border-white/20 mt-auto">
+                    <div className="flex items-center justify-center gap-2 text-emerald-600 font-medium text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer">
                       Learn More
                       <ArrowRight className="h-4 w-4" />
                     </div>
@@ -219,15 +219,15 @@ export function ServicesSection(): React.JSX.Element {
               </div>
               
               {/* Hover Glow Effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </motion.div>
         ))}
       </div>
       
       {/* Decorative Glassmorphic Elements */}
-      <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-to-r from-blue-400/5 to-purple-400/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-gradient-to-r from-green-400/5 to-blue-400/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-to-r from-emerald-400/5 to-teal-400/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-gradient-to-r from-cyan-400/5 to-emerald-400/5 rounded-full blur-3xl"></div>
     </section>
   );
 }
@@ -239,14 +239,14 @@ export function ProcessSection(): React.JSX.Element {
       title: "Discovery & Planning",
       description: "We start by understanding your business goals, target audience, and technical requirements to create a comprehensive project roadmap.",
       icon: Search,
-      color: "from-blue-500 to-blue-600"
+      color: "from-emerald-500 to-emerald-600"
     },
     {
       number: "02",
       title: "Design & Prototyping",
       description: "Our designers create wireframes and prototypes, ensuring the user experience is intuitive and visually appealing.",
       icon: Palette,
-      color: "from-purple-500 to-purple-600"
+      color: "from-teal-500 to-teal-600"
     },
     {
       number: "03",
@@ -265,10 +265,10 @@ export function ProcessSection(): React.JSX.Element {
   ];
 
   return (
-    <section id="process" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
+    <section id="process" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-emerald-50 overflow-hidden">
       {/* Background Glassmorphic Elements */}
-      <div className="absolute top-20 left-1/4 w-32 h-32 bg-blue-400/10 backdrop-blur-md rounded-full border border-blue-300/20 animate-float"></div>
-      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-purple-400/10 backdrop-blur-md rounded-full border border-purple-300/20 animate-float delay-1000"></div>
+      <div className="absolute top-20 left-1/4 w-32 h-32 bg-emerald-400/10 backdrop-blur-md rounded-full border border-emerald-300/20 animate-float"></div>
+      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-teal-400/10 backdrop-blur-md rounded-full border border-teal-300/20 animate-float delay-1000"></div>
       <div className="absolute top-1/2 left-10 w-20 h-20 bg-green-400/10 backdrop-blur-md rounded-full border border-green-300/20 animate-float delay-2000"></div>
       
       <motion.div
@@ -289,7 +289,7 @@ export function ProcessSection(): React.JSX.Element {
           Our Process
         </motion.div>
         
-        <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent">
+        <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent">
           How We Work
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -299,7 +299,7 @@ export function ProcessSection(): React.JSX.Element {
       
       <div className="relative z-10">
         {/* Timeline Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-200 via-purple-200 to-green-200 hidden lg:block"></div>
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-emerald-200 via-teal-200 to-cyan-200 hidden lg:block"></div>
         
         <div className="space-y-12 lg:space-y-16">
           {steps.map((step, idx) => (
@@ -317,11 +317,11 @@ export function ProcessSection(): React.JSX.Element {
               <div className="relative z-20">
                 <div className="relative w-20 h-20 bg-white/20 backdrop-blur-md rounded-full border-4 border-white/30 shadow-xl flex items-center justify-center overflow-hidden">
                   {/* Glassmorphic Background Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5"></div>
                   
                   {/* Floating Particles */}
-                  <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-blue-400/40 rounded-full animate-ping"></div>
-                  <div className="absolute bottom-2 left-2 w-1 h-1 bg-purple-400/40 rounded-full animate-ping delay-1000"></div>
+                  <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-emerald-400/40 rounded-full animate-ping"></div>
+                  <div className="absolute bottom-2 left-2 w-1 h-1 bg-teal-400/40 rounded-full animate-ping delay-1000"></div>
                   
                   <div className={`w-12 h-12 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden`}>
                     {/* Shimmer Effect */}
@@ -330,7 +330,7 @@ export function ProcessSection(): React.JSX.Element {
                   </div>
                   
                   {/* Step Number */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-gray-800 text-xs font-bold shadow-lg">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center text-gray-800 text-xs font-bold shadow-lg">
                     {step.number}
                   </div>
                 </div>
@@ -340,14 +340,14 @@ export function ProcessSection(): React.JSX.Element {
               <div className={`flex-1 text-center lg:text-left ${idx % 2 === 0 ? 'lg:pl-8' : 'lg:pr-8'}`}>
                 <div className="relative bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/30 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                   {/* Glassmorphic Background Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
                   {/* Floating Particles */}
-                  <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400/40 rounded-full animate-ping"></div>
-                  <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-purple-400/40 rounded-full animate-ping delay-1000"></div>
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400/40 rounded-full animate-ping"></div>
+                  <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/40 rounded-full animate-ping delay-1000"></div>
                   
                   <div className="relative z-10">
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">
                       {step.title}
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -356,7 +356,7 @@ export function ProcessSection(): React.JSX.Element {
                   </div>
                   
                   {/* Hover Glow Effect */}
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </div>
             </motion.div>
@@ -365,8 +365,8 @@ export function ProcessSection(): React.JSX.Element {
       </div>
       
       {/* Decorative Glassmorphic Elements */}
-      <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-to-r from-blue-400/5 to-purple-400/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-gradient-to-r from-green-400/5 to-blue-400/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/3 right-0 w-64 h-64 bg-gradient-to-r from-emerald-400/5 to-teal-400/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-1/3 left-0 w-48 h-48 bg-gradient-to-r from-cyan-400/5 to-emerald-400/5 rounded-full blur-3xl"></div>
     </section>
   );
 }

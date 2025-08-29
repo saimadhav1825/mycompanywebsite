@@ -5,7 +5,7 @@ import { siteConfig } from "@/lib/siteConfig";
 import { Toaster } from "sonner";
 import Script from "next/script";
 import { Navbar } from "@/components/Navbar";
-import { Chatbot } from "@/components/Chatbot";
+import { EnhancedChatbot } from "@/components/EnhancedChatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -75,7 +75,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
-        <Chatbot />
+        <EnhancedChatbot />
         <Toaster richColors position="top-right" />
         {/* JSON-LD Structured Data */}
         <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive">
