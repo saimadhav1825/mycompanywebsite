@@ -34,7 +34,7 @@ export function Hero(): React.JSX.Element {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-sm font-medium shadow-lg"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium shadow-lg"
             >
               <Sparkles className="h-4 w-4" />
               Award-winning development studio
@@ -141,7 +141,7 @@ export function Hero(): React.JSX.Element {
                 <div className="w-32 h-32 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full shadow-2xl flex items-center justify-center">
                   <div className="w-24 h-24 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40">
                     <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                      <Sparkles className="h-8 w-8 text-white" />
+                      <Sparkles className="h-8 w-8 text-gray-800" />
                     </div>
                   </div>
                 </div>

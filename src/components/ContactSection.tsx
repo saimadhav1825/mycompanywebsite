@@ -26,7 +26,7 @@ export function ContactSection(): React.JSX.Element {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-sm font-medium mb-6 shadow-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium mb-6 shadow-lg"
         >
           <Send className="h-4 w-4" />
           Get In Touch
@@ -67,7 +67,7 @@ export function ContactSection(): React.JSX.Element {
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg relative overflow-hidden">
                     <div className="absolute inset-0 animate-shimmer"></div>
-                    <Mail className="h-6 w-6 text-white relative z-10" />
+                    <Mail className="h-6 w-6 text-gray-800 relative z-10" />
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 mb-1">Email</div>
@@ -83,7 +83,7 @@ export function ContactSection(): React.JSX.Element {
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg relative overflow-hidden">
                     <div className="absolute inset-0 animate-shimmer"></div>
-                    <Phone className="h-6 w-6 text-white relative z-10" />
+                    <Phone className="h-6 w-6 text-gray-800 relative z-10" />
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 mb-1">Phone</div>
@@ -99,7 +99,7 @@ export function ContactSection(): React.JSX.Element {
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg relative overflow-hidden">
                     <div className="absolute inset-0 animate-shimmer"></div>
-                    <MapPin className="h-6 w-6 text-white relative z-10" />
+                    <MapPin className="h-6 w-6 text-gray-800 relative z-10" />
                   </div>
                   <div>
                     <div className="font-medium text-gray-900 mb-1">Location</div>

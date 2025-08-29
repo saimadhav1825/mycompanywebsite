@@ -36,7 +36,7 @@ export function AboutSection(): React.JSX.Element {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-sm font-medium shadow-lg"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium shadow-lg"
           >
             <Users className="h-4 w-4" />
             About Our Company
@@ -113,7 +113,7 @@ export function AboutSection(): React.JSX.Element {
                   <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 relative overflow-hidden`}>
                     {/* Shimmer Effect */}
                     <div className="absolute inset-0 animate-shimmer"></div>
-                    <stat.icon className="h-8 w-8 text-white relative z-10" />
+                    <stat.icon className="h-8 w-8 text-gray-800 relative z-10" />
                   </div>
                   <div className="text-3xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors duration-300">
                     {stat.number}
@@ -160,7 +160,7 @@ export function ServicesSection(): React.JSX.Element {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-sm font-medium mb-6 shadow-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium mb-6 shadow-lg"
         >
           <Zap className="h-4 w-4" />
           Our Services
@@ -197,7 +197,7 @@ export function ServicesSection(): React.JSX.Element {
                   <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 relative overflow-hidden">
                     {/* Shimmer Effect */}
                     <div className="absolute inset-0 animate-shimmer"></div>
-                    {React.createElement(serviceIcons[idx], { className: "h-8 w-8 text-white relative z-10" })}
+                    {React.createElement(serviceIcons[idx], { className: "h-8 w-8 text-gray-800 relative z-10" })}
                   </div>
                   <div className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                     {service.title}
@@ -297,7 +297,7 @@ export function ProjectsSection(): React.JSX.Element {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-sm font-medium mb-6 shadow-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium mb-6 shadow-lg"
         >
           <FolderOpen className="h-4 w-4" />
           Our Portfolio
@@ -343,19 +343,19 @@ export function ProjectsSection(): React.JSX.Element {
                   </div>
                   
                   {/* Category Badge */}
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-medium rounded-full">
+                  <div className="absolute top-4 left-4 px-3 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 text-xs font-medium rounded-full">
                     {project.category}
                   </div>
                   
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end">
-                    <div className="p-6 text-white">
+                    <div className="p-6 text-gray-800">
                       <div className="text-sm text-gray-300 mb-2">Tech Stack:</div>
                       <div className="flex flex-wrap gap-2">
                         {project.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="px-2 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs rounded-full"
+                            className="px-2 py-1 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 text-xs rounded-full"
                           >
                             {tech}
                           </span>
@@ -467,7 +467,7 @@ export function ProcessSection(): React.JSX.Element {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-sm font-medium mb-6 shadow-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium mb-6 shadow-lg"
         >
           <Settings className="h-4 w-4" />
           Our Process
@@ -510,11 +510,11 @@ export function ProcessSection(): React.JSX.Element {
                   <div className={`w-12 h-12 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden`}>
                     {/* Shimmer Effect */}
                     <div className="absolute inset-0 animate-shimmer"></div>
-                    <step.icon className="h-6 w-6 text-white relative z-10" />
+                    <step.icon className="h-6 w-6 text-gray-800 relative z-10" />
                   </div>
                   
                   {/* Step Number */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-gray-800 text-xs font-bold shadow-lg">
                     {step.number}
                   </div>
                 </div>
@@ -602,7 +602,7 @@ export function TestimonialsSection(): React.JSX.Element {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full text-sm font-medium mb-6 shadow-lg"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium mb-6 shadow-lg"
         >
           <Star className="h-4 w-4" />
           Client Testimonials
