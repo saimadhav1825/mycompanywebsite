@@ -23,47 +23,130 @@ export type SiteConfig = {
   services: ServiceItem[];
 };
 
-export const siteConfig: SiteConfig = {
-  name: "Acme Dev Studio",
-  tagline: "We build websites, mobile apps & backend systems",
-  description:
-    "Helping businesses launch, scale, and succeed with modern web, mobile, and backend engineering.",
-  url: "https://www.acmedevstudio.com",
-  locale: "en_US",
-  contactEmail: "hello@acmedevstudio.com",
-  contactPhone: "+1 (555) 000-0000",
-  address: "Remote-first • Global",
-  socials: {
-    linkedin: "https://www.linkedin.com/company/acmedevstudio",
-    github: "https://github.com/acmedevstudio",
-    twitter: "https://x.com/acmedevstudio",
+export const siteConfig = {
+  name: "TechCraft Solutions",
+  tagline: "Leading Software Development Agency",
+  description: "We specialize in mobile app development, backend systems, and modern web applications using cutting-edge technologies.",
+  email: "hello@techcraftsolutions.com",
+  phone: "+1 (555) 123-4567",
+  address: "123 Innovation Drive, Tech City, TC 12345",
+  
+  social: {
+    linkedin: "https://linkedin.com/company/techcraft-solutions",
+    github: "https://github.com/techcraft-solutions",
+    twitter: "https://twitter.com/techcraft_sol",
   },
+
   services: [
     {
-      key: "web",
-      title: "Website Development",
-      description:
-        "SEO-friendly, blazing-fast websites with modern stacks like Next.js and TailwindCSS.",
-    },
-    {
-      key: "mobile",
       title: "Mobile App Development",
-      description:
-        "High-quality iOS and Android apps using React Native and Kotlin/Swift when needed.",
+      description: "Cross-platform mobile applications using modern frameworks for iOS and Android.",
+      icon: "Smartphone",
+      features: [
+        "Jetpack Compose Multiplatform",
+        "React Native",
+        "Flutter",
+        "Native iOS/Android",
+        "App Store Optimization"
+      ]
     },
     {
-      key: "backend",
-      title: "Backend & APIs",
-      description:
-        "Robust, scalable APIs and services with Node.js, PostgreSQL, and cloud-native tooling.",
+      title: "Backend Development",
+      description: "Scalable server-side applications and APIs with robust architecture.",
+      icon: "Database",
+      features: [
+        "Node.js & Express",
+        "Python & Django/FastAPI",
+        "Java & Spring Boot",
+        "PostgreSQL & MongoDB",
+        "AWS & Cloud Services"
+      ]
     },
     {
-      key: "uiux",
+      title: "Website Development",
+      description: "Modern, responsive web applications with excellent user experience.",
+      icon: "Globe",
+      features: [
+        "React & Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Progressive Web Apps",
+        "SEO Optimization"
+      ]
+    },
+    {
       title: "UI/UX Design",
-      description:
-        "Thoughtful product design, wireframes, and prototypes to validate quickly.",
-    },
+      description: "Beautiful, intuitive user interfaces that enhance user experience.",
+      icon: "Palette",
+      features: [
+        "Material Design",
+        "iOS Human Interface",
+        "Responsive Design",
+        "Prototyping",
+        "User Testing"
+      ]
+    }
   ],
+
+  techStack: {
+    mobile: [
+      "Jetpack Compose Multiplatform",
+      "React Native",
+      "Flutter",
+      "Kotlin",
+      "Swift",
+      "Dart"
+    ],
+    backend: [
+      "Node.js",
+      "Python",
+      "Java",
+      "PostgreSQL",
+      "MongoDB",
+      "Redis",
+      "AWS",
+      "Docker"
+    ],
+    frontend: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "TailwindCSS",
+      "Framer Motion",
+      "shadcn/ui"
+    ]
+  },
+
+  process: [
+    {
+      number: 1,
+      title: "Discovery & Planning",
+      description: "We analyze your requirements, define project scope, and create a detailed roadmap.",
+      icon: "Search",
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      number: 2,
+      title: "Design & Prototyping",
+      description: "Create wireframes, mockups, and interactive prototypes for your approval.",
+      icon: "Palette",
+      color: "from-purple-500 to-purple-600"
+    },
+    {
+      number: 3,
+      title: "Development",
+      description: "Build your application using modern technologies and best practices.",
+      icon: "Code",
+      color: "from-green-500 to-green-600"
+    },
+    {
+      number: 4,
+      title: "Testing & Launch",
+      description: "Rigorous testing, deployment, and post-launch support.",
+      icon: "Rocket",
+      color: "from-orange-500 to-orange-600"
+    }
+  ]
 };
 
 

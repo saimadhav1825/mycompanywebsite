@@ -233,50 +233,6 @@ export function ServicesSection(): React.JSX.Element {
 }
 
 export function ProjectsSection(): React.JSX.Element {
-  const projects = [
-    {
-      title: "E-Commerce Platform",
-      description: "Modern React-based e-commerce solution with payment integration",
-      image: "/images/placeholder.svg",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      category: "Web Development"
-    },
-    {
-      title: "Mobile Banking App",
-      description: "Secure iOS and Android banking application with biometric authentication",
-      image: "/images/placeholder.svg",
-      tech: ["React Native", "Firebase", "Biometrics", "Security"],
-      category: "Mobile Development"
-    },
-    {
-      title: "AI-Powered Analytics",
-      description: "Machine learning platform for business intelligence and data analysis",
-      image: "/images/placeholder.svg",
-      tech: ["Python", "TensorFlow", "AWS", "Docker"],
-      category: "Backend Development"
-    },
-    {
-      title: "Real Estate Portal",
-      description: "Property listing platform with advanced search and virtual tours",
-      image: "/images/placeholder.svg",
-      tech: ["Vue.js", "Laravel", "MySQL", "3D Graphics"],
-      category: "Web Development"
-    },
-    {
-      title: "Fitness Tracking App",
-      description: "Cross-platform fitness app with wearable device integration",
-      image: "/images/placeholder.svg",
-      tech: ["Flutter", "Bluetooth", "HealthKit", "Google Fit"],
-      category: "Mobile Development"
-    },
-    {
-      title: "Microservices API",
-      description: "Scalable backend architecture for high-traffic applications",
-      image: "/images/placeholder.svg",
-      tech: ["Go", "Kubernetes", "Redis", "PostgreSQL"],
-      category: "Backend Development"
-    }
-  ];
 
   return (
     <section id="projects" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
