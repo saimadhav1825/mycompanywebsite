@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/siteConfig";
 import React from "react";
 import Image from "next/image";
 
-const SECTIONS = ["home", "about", "services", "projects", "process", "contact"] as const;
+const SECTIONS = ["home", "services", "why-choose-us", "process", "about", "projects", "contact"] as const;
 
 export function Navbar(): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
