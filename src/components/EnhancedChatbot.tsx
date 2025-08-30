@@ -219,10 +219,12 @@ export function EnhancedChatbot(): React.JSX.Element {
       });
 
       if (!response.ok) {
-        console.error('Failed to save chat data');
+        // Silently handle the error - chat functionality will continue without database storage
+        console.warn('Chat data could not be saved. Chat will continue without persistence.');
       }
     } catch (error) {
-      console.error('Error saving chat data:', error);
+      // Silently handle the error - chat functionality will continue without database storage
+      console.warn('Chat storage unavailable. Chat will continue without persistence.');
     }
   };
 
@@ -423,7 +425,7 @@ export function EnhancedChatbot(): React.JSX.Element {
     <>
       {/* Floating Chat Button */}
       <motion.div
-        className="fixed bottom-6 right-6 md:right-24 z-50"
+        className="fixed bottom-6 right-6 z-40"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: "spring" }}

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
+import Link from "next/link";
 import { siteConfig } from "@/lib/siteConfig";
 import React from "react";
 import { Code, Smartphone, Database, Palette, Globe, Zap, Shield, Users, ArrowRight, FolderOpen, Search, Settings, Rocket, Star } from "lucide-react";
@@ -139,7 +140,7 @@ export function AboutSection(): React.JSX.Element {
 }
 
 export function ServicesSection(): React.JSX.Element {
-  const serviceIcons = [Code, Smartphone, Database, Palette];
+  const serviceIcons = [Smartphone, Globe, Database, Palette];
   
   return (
     <section id="services" className="relative container mx-auto px-4 py-24 bg-gradient-to-br from-gray-50 to-emerald-50 overflow-hidden">
@@ -186,17 +187,17 @@ export function ServicesSection(): React.JSX.Element {
           >
             <div className="relative overflow-hidden rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full">
               {/* Glassmorphic Background Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               
               {/* Floating Particles */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400/40 rounded-full animate-ping"></div>
-              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/40 rounded-full animate-ping delay-1000"></div>
+              <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400/40 rounded-full animate-ping pointer-events-none"></div>
+              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/40 rounded-full animate-ping delay-1000 pointer-events-none"></div>
               
               <div className="relative p-6 h-full flex flex-col">
                 <div className="text-center pb-4">
                   <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 relative overflow-hidden">
                     {/* Shimmer Effect */}
-                    <div className="absolute inset-0 animate-shimmer"></div>
+                    <div className="absolute inset-0 animate-shimmer pointer-events-none"></div>
                     {React.createElement(serviceIcons[idx], { className: "h-8 w-8 text-gray-800 relative z-10" })}
                   </div>
                   <div className="text-xl font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
@@ -210,16 +211,18 @@ export function ServicesSection(): React.JSX.Element {
                   </div>
                   
                   <div className="pt-4 border-t border-white/20 mt-auto">
-                    <div className="flex items-center justify-center gap-2 text-emerald-600 font-medium text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer">
-                      Learn More
-                      <ArrowRight className="h-4 w-4" />
-                    </div>
+                    <Link href={`/services/${service.slug}`}>
+                      <div className="flex items-center justify-center gap-2 text-emerald-600 font-medium text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer hover:text-emerald-700">
+                        Learn More
+                        <ArrowRight className="h-4 w-4" />
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>
               
               {/* Hover Glow Effect */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
             </div>
           </motion.div>
         ))}

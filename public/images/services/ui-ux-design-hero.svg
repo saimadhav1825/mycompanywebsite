@@ -1,0 +1,112 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.2" />
+      <stop offset="50%" style="stop-color:#14b8a6;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:0.2" />
+    </linearGradient>
+    <linearGradient id="canvas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc" />
+      <stop offset="100%" style="stop-color:#e2e8f0" />
+    </linearGradient>
+    <linearGradient id="palette" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899" />
+      <stop offset="50%" style="stop-color:#f97316" />
+      <stop offset="100%" style="stop-color:#eab308" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="50" fill="#ec4899" opacity="0.1"/>
+  <circle cx="700" cy="300" r="70" fill="#06b6d4" opacity="0.1"/>
+  <rect x="650" y="80" width="40" height="40" rx="8" fill="#14b8a6" opacity="0.15"/>
+  
+  <!-- Design Canvas -->
+  <g transform="translate(150, 80)">
+    <rect x="0" y="0" width="500" height="300" rx="12" fill="url(#canvas)" stroke="#cbd5e1" stroke-width="2"/>
+    
+    <!-- Design elements -->
+    <!-- Header mockup -->
+    <rect x="20" y="20" width="460" height="40" rx="6" fill="#10b981" opacity="0.8"/>
+    <circle cx="40" cy="40" r="8" fill="white"/>
+    <rect x="60" y="35" width="80" height="10" rx="2" fill="white"/>
+    <rect x="400" y="35" width="60" height="10" rx="2" fill="white" opacity="0.8"/>
+    
+    <!-- Content sections -->
+    <rect x="20" y="80" width="220" height="80" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+    <rect x="30" y="90" width="60" height="60" rx="4" fill="#e2e8f0"/>
+    <rect x="100" y="95" width="130" height="8" rx="2" fill="#94a3b8"/>
+    <rect x="100" y="110" width="100" height="6" rx="1" fill="#cbd5e1"/>
+    <rect x="100" y="125" width="80" height="6" rx="1" fill="#cbd5e1"/>
+    
+    <rect x="260" y="80" width="220" height="80" rx="8" fill="#f1f5f9" stroke="#e2e8f0"/>
+    <rect x="270" y="90" width="60" height="60" rx="4" fill="#e2e8f0"/>
+    <rect x="340" y="95" width="130" height="8" rx="2" fill="#94a3b8"/>
+    <rect x="340" y="110" width="100" height="6" rx="1" fill="#cbd5e1"/>
+    <rect x="340" y="125" width="80" height="6" rx="1" fill="#cbd5e1"/>
+    
+    <!-- Buttons -->
+    <rect x="20" y="180" width="100" height="30" rx="15" fill="#10b981"/>
+    <rect x="140" y="180" width="100" height="30" rx="15" fill="transparent" stroke="#10b981" stroke-width="2"/>
+    
+    <!-- Form mockup -->
+    <rect x="20" y="230" width="200" height="20" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="240" y="230" width="200" height="20" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="20" y="260" width="420" height="20" rx="4" fill="#f8fafc" stroke="#cbd5e1"/>
+  </g>
+  
+  <!-- Color Palette -->
+  <g transform="translate(50, 280)">
+    <rect x="0" y="0" width="150" height="80" rx="8" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="75" y="20" text-anchor="middle" fill="#374151" font-family="Arial" font-size="12" font-weight="bold">Color Palette</text>
+    
+    <circle cx="30" cy="45" r="12" fill="#10b981"/>
+    <circle cx="60" cy="45" r="12" fill="#06b6d4"/>
+    <circle cx="90" cy="45" r="12" fill="#ec4899"/>
+    <circle cx="120" cy="45" r="12" fill="#f59e0b"/>
+    
+    <circle cx="30" cy="70" r="8" fill="#374151"/>
+    <circle cx="55" cy="70" r="8" fill="#6b7280"/>
+    <circle cx="80" cy="70" r="8" fill="#9ca3af"/>
+    <circle cx="105" cy="70" r="8" fill="#d1d5db"/>
+  </g>
+  
+  <!-- Design Tools -->
+  <g transform="translate(680, 150)">
+    <!-- Pen tool -->
+    <path d="M10 10 L20 30 L15 35 L5 25 Z" fill="#374151"/>
+    <line x1="15" y1="35" x2="25" y2="45" stroke="#374151" stroke-width="2"/>
+    
+    <!-- Selection tool -->
+    <rect x="0" y="50" width="20" height="20" fill="transparent" stroke="#374151" stroke-width="2" stroke-dasharray="2,2"/>
+  </g>
+  
+  <!-- Wireframe sketches -->
+  <g opacity="0.4" stroke="#94a3b8" stroke-width="1" fill="none">
+    <rect x="600" y="80" width="80" height="60" rx="4"/>
+    <line x1="610" y1="95" x2="670" y2="95"/>
+    <line x1="610" y1="105" x2="650" y2="105"/>
+    <line x1="610" y1="115" x2="660" y2="115"/>
+    <circle cx="620" cy="125" r="4"/>
+    <rect x="640" y="122" width="25" height="6" rx="1"/>
+  </g>
+  
+  <!-- Floating design elements -->
+  <g opacity="0.6">
+    <circle cx="120" cy="180" r="3" fill="#ec4899">
+      <animate attributeName="cy" values="180;170;180" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="700" cy="200" r="4" fill="#06b6d4">
+      <animate attributeName="cy" values="200;190;200" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <rect x="80" y="350" width="8" height="8" rx="2" fill="#10b981">
+      <animate attributeName="y" values="350;340;350" dur="2.8s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" fill="#1f2937" font-family="Arial, sans-serif" font-size="24" font-weight="bold">UI/UX Design</text>
+</svg>

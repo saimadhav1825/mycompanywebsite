@@ -76,7 +76,16 @@ const sendEmailNotification = async (chatData: any) => {
 
 export async function POST(request: NextRequest) {
   try {
-    await connectDB();
+    // Try to connect to database, but continue if it fails
+    try {
+      await connectDB();
+    } catch (dbError) {
+      console.warn('Database connection failed. Chat will work without persistence.');
+      return NextResponse.json({ 
+        success: true, 
+        message: 'Chat working without persistence' 
+      });
+    }
     
     const { sessionId, message, clientInfo, projectDetails, stage } = await request.json();
 
@@ -150,7 +159,15 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    await connectDB();
+    // Try to connect to database, but continue if it fails
+    try {
+      await connectDB();
+    } catch (dbError) {
+      console.warn('Database connection failed. Chat data not available.');
+      return NextResponse.json({ 
+        error: 'Chat data not available - database connection failed' 
+      }, { status: 503 });
+    }
     
     const { searchParams } = new URL(request.url);
     const sessionId = searchParams.get('sessionId');
