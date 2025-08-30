@@ -132,13 +132,33 @@ export function ProjectsSection(): React.JSX.Element {
           We're currently working on amazing projects for our clients. Our portfolio will showcase our expertise in mobile app development, backend systems, and modern web applications.
         </p>
         <motion.button
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ 
+            scale: 1.08, 
+            boxShadow: "0 25px 50px -12px rgba(16, 185, 129, 0.5)",
+            y: -2
+          }}
           whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transform transition-all duration-300"
+          className="relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 text-white font-bold rounded-2xl shadow-2xl transform transition-all duration-300 overflow-hidden group"
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
         >
-          Start Your Project
-          <ArrowRight className="h-5 w-5" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer"></div>
+          
+          <motion.div
+            animate={{ rotate: [0, 360] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          >
+            <Rocket className="h-6 w-6 relative z-10" />
+          </motion.div>
+          
+          <span className="relative z-10 text-lg">Start Your Project</span>
+          
+          <motion.div
+            animate={{ x: [0, 3, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ArrowRight className="h-6 w-6 relative z-10" />
+          </motion.div>
         </motion.button>
       </motion.div>
     </section>
