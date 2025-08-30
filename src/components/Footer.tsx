@@ -5,6 +5,7 @@ import { siteConfig } from "@/lib/siteConfig";
 import React, { useState, useEffect } from "react";
 import { Heart, ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export function Footer(): React.JSX.Element {
   const year = new Date().getFullYear();
@@ -33,14 +34,28 @@ export function Footer(): React.JSX.Element {
   
   return (
     <footer className="relative bg-gradient-to-br from-slate-800 via-gray-800 to-emerald-900 text-white overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.1),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.1),transparent_50%)]" />
+      {/* Enhanced Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.15),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.12),transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_10%,rgba(6,182,212,0.08),transparent_70%)]" />
       
-      {/* Floating Glassmorphic Elements */}
-      <div className="absolute top-20 left-1/4 w-32 h-32 bg-emerald-400/10 backdrop-blur-md rounded-full border border-emerald-300/20 animate-float"></div>
-      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-teal-400/10 backdrop-blur-md rounded-full border border-teal-300/20 animate-float delay-1000"></div>
-      <div className="absolute top-1/2 left-10 w-20 h-20 bg-cyan-400/10 backdrop-blur-md rounded-full border border-cyan-300/20 animate-float delay-2000"></div>
+      {/* Enhanced Floating Glassmorphic Elements */}
+      <div className="absolute top-20 left-1/4 w-32 h-32 bg-emerald-400/15 backdrop-blur-xl rounded-full border border-emerald-300/30 animate-float shadow-2xl relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-200/20 to-transparent animate-shimmer"></div>
+      </div>
+      <div className="absolute bottom-20 right-1/4 w-24 h-24 bg-teal-400/15 backdrop-blur-xl rounded-full border border-teal-300/30 animate-float delay-1000 shadow-xl relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-200/20 to-transparent animate-shimmer"></div>
+      </div>
+      <div className="absolute top-1/2 left-10 w-20 h-20 bg-cyan-400/15 backdrop-blur-xl rounded-full border border-cyan-300/30 animate-float delay-2000 shadow-lg relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-200/20 to-transparent animate-shimmer"></div>
+      </div>
+      <div className="absolute top-16 right-16 w-16 h-16 bg-emerald-300/12 backdrop-blur-md rounded-full border border-emerald-200/25 animate-float delay-500 shadow-lg"></div>
+      <div className="absolute bottom-16 left-16 w-18 h-18 bg-teal-300/10 backdrop-blur-md rounded-full border border-teal-200/25 animate-float delay-1800 shadow-md"></div>
+      
+      {/* Additional Floating Particles */}
+      <div className="absolute top-1/4 right-1/3 w-2 h-2 bg-emerald-400/40 rounded-full animate-ping"></div>
+      <div className="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 bg-teal-400/50 rounded-full animate-ping delay-800"></div>
+      <div className="absolute top-3/4 right-1/6 w-1 h-1 bg-cyan-400/60 rounded-full animate-ping delay-1200"></div>
       
       <div className="container mx-auto px-4 py-16 relative z-10">
         <div className="grid lg:grid-cols-4 gap-8 mb-12">
@@ -54,9 +69,15 @@ export function Footer(): React.JSX.Element {
               className="space-y-6"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden">
+                <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
                   <div className="absolute inset-0 animate-shimmer"></div>
-                  <span className="text-white font-bold text-2xl relative z-10">D</span>
+                  <Image 
+                    src="/lotusly-favicon.svg" 
+                    alt="Lotusly logo" 
+                    width={24} 
+                    height={24} 
+                    className="relative z-10" 
+                  />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">

@@ -10,10 +10,10 @@ import { Code, Smartphone, Database, Palette, Globe, Zap, Shield, Users, ArrowRi
 
 export function AboutSection(): React.JSX.Element {
   const stats = [
-    { number: "100+", label: "Projects Delivered", icon: Globe, color: "from-emerald-500 to-emerald-600" },
-    { number: "50+", label: "Happy Clients", icon: Users, color: "from-teal-500 to-teal-600" },
+    { number: "Ready", label: "To Launch", icon: Rocket, color: "from-emerald-500 to-emerald-600" },
+    { number: "Fresh", label: "Ideas", icon: Zap, color: "from-teal-500 to-teal-600" },
     { number: "24/7", label: "Support", icon: Shield, color: "from-cyan-500 to-cyan-600" },
-    { number: "5+", label: "Years Experience", icon: Zap, color: "from-rose-500 to-pink-600" }
+    { number: "Quality", label: "Focused", icon: Star, color: "from-rose-500 to-pink-600" }
   ];
 
   return (
@@ -185,13 +185,16 @@ export function ServicesSection(): React.JSX.Element {
             transition={{ duration: 0.6, delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="relative overflow-hidden rounded-2xl bg-white/20 backdrop-blur-md border border-white/30 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full">
-              {/* Glassmorphic Background Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+            <div className="relative overflow-hidden rounded-2xl bg-white/25 backdrop-blur-xl border border-white/40 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full group-hover:border-emerald-200/50">
+              {/* Enhanced Glassmorphic Background Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 to-teal-500/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer transition-opacity duration-700 pointer-events-none"></div>
               
-              {/* Floating Particles */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400/40 rounded-full animate-ping pointer-events-none"></div>
-              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/40 rounded-full animate-ping delay-1000 pointer-events-none"></div>
+              {/* Enhanced Floating Particles */}
+              <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400/50 rounded-full animate-ping pointer-events-none"></div>
+              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/50 rounded-full animate-ping delay-1000 pointer-events-none"></div>
+              <div className="absolute top-6 left-6 w-1 h-1 bg-cyan-400/40 rounded-full animate-ping delay-500 pointer-events-none"></div>
+              <div className="absolute bottom-6 right-6 w-1.5 h-1.5 bg-emerald-300/60 rounded-full animate-ping delay-1500 pointer-events-none"></div>
               
               <div className="relative p-6 h-full flex flex-col">
                 <div className="text-center pb-4">

@@ -7,19 +7,34 @@ import React from "react";
 export function Hero(): React.JSX.Element {
   return (
     <section id="home" className="relative overflow-hidden min-h-screen flex items-center">
-      {/* Enhanced Background Layers */}
+      {/* Enhanced Background Layers with Glassmorphic Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-teal-50"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.1),transparent_50%)]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(147,51,234,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.15),transparent_60%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.12),transparent_55%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.08),transparent_70%)]"></div>
       
-      {/* Floating Glassmorphic Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-10 blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-10 blur-3xl animate-pulse delay-1000"></div>
+      {/* Enhanced Floating Glassmorphic Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-15 blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-15 blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-40 right-1/3 w-28 h-28 bg-gradient-to-r from-cyan-300 to-emerald-300 rounded-full opacity-12 blur-2xl animate-pulse delay-500"></div>
+      <div className="absolute bottom-40 left-1/3 w-36 h-36 bg-gradient-to-r from-emerald-300 to-teal-300 rounded-full opacity-10 blur-3xl animate-pulse delay-1500"></div>
       
-      {/* Glassmorphic Orbs */}
-      <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-white/20 backdrop-blur-md rounded-full border border-white/30 animate-float"></div>
-      <div className="absolute bottom-1/3 left-1/4 w-20 h-20 bg-emerald-400/20 backdrop-blur-md rounded-full border border-emerald-300/30 animate-float delay-1000"></div>
-      <div className="absolute top-1/2 left-1/2 w-16 h-16 bg-teal-400/20 backdrop-blur-md rounded-full border border-teal-300/30 animate-float delay-2000"></div>
+      {/* Enhanced Glassmorphic Orbs with Shimmer Effects */}
+      <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-white/30 backdrop-blur-xl rounded-full border border-white/40 animate-float shadow-2xl relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
+      </div>
+      <div className="absolute bottom-1/3 left-1/4 w-20 h-20 bg-emerald-400/30 backdrop-blur-xl rounded-full border border-emerald-300/40 animate-float delay-1000 shadow-xl relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-200/30 to-transparent animate-shimmer"></div>
+      </div>
+      <div className="absolute top-1/2 left-1/2 w-16 h-16 bg-teal-400/30 backdrop-blur-xl rounded-full border border-teal-300/40 animate-float delay-2000 shadow-lg relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-200/30 to-transparent animate-shimmer"></div>
+      </div>
+      
+      {/* Additional Floating Particles */}
+      <div className="absolute top-1/4 left-1/6 w-3 h-3 bg-emerald-400/50 rounded-full animate-ping"></div>
+      <div className="absolute bottom-1/4 right-1/6 w-2 h-2 bg-teal-400/60 rounded-full animate-ping delay-700"></div>
+      <div className="absolute top-3/4 left-3/4 w-2.5 h-2.5 bg-cyan-400/50 rounded-full animate-ping delay-1200"></div>
+      <div className="absolute top-1/6 right-1/2 w-1.5 h-1.5 bg-emerald-300/70 rounded-full animate-ping delay-300"></div>
       
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -99,8 +114,8 @@ export function Hero(): React.JSX.Element {
               className="flex gap-8 pt-8"
             >
               {[
-                { number: "100+", label: "Projects Delivered" },
-                { number: "50+", label: "Happy Clients" },
+                { number: "Ready", label: "To Launch" },
+                { number: "Fresh", label: "Start" },
                 { number: "24/7", label: "Support" }
               ].map((stat, idx) => (
                 <motion.div

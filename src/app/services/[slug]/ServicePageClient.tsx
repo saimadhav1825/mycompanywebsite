@@ -192,8 +192,8 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
                     <Award className="w-6 h-6 text-emerald-600 relative z-10" />
                   </div>
                   <div>
-                    <div className="font-bold text-gray-900 group-hover/stats:text-emerald-700 transition-colors duration-300">50+ Projects</div>
-                    <div className="text-sm text-gray-600">Successfully Delivered</div>
+                    <div className="font-bold text-gray-900 group-hover/stats:text-emerald-700 transition-colors duration-300">Ready to Start</div>
+                    <div className="text-sm text-gray-600">Your First Project</div>
                   </div>
                 </div>
               </motion.div>

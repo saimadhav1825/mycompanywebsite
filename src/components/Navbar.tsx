@@ -72,12 +72,24 @@ export function Navbar(): React.JSX.Element {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? "bg-white/80 backdrop-blur-md border-b border-white/20 shadow-xl" 
-          : "bg-transparent"
+          ? "bg-white/15 backdrop-blur-2xl border-b border-white/30 shadow-2xl" 
+          : "bg-white/5 backdrop-blur-lg border-b border-white/10"
       }`}
     >
-      {/* Background Glassmorphic Elements */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+      {/* Enhanced Glassmorphic Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/12 to-teal-500/12 hover:from-emerald-500/18 hover:to-teal-500/18 transition-all duration-500"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-60 hover:opacity-100 animate-shimmer transition-opacity duration-700"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/10 via-white/5 to-teal-50/10"></div>
+      
+      {/* Enhanced Floating Glassmorphic Orbs */}
+      <div className="absolute top-2 right-1/4 w-8 h-8 bg-white/20 backdrop-blur-md rounded-full border border-white/30 animate-float opacity-40"></div>
+      <div className="absolute bottom-2 left-1/3 w-6 h-6 bg-emerald-400/20 backdrop-blur-md rounded-full border border-emerald-300/30 animate-float delay-1000 opacity-50"></div>
+      <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-teal-400/20 backdrop-blur-md rounded-full border border-teal-300/30 animate-float delay-500 opacity-30"></div>
+      
+      {/* Floating particles */}
+      <div className="absolute top-3 right-1/6 w-1.5 h-1.5 bg-emerald-400/40 rounded-full animate-ping"></div>
+      <div className="absolute bottom-3 left-1/5 w-1 h-1 bg-teal-400/50 rounded-full animate-ping delay-800"></div>
+      <div className="absolute top-4 left-3/4 w-0.5 h-0.5 bg-cyan-400/60 rounded-full animate-ping delay-1200"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -87,11 +99,12 @@ export function Navbar(): React.JSX.Element {
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => scrollToSection("home")}
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
+            <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden backdrop-blur-md border border-white/20">
               <div className="absolute inset-0 animate-shimmer"></div>
+              <div className="absolute inset-0 bg-white/10 rounded-xl"></div>
               <Image src="/lotusly-favicon.svg" alt="Lotusly logo" width={24} height={24} className="relative z-10" priority />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-gray-950 to-gray-800 bg-clip-text text-transparent">
               {siteConfig.name}
             </span>
           </motion.div>
@@ -104,43 +117,64 @@ export function Navbar(): React.JSX.Element {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => scrollToSection(section)}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:shadow-lg group ${
                   activeSection === section
-                    ? "text-emerald-600"
-                    : "text-gray-700 hover:text-emerald-600"
+                    ? "text-emerald-600 bg-white/15 backdrop-blur-md border border-white/25 shadow-md"
+                    : "text-gray-800 hover:text-emerald-600"
                 }`}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {/* Glassmorphic background on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/0 via-emerald-50/30 to-emerald-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                
+                <span className="relative z-10">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
+                
                 {activeSection === section && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"
+                    className="absolute bottom-1 left-2 right-2 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full shadow-lg"
                     initial={false}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
+                
+                {/* Floating particle on hover */}
+                <div className="absolute top-1 right-1 w-1 h-1 bg-emerald-400/0 group-hover:bg-emerald-400/50 rounded-full animate-ping transition-colors duration-300"></div>
               </motion.button>
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Enhanced Glassmorphic CTA Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => scrollToSection("contact")}
-            className="hidden lg:inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300"
+            className="hidden lg:inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transform transition-all duration-300 backdrop-blur-md border border-white/20 relative overflow-hidden group"
           >
-            Get Started
+            {/* Glassmorphic overlay */}
+            <div className="absolute inset-0 bg-white/10 rounded-full"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer transition-opacity duration-500"></div>
+            
+            <span className="relative z-10">Get Started</span>
+            
+            {/* Floating particle */}
+            <div className="absolute top-1 right-2 w-1 h-1 bg-white/0 group-hover:bg-white/60 rounded-full animate-ping transition-colors duration-300"></div>
           </motion.button>
 
-          {/* Mobile Menu Button */}
+          {/* Enhanced Glassmorphic Mobile Menu Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden w-10 h-10 bg-white/20 backdrop-blur-md border border-white/30 rounded-xl flex items-center justify-center shadow-lg"
+            className="lg:hidden w-10 h-10 bg-white/25 backdrop-blur-xl border border-white/40 rounded-xl flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
           >
-            <Menu className="h-5 w-5 text-gray-700" />
+            {/* Glassmorphic background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-50/20 to-teal-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer transition-opacity duration-500"></div>
+            
+            <Menu className="h-5 w-5 text-gray-800 group-hover:text-emerald-600 transition-colors duration-300 relative z-10" />
+            
+            {/* Floating particle */}
+            <div className="absolute top-1 right-1 w-0.5 h-0.5 bg-emerald-400/0 group-hover:bg-emerald-400/60 rounded-full animate-ping transition-colors duration-300"></div>
           </motion.button>
         </div>
       </div>
