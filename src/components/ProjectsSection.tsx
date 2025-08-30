@@ -34,10 +34,10 @@ export function ProjectsSection(): React.JSX.Element {
         </motion.div>
         
         <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent">
-          Technologies We Master
+          🚀 Future-Proof Technology Arsenal
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          We use cutting-edge technologies to build scalable, modern applications that drive business growth.
+          We wield the most advanced technologies in the industry—from AI-powered frameworks to cloud-native architectures. Our tech stack isn't just current, it's revolutionary, ensuring your project stays ahead of the competition for years to come.
         </p>
       </motion.div>
 
@@ -133,12 +133,12 @@ export function ProjectsSection(): React.JSX.Element {
         </p>
         <motion.button
           whileHover={{ 
-            scale: 1.08, 
-            boxShadow: "0 25px 50px -12px rgba(16, 185, 129, 0.5)",
+            scale: 1.05, 
+            boxShadow: "0 20px 40px -12px rgba(16, 185, 129, 0.4)",
             y: -2
           }}
           whileTap={{ scale: 0.95 }}
-          className="relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 text-white font-bold rounded-2xl shadow-2xl transform transition-all duration-300 overflow-hidden group"
+          className="relative inline-flex items-center gap-3 h-14 px-8 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-2xl shadow-xl transform transition-all duration-300 overflow-hidden group text-lg"
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -148,16 +148,16 @@ export function ProjectsSection(): React.JSX.Element {
             animate={{ rotate: [0, 360] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
           >
-            <Rocket className="h-6 w-6 relative z-10" />
+            <Rocket className="h-5 w-5 relative z-10" />
           </motion.div>
           
-          <span className="relative z-10 text-lg">Start Your Project</span>
+          <span className="relative z-10">Start Your Project</span>
           
           <motion.div
             animate={{ x: [0, 3, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ArrowRight className="h-6 w-6 relative z-10" />
+            <ArrowRight className="h-5 w-5 relative z-10" />
           </motion.div>
         </motion.button>
       </motion.div>

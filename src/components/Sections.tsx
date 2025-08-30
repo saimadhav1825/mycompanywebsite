@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/siteConfig";
 import React from "react";
-import { Code, Smartphone, Database, Palette, Globe, Zap, Shield, Users, ArrowRight, FolderOpen, Search, Settings, Rocket, Star } from "lucide-react";
+import { Code, Smartphone, Database, Palette, Globe, Zap, Shield, Users, ArrowRight, FolderOpen, Search, Settings, Rocket, Star, TrendingUp, Trophy, Target, Crown, Briefcase, Quote } from "lucide-react";
 
 export function AboutSection(): React.JSX.Element {
   const stats = [
@@ -60,7 +60,7 @@ export function AboutSection(): React.JSX.Element {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-lg text-gray-600 leading-relaxed"
           >
-            With over 5 years of experience in the digital landscape, we've helped businesses of all sizes transform their ideas into powerful, scalable solutions. Our commitment to quality, innovation, and client success drives everything we do.
+            We're the digital architects behind tomorrow's most innovative platforms. Our elite team combines cutting-edge technology with creative brilliance to deliver solutions that don't just meet expectations—they shatter them. Every line of code, every pixel, every user interaction is crafted with precision and purpose.
           </motion.p>
           
           <motion.div
@@ -72,11 +72,19 @@ export function AboutSection(): React.JSX.Element {
           >
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-              <span className="text-gray-700">Custom software development tailored to your needs</span>
+              <span className="text-gray-700">🚀 <strong>Revolutionary Tech Stack</strong> - We leverage the most advanced frameworks and tools</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-              <span className="text-gray-700">Agile methodology ensuring rapid delivery and flexibility</span>
+              <span className="text-gray-700">⚡ <strong>Lightning-Speed Delivery</strong> - From concept to launch in record time</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+              <span className="text-gray-700">🎯 <strong>ROI-Focused Solutions</strong> - Every feature designed to maximize your business value</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="w-2 h-2 bg-emerald-600 rounded-full"></div>
+              <span className="text-gray-700">💎 <strong>White-Glove Service</strong> - Premium support that goes above and beyond</span>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -168,10 +176,10 @@ export function ServicesSection(): React.JSX.Element {
         </motion.div>
         
         <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent">
-          What We Do Best
+          🏆 Elite Digital Solutions
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          From concept to deployment, we handle every aspect of your digital journey with expertise and precision.
+          We don't just build software—we engineer digital empires that dominate markets, captivate users, and generate extraordinary returns. Every solution is a masterpiece of innovation and precision.
         </p>
       </motion.div>
       

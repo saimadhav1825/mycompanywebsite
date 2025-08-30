@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import Script from "next/script";
 import { Navbar } from "@/components/Navbar";
 import { EnhancedChatbot } from "@/components/EnhancedChatbot";
+import { FloatingVideo } from "@/components/FloatingVideo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -76,6 +77,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <EnhancedChatbot />
+        <FloatingVideo />
         <Toaster richColors position="top-right" />
         {/* JSON-LD Structured Data */}
         <Script id="org-jsonld" type="application/ld+json" strategy="afterInteractive">

@@ -52,32 +52,53 @@ export function Hero(): React.JSX.Element {
               className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium shadow-lg"
             >
               <Sparkles className="h-4 w-4" />
-              Where Innovation Blooms
+              🚀 Transforming Ideas into Digital Reality
             </motion.div>
             
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"
             >
-              <span className="bg-gradient-to-r from-gray-900 via-emerald-800 to-teal-800 bg-clip-text text-transparent">
-                We Build
-              </span>
-              <br/>
-              <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
-                Digital Dreams
+              <span className="bg-gradient-to-r from-gray-900 via-emerald-700 to-teal-800 bg-clip-text text-transparent">
+                We Build Digital Dreams
               </span>
             </motion.h1>
             
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-xl md:text-2xl text-gray-600 max-w-2xl leading-relaxed"
             >
-              Helping businesses launch, scale, and succeed with modern web, mobile, and backend engineering.
+              We craft cutting-edge digital solutions that turn your boldest visions into profitable realities. From stunning websites to powerful mobile apps—we're your partners in digital excellence.
             </motion.p>
+            
+            {/* Value Propositions */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="flex flex-wrap gap-6 text-sm font-medium text-gray-700"
+            >
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
+                ⚡ Lightning-Fast Delivery
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
+                🎯 100% Custom Solutions
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
+                🚀 Future-Ready Technology
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-emerald-600 rounded-full"></div>
+                💎 Premium Quality Guaranteed
+              </div>
+            </motion.div>
             
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -89,7 +110,7 @@ export function Hero(): React.JSX.Element {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-full shadow-xl hover:shadow-2xl transform transition-all duration-300"
+                  className="inline-flex items-center gap-3 h-14 px-8 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transform transition-all duration-300 text-lg"
                 >
                   Get a Free Quote
                   <ArrowRight className="h-5 w-5" />
@@ -99,7 +120,7 @@ export function Hero(): React.JSX.Element {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-white/20 backdrop-blur-md border-2 border-gray-300 hover:border-emerald-500 hover:text-emerald-600 text-gray-700 font-semibold rounded-full shadow-lg hover:shadow-xl transform transition-all duration-300"
+                  className="inline-flex items-center justify-center h-14 px-8 bg-white/20 backdrop-blur-md border-2 border-gray-300 hover:border-emerald-500 hover:text-emerald-600 text-gray-700 font-semibold rounded-2xl shadow-lg hover:shadow-xl transform transition-all duration-300 text-lg"
                 >
                   See Our Work
                 </motion.button>
@@ -111,28 +132,28 @@ export function Hero(): React.JSX.Element {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="flex gap-8 pt-8"
+              className="grid grid-cols-3 gap-6 pt-8"
             >
               {[
-                { number: "Ready", label: "To Launch" },
-                { number: "Fresh", label: "Start" },
-                { number: "24/7", label: "Support" }
+                { value: "Ready To Launch", label: "Fresh Start" },
+                { value: "Fresh Ideas", label: "Innovation" },
+                { value: "Quality Focused", label: "Excellence" }
               ].map((stat, idx) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 1.2 + idx * 0.1 }}
-                  className="text-center"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="text-center p-4 bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="text-2xl md:text-3xl font-bold text-gray-900">{stat.number}</div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                    {stat.value}
+                  </div>
+                  <div className="text-gray-600 text-sm mt-1">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
           </motion.div>
           
-          {/* Right Visual */}
+          {/* Right Side - Enhanced Glassmorphic Visual with ALL Original Tech Stack Icons */}
           <motion.div 
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -140,7 +161,7 @@ export function Hero(): React.JSX.Element {
             className="relative"
           >
             <div className="relative w-full h-96 lg:h-[500px] bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl overflow-hidden group">
-              {/* Enhanced Glassmorphic Tech Icons */}
+              {/* Enhanced Glassmorphic Tech Icons - ALL ORIGINAL ONES */}
               <motion.div 
                 className="absolute top-8 left-8 w-16 h-16 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
                 whileHover={{ 
@@ -216,7 +237,7 @@ export function Hero(): React.JSX.Element {
                 <Database className="h-8 w-8 text-purple-600 relative z-10" />
               </motion.div>
               
-              {/* Additional Tech Stack Icons */}
+              {/* Additional Tech Stack Icons - ALL THE ORIGINAL COMPLEX ONES */}
               <motion.div 
                 className="absolute top-32 left-20 w-14 h-14 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
                 whileHover={{ 
@@ -464,5 +485,3 @@ export function Hero(): React.JSX.Element {
     </section>
   );
 }
-
-

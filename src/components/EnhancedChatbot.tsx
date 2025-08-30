@@ -425,7 +425,7 @@ export function EnhancedChatbot(): React.JSX.Element {
     <>
       {/* Floating Chat Button */}
       <motion.div
-        className="fixed bottom-6 right-6 z-40"
+        className="fixed bottom-6 right-22 z-40"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: "spring" }}
@@ -433,7 +433,7 @@ export function EnhancedChatbot(): React.JSX.Element {
         <Button
           onClick={() => setIsOpen(!isOpen)}
           size="lg"
-          className="h-16 w-16 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 border-2 border-white/20 backdrop-blur-sm"
+          className="h-14 w-14 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 border-2 border-white/20 backdrop-blur-sm"
         >
           <AnimatePresence mode="wait">
             {isOpen ? (
@@ -465,7 +465,7 @@ export function EnhancedChatbot(): React.JSX.Element {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 md:right-24 z-50 w-[90vw] max-w-sm md:w-96 mx-4 md:mx-0 max-h-[80vh]"
+            className="fixed bottom-24 right-6 md:right-22 z-50 w-[90vw] max-w-sm md:w-96 mx-4 md:mx-0 max-h-[80vh]"
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}

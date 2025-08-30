@@ -87,7 +87,7 @@ export function ContactSection(): React.JSX.Element {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed relative"
         >
-          <p>Ready to start your next project? We'd love to learn about your vision and help bring it to life.</p>
+          <p>Your breakthrough moment starts here. Whether you're a startup ready to disrupt an industry or an enterprise seeking digital transformation, we're the catalyst that turns ambitious visions into market-dominating realities. Let's create something extraordinary together.</p>
           <motion.div
             animate={{ x: [0, 10, 0], y: [0, -5, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
