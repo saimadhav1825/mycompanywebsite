@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Code, Smartphone, Database } from "lucide-react";
+import { ArrowRight, Sparkles, Code, Smartphone, Database, Globe, Palette, Settings, Zap, Monitor, Layers, Cpu, Cloud, Shield, Rocket } from "lucide-react";
 import React from "react";
 
 export function Hero(): React.JSX.Element {
@@ -139,17 +139,305 @@ export function Hero(): React.JSX.Element {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <div className="relative w-full h-96 lg:h-[500px] bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl overflow-hidden">
-              {/* Glassmorphic Tech Icons */}
-              <div className="absolute top-10 left-10 w-16 h-16 bg-white/30 backdrop-blur-md rounded-2xl shadow-lg flex items-center justify-center border border-white/40">
-                <Code className="h-8 w-8 text-emerald-600" />
-              </div>
-              <div className="absolute top-20 right-16 w-20 h-20 bg-white/30 backdrop-blur-md rounded-2xl shadow-lg flex items-center justify-center border border-white/40">
-                <Smartphone className="h-10 w-10 text-teal-600" />
-              </div>
-              <div className="absolute bottom-20 left-16 w-18 h-18 bg-white/30 backdrop-blur-md rounded-2xl shadow-lg flex items-center justify-center border border-white/40">
-                <Database className="h-9 w-9 text-green-600" />
-              </div>
+            <div className="relative w-full h-96 lg:h-[500px] bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl overflow-hidden group">
+              {/* Enhanced Glassmorphic Tech Icons */}
+              <motion.div 
+                className="absolute top-8 left-8 w-16 h-16 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: 1.15, 
+                  rotate: [0, 5, -5, 0],
+                  y: -3,
+                  transition: { 
+                    duration: 0.6, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, 360], 
+                  scale: [1, 1.3, 1],
+                  transition: { duration: 0.8, ease: "easeInOut" }
+                }}
+                onTap={() => console.log("🎯 Code icon clicked!")}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Code className="h-8 w-8 text-blue-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute top-16 right-12 w-18 h-18 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.12, 1.08], 
+                  rotate: [-5, 5, -3],
+                  x: [0, 2, -2, 0],
+                  transition: { 
+                    duration: 0.8, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, -180, -360], 
+                  scale: [1, 1.4, 1],
+                  y: [0, -5, 0],
+                  transition: { duration: 1, ease: "easeInOut" }
+                }}
+                onTap={() => console.log("📱 Smartphone icon clicked!")}
+                transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-emerald-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Smartphone className="h-9 w-9 text-emerald-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute bottom-16 left-12 w-17 h-17 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.13, 1.07], 
+                  rotate: [8, -8, 4],
+                  y: [0, -4, -2],
+                  transition: { 
+                    duration: 0.7, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, 180, 360], 
+                  scale: [1, 1.25, 1.1, 1],
+                  transition: { duration: 0.9, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.2 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Database className="h-8 w-8 text-purple-600 relative z-10" />
+              </motion.div>
+              
+              {/* Additional Tech Stack Icons */}
+              <motion.div 
+                className="absolute top-32 left-20 w-14 h-14 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.14, 1.06], 
+                  rotate: [-8, 8, -4],
+                  transition: { 
+                    duration: 0.9, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, -270, 0], 
+                  scale: [1, 1.35, 1],
+                  transition: { duration: 0.7, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.3 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-teal-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Globe className="h-7 w-7 text-teal-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute bottom-32 right-20 w-15 h-15 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.12, 1.08], 
+                  rotate: [6, -6, 3],
+                  y: [0, -3, -1],
+                  x: [0, 1, -1, 0],
+                  transition: { 
+                    duration: 0.75, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, 540], 
+                  scale: [1, 1.45, 1],
+                  transition: { duration: 1.1, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.4 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-pink-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Palette className="h-7 w-7 text-pink-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute top-44 right-8 w-13 h-13 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.16, 1.04], 
+                  rotate: [-10, 10, -5],
+                  x: [0, 2, -2, 1],
+                  transition: { 
+                    duration: 0.65, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, -450], 
+                  scale: [1, 1.3, 1],
+                  x: [0, 3, -3, 0],
+                  transition: { duration: 0.85, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.5 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Settings className="h-6 w-6 text-orange-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute bottom-8 right-32 w-16 h-16 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.11, 1.07], 
+                  rotate: [4, -4, 2],
+                  y: [0, -2, -1],
+                  transition: { 
+                    duration: 0.8, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, 180, 360], 
+                  scale: [1, 1.2, 1],
+                  transition: { duration: 0.6, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.6 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-cyan-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Monitor className="h-8 w-8 text-cyan-600 relative z-10" />
+              </motion.div>
+              
+              {/* Additional Tech Stack Icons */}
+              <motion.div 
+                className="absolute top-24 left-32 w-12 h-12 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.18, 1.1], 
+                  rotate: [-12, 12, -6],
+                  y: [0, -5, -3],
+                  transition: { 
+                    duration: 0.6, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, -360], 
+                  scale: [1, 1.3, 1],
+                  transition: { duration: 0.8, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.7 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-indigo-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Cpu className="h-6 w-6 text-indigo-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute bottom-24 left-32 w-14 h-14 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.13, 1.08], 
+                  rotate: [7, -7, 4],
+                  y: [0, -6, -4],
+                  x: [0, 1, -1, 0],
+                  transition: { 
+                    duration: 0.85, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, 270, 0], 
+                  scale: [1, 1.25, 1],
+                  y: [0, -10, 0],
+                  transition: { duration: 0.7, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.8 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-500/10 to-sky-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Cloud className="h-7 w-7 text-sky-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute top-56 right-24 w-13 h-13 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.15, 1.09], 
+                  rotate: [-6, 6, -3],
+                  y: [0, -4, -2],
+                  transition: { 
+                    duration: 0.7, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, 180, 360, 180, 0], 
+                  scale: [1, 1.4, 1.2, 1.3, 1],
+                  transition: { duration: 1, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.9 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Shield className="h-6 w-6 text-red-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute top-12 left-24 w-15 h-15 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.12, 1.06], 
+                  rotate: [9, -9, 5],
+                  x: [0, 3, -3, 1],
+                  y: [0, -2, -1],
+                  transition: { 
+                    duration: 0.55, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, -180, -360], 
+                  scale: [1, 1.35, 1],
+                  x: [0, 5, -5, 0],
+                  transition: { duration: 0.9, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 1.0 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-yellow-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Zap className="h-7 w-7 text-yellow-600 relative z-10" />
+              </motion.div>
+              
+              <motion.div 
+                className="absolute bottom-40 right-8 w-12 h-12 bg-white/40 backdrop-blur-xl rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
+                whileHover={{ 
+                  scale: [1, 1.17, 1.11], 
+                  rotate: [-15, 15, -8],
+                  y: [0, -7, -4],
+                  transition: { 
+                    duration: 0.9, 
+                    repeat: Infinity, 
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }
+                }}
+                whileTap={{ 
+                  rotate: [0, 720], 
+                  scale: [1, 1.5, 1.2, 1],
+                  transition: { duration: 1.2, ease: "easeInOut" }
+                }}
+                transition={{ type: "spring", stiffness: 300, delay: 1.1 }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-violet-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <Rocket className="h-6 w-6 text-violet-600 relative z-10" />
+              </motion.div>
               
               {/* Central Glassmorphic Element */}
               <div className="absolute inset-0 flex items-center justify-center">

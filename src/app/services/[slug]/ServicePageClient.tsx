@@ -228,13 +228,13 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group"
+                className="group h-full"
               >
-                <div className="relative bg-white/60 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/30 hover:border-emerald-200 group-hover:-translate-y-2">
-                  <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="relative bg-white/60 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-white/30 hover:border-emerald-200 group-hover:-translate-y-2 h-full flex flex-col min-h-[160px]">
+                  <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
                     <CheckCircle className="w-6 h-6 text-emerald-600" />
                   </div>
-                  <p className="text-gray-700 leading-relaxed">{benefit}</p>
+                  <p className="text-gray-700 leading-relaxed flex-grow">{benefit}</p>
                 </div>
               </motion.div>
             ))}

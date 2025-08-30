@@ -119,15 +119,40 @@ export function Navbar(): React.JSX.Element {
                 onClick={() => scrollToSection(section)}
                 className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-white/10 hover:backdrop-blur-md hover:border hover:border-white/20 hover:shadow-lg group ${
                   activeSection === section
-                    ? "text-emerald-600 bg-white/15 backdrop-blur-md border border-white/25 shadow-md"
+                    ? "text-emerald-600 bg-white/20 backdrop-blur-xl border border-white/40 shadow-xl"
                     : "text-gray-800 hover:text-emerald-600"
                 }`}
               >
+                {/* Enhanced Active Background - Bubble Effect */}
+                {activeSection === section && (
+                  <motion.div
+                    layoutId="activeBubble"
+                    className="absolute inset-0 bg-gradient-to-br from-emerald-100/50 via-white/30 to-teal-100/50 rounded-xl"
+                    initial={false}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                  />
+                )}
+                
+                {/* Shimmer effect for active state */}
+                {activeSection === section && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer rounded-xl"></div>
+                )}
+                
                 {/* Glassmorphic background on hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/0 via-emerald-50/30 to-emerald-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
                 
+                {/* Active state floating particles */}
+                {activeSection === section && (
+                  <>
+                    <div className="absolute top-1 right-2 w-1.5 h-1.5 bg-emerald-400/60 rounded-full animate-ping"></div>
+                    <div className="absolute bottom-1 left-2 w-1 h-1 bg-teal-400/50 rounded-full animate-ping delay-500"></div>
+                    <div className="absolute top-2 left-1/2 w-0.5 h-0.5 bg-cyan-400/70 rounded-full animate-ping delay-300"></div>
+                  </>
+                )}
+                
                 <span className="relative z-10">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
                 
+                {/* Enhanced Underline for active state */}
                 {activeSection === section && (
                   <motion.div
                     layoutId="activeTab"
