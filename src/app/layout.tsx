@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://lotusly.com"),
+  metadataBase: new URL("https://navirasoft.com"),
   title: {
     default: `${siteConfig.name} — ${siteConfig.tagline}`,
     template: `%s — ${siteConfig.name}`,
@@ -28,10 +28,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", rel: "icon" },
-      { url: "/lotusly-favicon.svg", type: "image/svg+xml" },
+      { url: "/navirasoft-favicon.svg", type: "image/svg+xml" },
     ],
     shortcut: ["/favicon.ico"],
-    apple: ["/lotusly-favicon.svg"],
+    apple: ["/navirasoft-favicon.svg"],
   },
   keywords: [
     "mobile app development",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
       openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://lotusly.com",
+      url: "https://navirasoft.com",
       siteName: siteConfig.name,
       title: `${siteConfig.name} — ${siteConfig.tagline}`,
       description: siteConfig.description,
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
       card: "summary_large_image",
       title: `${siteConfig.name} — ${siteConfig.tagline}`,
       description: siteConfig.description,
-      creator: "@lotusly_tech",
+      creator: "@navirasoft",
     },
 };
 
@@ -85,7 +85,7 @@ export default function RootLayout({
             '@context': 'https://schema.org',
             '@type': 'Organization',
             name: siteConfig.name,
-            url: 'https://lotusly.com',
+            url: 'https://navirasoft.com',
             description: siteConfig.description,
             contactPoint: [{
               '@type': 'ContactPoint',

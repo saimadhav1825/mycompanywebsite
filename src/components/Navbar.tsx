@@ -115,7 +115,7 @@ export function Navbar(): React.JSX.Element {
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-xl"></div>
               <div className="absolute top-0 left-0 w-2 h-2 bg-white/40 rounded-full blur-sm"></div>
               <div className="absolute bottom-1 right-1 w-1 h-1 bg-cyan-300/60 rounded-full"></div>
-              <Image src="/lotusly-favicon.svg" alt="Lotusly logo" width={24} height={24} className="relative z-10" priority />
+              <Image src="/navirasoft-favicon.svg" alt="NaviraSoft logo" width={24} height={24} className="relative z-10" priority />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-gray-950 to-gray-800 bg-clip-text text-transparent">
               {siteConfig.name}

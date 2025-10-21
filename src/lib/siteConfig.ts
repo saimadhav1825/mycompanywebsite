@@ -39,17 +39,17 @@ export type SiteConfig = {
 };
 
 export const siteConfig = {
-  name: "Lotusly",
-  tagline: "Where Innovation Blooms",
+  name: "NaviraSoft",
+  tagline: "Innovative Software Solutions",
   description: "We specialize in mobile app development, backend systems, and modern web applications using cutting-edge technologies.",
-  email: "hello@lotusly.com",
+  email: "hello@navirasoft.com",
   phone: "+1 (555) 123-4567",
   address: "123 Innovation Drive, Tech City, TC 12345",
   
   social: {
-    linkedin: "https://linkedin.com/company/lotusly",
-    github: "https://github.com/lotusly",
-    twitter: "https://twitter.com/lotusly_tech",
+    linkedin: "https://linkedin.com/company/navirasoft",
+    github: "https://github.com/navirasoft",
+    twitter: "https://twitter.com/navirasoft",
   },
 
   services: [

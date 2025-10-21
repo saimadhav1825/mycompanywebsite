@@ -1,4 +1,4 @@
-# 🎯 Complete Client Acquisition Strategy for Lotusly
+# 🎯 Complete Client Acquisition Strategy for NaviraSoft
 
 ## 🚀 **Your Website is Ready - Now Let's Get Clients!**
 
@@ -17,7 +17,7 @@ Now let's drive traffic and convert visitors into clients!
 ### 🌐 **1. Digital Presence Foundation**
 
 **Google Business Profile (FREE)**
-- Create Google Business listing for "Lotusly - Web & Mobile Development"
+- Create Google Business listing for "NaviraSoft - Web & Mobile Development"
 - Add your services, photos of your workspace, contact info
 - Get initial reviews from friends/family (honest ones)
 - Post regular updates about your work
@@ -49,7 +49,7 @@ Hi [Name],
 
 I was browsing [Company Name]'s website and noticed [specific observation about their site]. 
 
-I'm launching Lotusly, a development studio, and I'm looking for my first few clients to build amazing partnerships with. I'd love to offer you:
+I'm launching NaviraSoft, a development studio, and I'm looking for my first few clients to build amazing partnerships with. I'd love to offer you:
 
 • 50% off standard rates for being an early partner
 • Direct access to our core team (no middlemen)
@@ -59,7 +59,7 @@ Would you be open to a quick 15-minute call to discuss how we could help improve
 
 Best regards,
 [Your Name]
-Founder, Lotusly
+Founder, NaviraSoft
 ```
 
 **Target Audience for Cold Outreach:**
@@ -248,7 +248,7 @@ Hi [Name],
 
 It was great meeting you at [Event] yesterday! I enjoyed our conversation about [specific topic you discussed].
 
-As I mentioned, I'm launching Lotusly and looking for amazing businesses to partner with. I'd love to offer you a free website audit to see how we might be able to help [Company Name] grow online.
+As I mentioned, I'm launching NaviraSoft and looking for amazing businesses to partner with. I'd love to offer you a free website audit to see how we might be able to help [Company Name] grow online.
 
 No strings attached - just want to provide value and potentially start a great partnership.
 
@@ -261,7 +261,7 @@ Best regards,
 ### 📞 **Phone Script for Cold Calls**
 
 ```
-"Hi [Name], this is [Your Name] from Lotusly. I hope I'm not catching you at a bad time?
+"Hi [Name], this is [Your Name] from NaviraSoft. I hope I'm not catching you at a bad time?
 
 I was looking at [Company Name]'s website and I think there might be an opportunity to help you [specific improvement]. 
 

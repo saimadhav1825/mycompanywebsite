@@ -72,8 +72,8 @@ export function Footer(): React.JSX.Element {
                 <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
                   <div className="absolute inset-0 animate-shimmer"></div>
                   <Image 
-                    src="/lotusly-favicon.svg" 
-                    alt="Lotusly logo" 
+                    src="/navirasoft-favicon.svg" 
+                    alt="NaviraSoft logo" 
                     width={24} 
                     height={24} 
                     className="relative z-10" 

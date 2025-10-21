@@ -1,13 +1,13 @@
 # Video Generation Prompt: "How We Bring Ideas to Reality"
 
 ## 🎬 Video Overview
-**Title:** "From Vision to Reality - How Lotusly Transforms Your Ideas"
+**Title:** "From Vision to Reality - How NaviraSoft Transforms Your Ideas"
 **Duration:** 60-90 seconds
 **Style:** Modern, professional, animated explainer video
 **Tone:** Inspiring, confident, innovative
 
 ## 🎯 Core Message
-Show the journey from a client's initial idea to a fully realized digital product, highlighting Lotusly's expertise and process.
+Show the journey from a client's initial idea to a fully realized digital product, highlighting NaviraSoft's expertise and process.
 
 ## 📝 Video Script & Scenes
 
@@ -21,12 +21,12 @@ Show the journey from a client's initial idea to a fully realized digital produc
 
 ### Scene 2: The Connection (10-20 seconds)
 **Visuals:**
-- Split screen showing client and Lotusly team
+- Split screen showing client and NaviraSoft team
 - Video call interface with friendly faces
 - Icons representing different communication channels (email, phone, chat)
 - Text overlay: "We Listen. We Understand. We Plan."
 
-**Narration:** "At Lotusly, we start by truly understanding your vision through detailed consultation..."
+**Narration:** "At NaviraSoft, we start by truly understanding your vision through detailed consultation..."
 
 ### Scene 3: The Planning (20-35 seconds)
 **Visuals:**
@@ -69,10 +69,10 @@ Show the journey from a client's initial idea to a fully realized digital produc
 
 ### Scene 7: Call to Action (80-90 seconds)
 **Visuals:**
-- Lotusly logo with emerald/teal gradient
+- NaviraSoft logo with emerald/teal gradient
 - Contact information overlay
 - "Ready to Start?" button animation
-- Website URL: lotusly.com
+- Website URL: navirasoft.com
 
 **Narration:** "Ready to bring your ideas to life? Let's build something amazing together."
 
@@ -131,13 +131,13 @@ Show the journey from a client's initial idea to a fully realized digital produc
 Show a real example of transforming a client's e-commerce idea into a successful online store.
 
 ### Concept B: Day in the Life
-Follow a Lotusly team member through a typical day working on client projects.
+Follow a NaviraSoft team member through a typical day working on client projects.
 
 ### Concept C: Technology Showcase
 Focus on the modern tech stack and tools we use to build superior products.
 
 ### Concept D: Client Testimonial Story
-Feature satisfied clients explaining how Lotusly brought their vision to life.
+Feature satisfied clients explaining how NaviraSoft brought their vision to life.
 
 ## 🔧 AI Video Generation Tools Recommended
 
@@ -160,4 +160,4 @@ Feature satisfied clients explaining how Lotusly brought their vision to life.
 
 ---
 
-**Note:** This video should showcase Lotusly as a modern, professional company that combines technical expertise with genuine care for client success. The emphasis should be on transformation - taking abstract ideas and making them tangible, functional realities.
+**Note:** This video should showcase NaviraSoft as a modern, professional company that combines technical expertise with genuine care for client success. The emphasis should be on transformation - taking abstract ideas and making them tangible, functional realities.
