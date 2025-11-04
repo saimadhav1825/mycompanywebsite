@@ -96,7 +96,7 @@ export function ProjectsSection(): React.JSX.Element {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          We don't just code—we architect digital experiences that dominate markets. Every project showcases our mastery of cutting-edge technologies and our commitment to delivering extraordinary results that exceed expectations.
+          We don&apos;t just code—we architect digital experiences that dominate markets. Every project showcases our mastery of cutting-edge technologies and our commitment to delivering extraordinary results that exceed expectations.
         </motion.p>
       </motion.div>
 
@@ -368,7 +368,7 @@ export function ProjectsSection(): React.JSX.Element {
             Ready to Launch Your Digital Vision?
           </h3>
           <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-            We're ready to turn your bold ideas into reality. With our cutting-edge tech stack and fresh perspective, let's build something extraordinary together.
+            We&apos;re ready to turn your bold ideas into reality. With our cutting-edge tech stack and fresh perspective, let&apos;s build something extraordinary together.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

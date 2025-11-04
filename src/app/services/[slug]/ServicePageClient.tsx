@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle, ArrowRight, Users, Award, Clock, Shield } from 'lucide-react';
+import { ArrowLeft, CheckCircle, ArrowRight, Users, Award } from 'lucide-react';
 import React from 'react';
+import { useRouter } from 'next/navigation';
+import Script from 'next/script';
 
 // Import all possible icons
 import { 
@@ -48,6 +50,16 @@ interface ServicePageClientProps {
 }
 
 export default function ServicePageClient({ service }: ServicePageClientProps) {
+  const router = useRouter();
+
+  const scrollToContact = () => {
+    router.push('/#contact');
+  };
+
+  const handleConsultation = () => {
+    router.push('/#contact');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50/30 to-cyan-50/30">
       {/* Back Navigation */}
@@ -397,23 +409,23 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
               Ready to Start Your {service.title} Project?
             </h2>
             <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Let's discuss your ideas and create something amazing together. 
+              Let&apos;s discuss your ideas and create something amazing together. 
               Get a free consultation and project quote.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#contact">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-600 font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300"
-                >
-                  Get Free Quote
-                  <ArrowRight className="w-5 h-5" />
-                </motion.button>
-              </Link>
+              <motion.button
+                onClick={scrollToContact}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-600 font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300"
+              >
+                Get Free Quote
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
               
               <motion.button
+                onClick={handleConsultation}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-emerald-600 transition-all duration-300"
@@ -425,6 +437,35 @@ export default function ServicePageClient({ service }: ServicePageClientProps) {
           </motion.div>
         </div>
       </section>
+
+      {/* Service Structured Data (JSON-LD) */}
+      <Script id="service-jsonld" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: service.title,
+          description: service.detailedDescription,
+          provider: {
+            '@type': 'Organization',
+            name: 'SoftceroSolutions',
+            url: 'https://softcerosolutions.com',
+          },
+          serviceType: service.title,
+          areaServed: 'Worldwide',
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: service.title,
+            itemListElement: service.benefits.map((benefit, index) => ({
+              '@type': 'Offer',
+              itemOffered: {
+                '@type': 'Service',
+                name: benefit,
+              },
+              position: index + 1,
+            })),
+          },
+        })}
+      </Script>
     </div>
   );
 }

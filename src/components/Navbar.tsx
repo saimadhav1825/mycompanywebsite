@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/siteConfig";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const SECTIONS = ["home", "services", "why-choose-us", "process", "about", "projects", "contact"] as const;
 
@@ -13,6 +14,7 @@ export function Navbar(): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [servicesOpen, setServicesOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -115,7 +117,7 @@ export function Navbar(): React.JSX.Element {
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-teal-400/20 rounded-xl"></div>
               <div className="absolute top-0 left-0 w-2 h-2 bg-white/40 rounded-full blur-sm"></div>
               <div className="absolute bottom-1 right-1 w-1 h-1 bg-cyan-300/60 rounded-full"></div>
-              <Image src="/navirasoft-favicon.svg" alt="NaviraSoft logo" width={24} height={24} className="relative z-10" priority />
+              <Image src="/softcerosolutions-favicon.svg" alt="SoftceroSolutions logo" width={24} height={24} className="relative z-10" priority />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-gray-950 to-gray-800 bg-clip-text text-transparent">
               {siteConfig.name}
@@ -124,63 +126,160 @@ export function Navbar(): React.JSX.Element {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
-            {SECTIONS.map((section) => (
-              <motion.button
-                key={section}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(section)}
-                className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-white/15 hover:backdrop-blur-xl hover:border hover:border-white/30 hover:shadow-xl group ${
-                  activeSection === section
-                    ? "text-emerald-600 bg-white/25 backdrop-blur-2xl border-2 border-white/50 shadow-2xl"
-                    : "text-gray-800 hover:text-emerald-600"
-                }`}
-              >
-                {/* Enhanced Active Background - Bubble Effect */}
-                {activeSection === section && (
-                  <motion.div
-                    layoutId="activeBubble"
-                    className="absolute inset-0 bg-gradient-to-br from-emerald-100/50 via-white/30 to-teal-100/50 rounded-xl"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                  />
-                )}
-                
-                {/* Shimmer effect for active state */}
-                {activeSection === section && (
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer rounded-xl"></div>
-                )}
-                
-                {/* Enhanced Glassmorphic background on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/0 via-emerald-50/40 to-emerald-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-emerald-100/20 to-teal-100/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
-                <div className="absolute inset-0 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
-                
-                {/* Active state floating particles */}
-                {activeSection === section && (
-                  <>
-                    <div className="absolute top-1 right-2 w-1.5 h-1.5 bg-emerald-400/60 rounded-full animate-ping"></div>
-                    <div className="absolute bottom-1 left-2 w-1 h-1 bg-teal-400/50 rounded-full animate-ping delay-500"></div>
-                    <div className="absolute top-2 left-1/2 w-0.5 h-0.5 bg-cyan-400/70 rounded-full animate-ping delay-300"></div>
-                  </>
-                )}
-                
-                <span className="relative z-10">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
-                
-                {/* Enhanced Underline for active state */}
-                {activeSection === section && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute bottom-1 left-2 right-2 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full shadow-lg"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  />
-                )}
-                
-                {/* Floating particle on hover */}
-                <div className="absolute top-1 right-1 w-1 h-1 bg-emerald-400/0 group-hover:bg-emerald-400/50 rounded-full animate-ping transition-colors duration-300"></div>
-              </motion.button>
-            ))}
+            {SECTIONS.map((section) => {
+              // Services dropdown
+              if (section === "services") {
+                return (
+                  <div key={section} className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => scrollToSection(section)}
+                      className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-white/15 hover:backdrop-blur-xl hover:border hover:border-white/30 hover:shadow-xl group flex items-center gap-1 ${
+                        activeSection === section
+                          ? "text-emerald-600 bg-white/25 backdrop-blur-2xl border-2 border-white/50 shadow-2xl"
+                          : "text-gray-800 hover:text-emerald-600"
+                      }`}
+                    >
+                      {/* Enhanced Active Background - Bubble Effect */}
+                      {activeSection === section && (
+                        <motion.div
+                          layoutId="activeBubble"
+                          className="absolute inset-0 bg-gradient-to-br from-emerald-100/50 via-white/30 to-teal-100/50 rounded-xl"
+                          initial={false}
+                          transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                        />
+                      )}
+                      
+                      {/* Shimmer effect for active state */}
+                      {activeSection === section && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer rounded-xl"></div>
+                      )}
+                      
+                      {/* Enhanced Glassmorphic background on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/0 via-emerald-50/40 to-emerald-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-emerald-100/20 to-teal-100/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+                      <div className="absolute inset-0 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                      
+                      {/* Active state floating particles */}
+                      {activeSection === section && (
+                        <>
+                          <div className="absolute top-1 right-2 w-1.5 h-1.5 bg-emerald-400/60 rounded-full animate-ping"></div>
+                          <div className="absolute bottom-1 left-2 w-1 h-1 bg-teal-400/50 rounded-full animate-ping delay-500"></div>
+                          <div className="absolute top-2 left-1/2 w-0.5 h-0.5 bg-cyan-400/70 rounded-full animate-ping delay-300"></div>
+                        </>
+                      )}
+                      
+                      <span className="relative z-10">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
+                      <ChevronDown className={`h-4 w-4 relative z-10 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+                      
+                      {/* Enhanced Underline for active state */}
+                      {activeSection === section && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute bottom-1 left-2 right-2 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full shadow-lg"
+                          initial={false}
+                          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                        />
+                      )}
+                      
+                      {/* Floating particle on hover */}
+                      <div className="absolute top-1 right-1 w-1 h-1 bg-emerald-400/0 group-hover:bg-emerald-400/50 rounded-full animate-ping transition-colors duration-300"></div>
+                    </motion.button>
+                    
+                    {/* Services Dropdown */}
+                    <AnimatePresence>
+                      {servicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-white/50 rounded-2xl shadow-2xl overflow-hidden z-50"
+                        >
+                          <div className="p-5">
+                            {siteConfig.services.map((service, index) => (
+                              <Link
+                                key={service.slug}
+                                href={`/services/${service.slug}`}
+                                onClick={() => setServicesOpen(false)}
+                              >
+                                <motion.div
+                                  whileHover={{ x: 5, backgroundColor: "rgba(16, 185, 129, 0.1)" }}
+                                  className={`px-4 py-4 rounded-xl text-gray-800 hover:text-emerald-600 transition-colors duration-200 cursor-pointer ${index < siteConfig.services.length - 1 ? 'mb-4' : ''}`}
+                                >
+                                  <div className="font-medium text-sm">{service.title}</div>
+                                  <div className="text-xs text-gray-500 mt-1">{service.tagline}</div>
+                                </motion.div>
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              }
+              
+              // Regular sections
+              return (
+                <motion.button
+                  key={section}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => scrollToSection(section)}
+                  className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-xl hover:bg-white/15 hover:backdrop-blur-xl hover:border hover:border-white/30 hover:shadow-xl group ${
+                    activeSection === section
+                      ? "text-emerald-600 bg-white/25 backdrop-blur-2xl border-2 border-white/50 shadow-2xl"
+                      : "text-gray-800 hover:text-emerald-600"
+                  }`}
+                >
+                  {/* Enhanced Active Background - Bubble Effect */}
+                  {activeSection === section && (
+                    <motion.div
+                      layoutId="activeBubble"
+                      className="absolute inset-0 bg-gradient-to-br from-emerald-100/50 via-white/30 to-teal-100/50 rounded-xl"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    />
+                  )}
+                  
+                  {/* Shimmer effect for active state */}
+                  {activeSection === section && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer rounded-xl"></div>
+                  )}
+                  
+                  {/* Enhanced Glassmorphic background on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-50/0 via-emerald-50/40 to-emerald-50/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-emerald-100/20 to-teal-100/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+                  <div className="absolute inset-0 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+                  
+                  {/* Active state floating particles */}
+                  {activeSection === section && (
+                    <>
+                      <div className="absolute top-1 right-2 w-1.5 h-1.5 bg-emerald-400/60 rounded-full animate-ping"></div>
+                      <div className="absolute bottom-1 left-2 w-1 h-1 bg-teal-400/50 rounded-full animate-ping delay-500"></div>
+                      <div className="absolute top-2 left-1/2 w-0.5 h-0.5 bg-cyan-400/70 rounded-full animate-ping delay-300"></div>
+                    </>
+                  )}
+                  
+                  <span className="relative z-10">{section.charAt(0).toUpperCase() + section.slice(1)}</span>
+                  
+                  {/* Enhanced Underline for active state */}
+                  {activeSection === section && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute bottom-1 left-2 right-2 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full shadow-lg"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                  
+                  {/* Floating particle on hover */}
+                  <div className="absolute top-1 right-1 w-1 h-1 bg-emerald-400/0 group-hover:bg-emerald-400/50 rounded-full animate-ping transition-colors duration-300"></div>
+                </motion.button>
+              );
+            })}
           </div>
 
           {/* Enhanced Glassmorphic CTA Button */}
@@ -237,20 +336,70 @@ export function Navbar(): React.JSX.Element {
           >
             <div className="container mx-auto px-4 py-6">
               <div className="flex flex-col gap-4">
-                {SECTIONS.map((section) => (
-                  <motion.button
-                    key={section}
-                    whileHover={{ x: 10 }}
-                    onClick={() => scrollToSection(section)}
-                    className={`text-left px-4 py-3 rounded-xl transition-all duration-300 ${
-                      activeSection === section
-                        ? "bg-emerald-50 text-emerald-600 border-l-4 border-emerald-500"
-                        : "text-gray-700 hover:bg-gray-50 hover:text-emerald-600"
-                    }`}
-                  >
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </motion.button>
-                ))}
+                {SECTIONS.map((section) => {
+                  if (section === "services") {
+                    return (
+                      <div key={section}>
+                        <motion.button
+                          whileHover={{ x: 10 }}
+                          onClick={() => {
+                            setServicesOpen(!servicesOpen);
+                            if (!servicesOpen) {
+                              scrollToSection(section);
+                            }
+                          }}
+                          className={`text-left px-4 py-3 rounded-xl transition-all duration-300 w-full flex items-center justify-between ${
+                            activeSection === section
+                              ? "bg-emerald-50 text-emerald-600 border-l-4 border-emerald-500"
+                              : "text-gray-700 hover:bg-gray-50 hover:text-emerald-600"
+                          }`}
+                        >
+                          <span>{section.charAt(0).toUpperCase() + section.slice(1)}</span>
+                          <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+                        </motion.button>
+                        <AnimatePresence>
+                          {servicesOpen && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                            >
+                              <div className="pl-4 py-3">
+                                {siteConfig.services.map((service, index) => (
+                                  <Link key={service.slug} href={`/services/${service.slug}`} onClick={() => setIsOpen(false)}>
+                                    <motion.div
+                                      whileHover={{ x: 5 }}
+                                      className={`px-4 py-4 rounded-lg text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors duration-200 ${index < siteConfig.services.length - 1 ? 'mb-5' : ''}`}
+                                    >
+                                      <div className="font-medium text-sm">{service.title}</div>
+                                    </motion.div>
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  }
+                  
+                  return (
+                    <motion.button
+                      key={section}
+                      whileHover={{ x: 10 }}
+                      onClick={() => scrollToSection(section)}
+                      className={`text-left px-4 py-3 rounded-xl transition-all duration-300 ${
+                        activeSection === section
+                          ? "bg-emerald-50 text-emerald-600 border-l-4 border-emerald-500"
+                          : "text-gray-700 hover:bg-gray-50 hover:text-emerald-600"
+                      }`}
+                    >
+                      {section.charAt(0).toUpperCase() + section.slice(1)}
+                    </motion.button>
+                  );
+                })}
                 <motion.button
                   whileHover={{ x: 10 }}
                   onClick={() => scrollToSection("contact")}

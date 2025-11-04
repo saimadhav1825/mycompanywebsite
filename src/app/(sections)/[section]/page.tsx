@@ -3,10 +3,10 @@ import React from "react";
 
 const VALID = new Set(["home", "about", "services", "projects", "process", "contact"]);
 
-export default function SectionPage({ params }: { params: { section: string } }): React.JSX.Element {
-  const seg = params.section;
-  if (VALID.has(seg)) {
-    redirect(`/#${seg}`);
+export default async function SectionPage({ params }: { params: Promise<{ section: string }> }): Promise<React.JSX.Element> {
+  const { section } = await params;
+  if (VALID.has(section)) {
+    redirect(`/#${section}`);
   }
   redirect("/");
 }

@@ -50,7 +50,7 @@ export function AboutSection(): React.JSX.Element {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-emerald-800 bg-clip-text text-transparent"
           >
-            We're a team of passionate developers, designers, and strategists
+            We&apos;re a team of passionate developers, designers, and strategists
           </motion.h2>
           
           <motion.p
@@ -60,7 +60,7 @@ export function AboutSection(): React.JSX.Element {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-lg text-gray-600 leading-relaxed"
           >
-            We're the digital architects behind tomorrow's most innovative platforms. Our elite team combines cutting-edge technology with creative brilliance to deliver solutions that don't just meet expectations—they shatter them. Every line of code, every pixel, every user interaction is crafted with precision and purpose.
+            We&apos;re the digital architects behind tomorrow&apos;s most innovative platforms. Our elite team combines cutting-edge technology with creative brilliance to deliver solutions that don&apos;t just meet expectations—they shatter them. Every line of code, every pixel, every user interaction is crafted with precision and purpose.
           </motion.p>
           
           <motion.div
@@ -179,7 +179,7 @@ export function ServicesSection(): React.JSX.Element {
           🏆 Elite Digital Solutions
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          We don't just build software—we engineer digital empires that dominate markets, captivate users, and generate extraordinary returns. Every solution is a masterpiece of innovation and precision.
+          We don&apos;t just build software—we engineer digital empires that dominate markets, captivate users, and generate extraordinary returns. Every solution is a masterpiece of innovation and precision.
         </p>
       </motion.div>
       

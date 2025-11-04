@@ -3,7 +3,7 @@
 import { ContactForm } from "@/components/ContactForm";
 import { siteConfig } from "@/lib/siteConfig";
 import React from "react";
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter, Send, Sparkles, Zap, Heart, Star } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Twitter, Send, Sparkles, Zap, Heart, Star, Rocket, Target, Clock, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function ContactSection(): React.JSX.Element {
@@ -52,7 +52,7 @@ export function ContactSection(): React.JSX.Element {
           >
             <Send className="h-5 w-5 text-emerald-600" />
           </motion.div>
-          <span className="relative z-10 font-semibold">Get In Touch</span>
+          <span className="relative z-10 font-semibold">Start Your Project</span>
           <motion.div
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -66,18 +66,18 @@ export function ContactSection(): React.JSX.Element {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-gray-900 via-emerald-700 to-teal-800 bg-clip-text text-transparent relative"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 bg-gradient-to-r from-gray-900 via-emerald-700 to-teal-800 bg-clip-text text-transparent relative text-center px-4"
         >
-          Let's Build Something <span className="relative inline-block">
-            Amazing
+          Ready to <span className="relative inline-block">
+            Start
             <motion.div
               animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-2 -right-2"
+              className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2"
             >
-              <Star className="h-8 w-8 text-yellow-500 fill-current" />
+              <Star className="h-4 w-4 sm:h-6 md:h-8 text-yellow-500 fill-current" />
             </motion.div>
-          </span>
+          </span> Your Vision?
         </motion.h2>
         
         <motion.div 
@@ -85,20 +85,20 @@ export function ContactSection(): React.JSX.Element {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed relative"
+          className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed relative px-4 text-center"
         >
-          <p>Your breakthrough moment starts here. Whether you're a startup ready to disrupt an industry or an enterprise seeking digital transformation, we're the catalyst that turns ambitious visions into market-dominating realities. Let's create something extraordinary together.</p>
+          <p>We turn your ideas into real websites and apps. Simple, fast, and built just for you. Ready to get started?</p>
           <motion.div
             animate={{ x: [0, 10, 0], y: [0, -5, 0] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-2 right-4"
+            className="absolute -bottom-2 right-2 sm:right-4 hidden sm:block"
           >
-            <Heart className="h-6 w-6 text-pink-500 fill-current" />
+            <Heart className="h-4 w-4 sm:h-5 md:h-6 text-pink-500 fill-current" />
           </motion.div>
         </motion.div>
       </motion.div>
       
-      <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto relative z-10 lg:items-stretch">
+      <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 max-w-6xl mx-auto relative z-10 lg:items-stretch px-4">
         {/* Left Side - Contact Info */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -107,10 +107,10 @@ export function ContactSection(): React.JSX.Element {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col h-full"
         >
-          <motion.div 
+            <motion.div 
             whileHover={{ scale: 1.02, y: -5 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-white/25 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-white/40 overflow-hidden group flex-1 flex flex-col"
+            className="relative bg-white/25 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/40 overflow-hidden group flex-1 flex flex-col"
           >
             {/* Enhanced Glassmorphic Background Overlay */}
             <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 to-teal-500/8"></div>
@@ -137,8 +137,8 @@ export function ContactSection(): React.JSX.Element {
                 >
                   <Zap className="h-5 w-5 text-white" />
                 </motion.div>
-                <h3 className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent">
-                  Get in Touch
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 bg-gradient-to-r from-emerald-700 to-teal-700 bg-clip-text text-transparent">
+                  Project Planning
                 </h3>
               </motion.div>
               
@@ -147,33 +147,86 @@ export function ContactSection(): React.JSX.Element {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.5 }}
-                className="text-gray-600 mb-10 leading-relaxed text-lg"
+                className="text-gray-600 mb-6 sm:mb-8 md:mb-10 leading-relaxed text-sm sm:text-base md:text-lg"
               >
-                <p>We'd love to learn about your project. Reach us through the form or directly:</p>
+                <p>Tell us about your project and we&apos;ll make it happen:</p>
               </motion.div>
               
+              {/* Project Planning Features */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="mb-8"
+              >
+                <h4 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3 sm:mb-4">What You Get:</h4>
+                <div className="space-y-4">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle className="h-5 w-5 text-emerald-500" />
+                    <span className="text-gray-700 text-sm sm:text-base">Free chat about your project</span>
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.8 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle className="h-5 w-5 text-emerald-500" />
+                    <span className="text-gray-700 text-sm sm:text-base">Clear plan for your project</span>
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle className="h-5 w-5 text-emerald-500" />
+                    <span className="text-gray-700 text-sm sm:text-base">Honest pricing</span>
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.0 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle className="h-5 w-5 text-emerald-500" />
+                    <span className="text-gray-700 text-sm sm:text-base">Someone to help you every step</span>
+                  </motion.div>
+                </div>
+              </motion.div>
+
               <div className="space-y-8 flex-1">
                 <motion.div 
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   whileHover={{ scale: 1.05 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
+                  transition={{ duration: 0.6, delay: 1.1 }}
                   className="flex items-start gap-5 group cursor-pointer"
                 >
                   <motion.div 
                     whileHover={{ rotate: [0, -10, 10, 0] }}
                     transition={{ duration: 0.5 }}
-                    className="w-14 h-14 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-300"
+                    className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-300"
                   >
                     <div className="absolute inset-0 animate-shimmer"></div>
                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <Mail className="h-7 w-7 text-white relative z-10" />
+                    <Mail className="h-5 w-5 sm:h-6 md:h-7 text-white relative z-10" />
                   </motion.div>
                   <div className="flex-1">
-                    <div className="font-semibold text-gray-900 mb-2 text-lg">Email</div>
+                    <div className="font-semibold text-gray-900 mb-2 text-base sm:text-lg">Email</div>
                     <a 
-                      className="text-emerald-600 hover:text-emerald-700 transition-colors duration-300 text-lg font-medium" 
+                      className="text-emerald-600 hover:text-emerald-700 transition-colors duration-300 text-sm sm:text-base md:text-lg font-medium break-all" 
                       href={`mailto:${siteConfig.email}`}
                     >
                       {siteConfig.email}
@@ -192,16 +245,16 @@ export function ContactSection(): React.JSX.Element {
                   <motion.div 
                     whileHover={{ rotate: [0, 10, -10, 0] }}
                     transition={{ duration: 0.5 }}
-                    className="w-14 h-14 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-300"
+                    className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-300"
                   >
                     <div className="absolute inset-0 animate-shimmer"></div>
                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <Phone className="h-7 w-7 text-white relative z-10" />
+                    <Phone className="h-5 w-5 sm:h-6 md:h-7 text-white relative z-10" />
                   </motion.div>
                   <div className="flex-1">
-                    <div className="font-semibold text-gray-900 mb-2 text-lg">Phone</div>
+                    <div className="font-semibold text-gray-900 mb-2 text-base sm:text-lg">Phone</div>
                     <a 
-                      className="text-emerald-600 hover:text-emerald-700 transition-colors duration-300 text-lg font-medium" 
+                      className="text-emerald-600 hover:text-emerald-700 transition-colors duration-300 text-sm sm:text-base md:text-lg font-medium" 
                       href={`tel:${siteConfig.phone}`}
                     >
                       {siteConfig.phone}
@@ -220,15 +273,15 @@ export function ContactSection(): React.JSX.Element {
                   <motion.div 
                     whileHover={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 0.4 }}
-                    className="w-14 h-14 bg-gradient-to-r from-rose-500 to-pink-500 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-300"
+                    className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-rose-500 to-pink-500 rounded-xl sm:rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl relative overflow-hidden group-hover:shadow-2xl transition-all duration-300"
                   >
                     <div className="absolute inset-0 animate-shimmer"></div>
                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <MapPin className="h-7 w-7 text-white relative z-10" />
+                    <MapPin className="h-5 w-5 sm:h-6 md:h-7 text-white relative z-10" />
                   </motion.div>
                   <div className="flex-1">
-                    <div className="font-semibold text-gray-900 mb-2 text-lg">Location</div>
-                    <div className="text-gray-600 text-lg">{siteConfig.address}</div>
+                    <div className="font-semibold text-gray-900 mb-2 text-base sm:text-lg">Location</div>
+                    <div className="text-gray-600 text-sm sm:text-base md:text-lg">{siteConfig.address}</div>
                   </div>
                 </motion.div>
               </div>
@@ -241,19 +294,19 @@ export function ContactSection(): React.JSX.Element {
                 transition={{ duration: 0.6, delay: 0.9 }}
                 className="pt-8 border-t border-white/30"
               >
-                <div className="font-semibold text-gray-900 mb-6 text-lg">Follow Us</div>
-                <div className="flex gap-5">
+                <div className="font-semibold text-gray-900 mb-4 sm:mb-6 text-base sm:text-lg">Follow Us</div>
+                <div className="flex gap-3 sm:gap-4 md:gap-5">
                   <motion.a 
                     href={siteConfig.social.linkedin} 
                     target="_blank" 
                     rel="noreferrer"
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-2xl flex items-center justify-center text-white shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
                   >
                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100"></div>
-                    <Linkedin className="h-6 w-6 relative z-10" />
+                    <Linkedin className="h-5 w-5 sm:h-6 sm:w-6 relative z-10" />
                   </motion.a>
                   
                   <motion.a 
@@ -262,11 +315,11 @@ export function ContactSection(): React.JSX.Element {
                     rel="noreferrer"
                     whileHover={{ scale: 1.15, rotate: -5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-2xl flex items-center justify-center text-white shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-slate-600 to-slate-700 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
                   >
                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100"></div>
-                    <Github className="h-6 w-6 relative z-10" />
+                    <Github className="h-5 w-5 sm:h-6 sm:w-6 relative z-10" />
                   </motion.a>
                   
                   <motion.a 
@@ -275,11 +328,11 @@ export function ContactSection(): React.JSX.Element {
                     rel="noreferrer"
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl flex items-center justify-center text-white shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
+                    className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-xl sm:rounded-2xl flex items-center justify-center text-white shadow-xl hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
                   >
                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100"></div>
-                    <Twitter className="h-6 w-6 relative z-10" />
+                    <Twitter className="h-5 w-5 sm:h-6 sm:w-6 relative z-10" />
                   </motion.a>
                 </div>
               </motion.div>
@@ -294,7 +347,7 @@ export function ContactSection(): React.JSX.Element {
           whileHover={{ scale: 1.02, y: -5 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="relative bg-white/25 backdrop-blur-xl rounded-3xl p-10 shadow-2xl border border-white/40 overflow-hidden group flex flex-col h-full"
+          className="relative bg-white/25 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl border border-white/40 overflow-hidden group flex flex-col h-full"
         >
           {/* Enhanced Glassmorphic Background Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-teal-500/8 to-cyan-500/8"></div>
@@ -324,19 +377,42 @@ export function ContactSection(): React.JSX.Element {
                 className="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-xl relative overflow-hidden"
               >
                 <div className="absolute inset-0 animate-shimmer"></div>
-                <Sparkles className="h-6 w-6 text-white relative z-10" />
+                <Rocket className="h-6 w-6 text-white relative z-10" />
               </motion.div>
-              <h3 className="text-3xl font-bold text-gray-900 bg-gradient-to-r from-teal-700 to-cyan-700 bg-clip-text text-transparent">
-                Start Your Project
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 bg-gradient-to-r from-teal-700 to-cyan-700 bg-clip-text text-transparent">
+                Project Brief
               </h3>
               <motion.div
                 animate={{ y: [0, -3, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Star className="h-6 w-6 text-yellow-500 fill-current" />
+                <Target className="h-6 w-6 text-yellow-500 fill-current" />
               </motion.div>
             </motion.div>
             
+            {/* Project Brief Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="mb-4 sm:mb-6 p-3 sm:p-4 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-teal-200/30"
+            >
+              <div className="text-center">
+                <motion.div
+                  animate={{ scale: [1, 1.05, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white/30 backdrop-blur-md rounded-full text-teal-700 font-semibold text-sm mb-3"
+                >
+                  <Rocket className="h-4 w-4" />
+                  Let&apos;s Start Your Project
+                </motion.div>
+                <p className="text-gray-600 text-sm sm:text-base md:text-lg">
+                  Fill out the form below and we&apos;ll get back to you within 24 hours with a detailed project plan and quote.
+                </p>
+              </div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -344,6 +420,155 @@ export function ContactSection(): React.JSX.Element {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="flex-1 flex flex-col"
             >
+              {/* Enhanced Project Timeline */}
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/40 shadow-xl relative overflow-hidden"
+            >
+                {/* Animated Background */}
+                <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-cyan-500/5"></div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-teal-400/10 to-transparent rounded-bl-3xl"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-cyan-400/10 to-transparent rounded-tr-3xl"></div>
+                
+                {/* Floating Particles */}
+                <div className="absolute top-4 right-4 w-2 h-2 bg-teal-400/50 rounded-full animate-ping"></div>
+                <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-cyan-400/50 rounded-full animate-ping delay-1000"></div>
+                
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  className="flex items-center gap-3 mb-6"
+                >
+                  <motion.div
+                    animate={{ rotate: [0, 360] }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                    className="w-10 h-10 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl flex items-center justify-center shadow-lg"
+                  >
+                    <Clock className="h-5 w-5 text-white" />
+                  </motion.div>
+                  <h4 className="text-lg sm:text-xl font-bold text-gray-900 bg-gradient-to-r from-teal-700 to-cyan-700 bg-clip-text text-transparent">
+                    Project Timeline
+                  </h4>
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Sparkles className="h-5 w-5 text-yellow-500" />
+                  </motion.div>
+                </motion.div>
+                
+                <div className="space-y-4 relative z-10">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                    className="flex items-center gap-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+                  >
+                    <motion.div 
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg"
+                    >
+                      <span className="text-white text-sm font-bold">1</span>
+                    </motion.div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">Initial Chat</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">1-2 days • Free consultation</div>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <Heart className="h-5 w-5 text-emerald-500" />
+                    </motion.div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.0 }}
+                    className="flex items-center gap-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+                  >
+                    <motion.div 
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                      className="w-8 h-8 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full flex items-center justify-center shadow-lg"
+                    >
+                      <span className="text-white text-sm font-bold">2</span>
+                    </motion.div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">Project Plan</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">3-5 days • Detailed roadmap</div>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: [0, -10, 10, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                    >
+                      <Target className="h-5 w-5 text-teal-500" />
+                    </motion.div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.1 }}
+                    className="flex items-center gap-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+                  >
+                    <motion.div 
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                      className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center shadow-lg"
+                    >
+                      <span className="text-white text-sm font-bold">3</span>
+                    </motion.div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">Build & Test</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">2-8 weeks • Development phase</div>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: [0, 15, -15, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    >
+                      <Rocket className="h-5 w-5 text-cyan-500" />
+                    </motion.div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 1.2 }}
+                    className="flex items-center gap-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 group"
+                  >
+                    <motion.div 
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                      className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg"
+                    >
+                      <span className="text-white text-sm font-bold">4</span>
+                    </motion.div>
+                    <div className="flex-1">
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">Launch & Support</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">Ongoing • We&apos;re here for you</div>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: [0, -15, 15, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                    >
+                      <Star className="h-5 w-5 text-blue-500 fill-current" />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </motion.div>
+
               <ContactForm />
             </motion.div>
           </div>

@@ -9,7 +9,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
     {
       icon: Heart,
       title: "Passionate About Your Success",
-      description: "Your project isn't just another job to us—it's our opportunity to create something amazing together",
+      description: "Your project isn't just another job to us—it&apos;s our opportunity to create something amazing together",
       color: "from-rose-500 to-pink-600"
     },
     {
@@ -41,12 +41,12 @@ export function WhyChooseUsSection(): React.JSX.Element {
     {
       emoji: "💎",
       title: "Premium Quality, Startup Price",
-      description: "Get enterprise-level quality at rates that won't break your budget"
+      description: "Get enterprise-level quality at rates that won&apos;t break your budget"
     },
     {
       emoji: "🤝",
       title: "Your Success = Our Success",
-      description: "We're invested in making your project a massive success story"
+      description: "We&apos;re invested in making your project a massive success story"
     },
     {
       emoji: "📞",
@@ -85,7 +85,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
             Be Our First Success Story
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Every great company starts with their first client. We're eager to prove ourselves and make your project an incredible success. You'll get our absolute best work, full attention, and competitive rates.
+            Every great company starts with their first client. We&apos;re eager to prove ourselves and make your project an incredible success. You&apos;ll get our absolute best work, full attention, and competitive rates.
           </p>
         </motion.div>
 
@@ -172,7 +172,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
             🎯 Ready to Be Our Launch Partner?
           </h3>
           <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Join us on this exciting journey! As our first client, you'll receive exceptional value, personal attention, and a development team that's genuinely invested in your success.
+            Join us on this exciting journey! As our first client, you&apos;ll receive exceptional value, personal attention, and a development team that&apos;s genuinely invested in your success.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -183,7 +183,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 text-lg"
             >
               <HandHeart className="h-5 w-5" />
-              Let's Build Together
+              Let&apos;s Build Together
             </motion.a>
             
             <motion.a

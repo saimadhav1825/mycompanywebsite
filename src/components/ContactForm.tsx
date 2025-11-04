@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { siteConfig } from "@/lib/siteConfig";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Send, CheckCircle, Sparkles, Heart, Star, Zap, Rocket, ChevronDown, User, Mail, MessageSquare, Briefcase, Wand2, PartyPopper, Trophy, Crown, Gift } from "lucide-react";
+import { Send, ChevronDown, User, Mail, MessageSquare, Briefcase, PartyPopper, Crown } from "lucide-react";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),

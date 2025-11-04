@@ -5,7 +5,7 @@ import nodemailer from 'nodemailer';
 
 // Create nodemailer transporter
 const createTransporter = () => {
-  return nodemailer.createTransporter({
+  return nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,
@@ -14,8 +14,26 @@ const createTransporter = () => {
   });
 };
 
+interface ChatDataEmail {
+  clientInfo: {
+    name?: string;
+    email?: string;
+    phone?: string;
+    company?: string;
+  };
+  projectDetails: {
+    type?: string;
+    budget?: string;
+    timeline?: string;
+    description?: string;
+    requirements?: string;
+  };
+  messages: IMessage[];
+  sessionId?: string;
+}
+
 // Send email notification to admin
-const sendEmailNotification = async (chatData: any) => {
+const sendEmailNotification = async (chatData: ChatDataEmail) => {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.ADMIN_EMAIL) {
     console.log('Email configuration missing, skipping email notification');
     return;

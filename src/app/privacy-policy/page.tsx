@@ -188,7 +188,7 @@ export default function PrivacyPolicyPage() {
                   <h2 className="text-3xl font-bold text-gray-900 group-hover:text-blue-700 transition-colors duration-300">Information We Collect</h2>
                 </div>
                 <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                  We collect information to provide better services to our users. Here's what we gather:
+                  We collect information to provide better services to our users. Here&apos;s what we gather:
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
                   {[

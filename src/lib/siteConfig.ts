@@ -39,26 +39,26 @@ export type SiteConfig = {
 };
 
 export const siteConfig = {
-  name: "NaviraSoft",
-  tagline: "Innovative Software Solutions",
-  description: "We specialize in mobile app development, backend systems, and modern web applications using cutting-edge technologies.",
-  email: "hello@navirasoft.com",
+  name: "SoftceroSolutions",
+  tagline: "Simple Software That Works",
+  description: "We make websites and mobile apps that help your business grow. Simple, fast, and built just for you.",
+  email: "hello@softcerosolutions.com",
   phone: "+1 (555) 123-4567",
   address: "123 Innovation Drive, Tech City, TC 12345",
   
   social: {
-    linkedin: "https://linkedin.com/company/navirasoft",
-    github: "https://github.com/navirasoft",
-    twitter: "https://twitter.com/navirasoft",
+    linkedin: "https://linkedin.com/company/softcerosolutions",
+    github: "https://github.com/softcerosolutions",
+    twitter: "https://twitter.com/softcerosolutions",
   },
 
   services: [
     {
       key: "mobile-app",
       title: "Mobile App Development",
-      description: "Cross-platform mobile applications using modern frameworks for iOS and Android.",
+      description: "Mobile apps for iPhone and Android that work great and look amazing.",
       slug: "mobile-app-development",
-      tagline: "Bringing Your Ideas to Life on Every Device",
+      tagline: "Your App, Everywhere",
       heroImage: "/images/services/mobile-app-hero.svg",
       detailedDescription: "We build high-performance iOS & Android apps tailored to your business needs. From idea validation and UI/UX design to publishing on app stores, we handle the entire development lifecycle. Our team specializes in creating native experiences while maintaining code efficiency through cross-platform frameworks.",
       benefits: [
@@ -127,9 +127,9 @@ export const siteConfig = {
     {
       key: "web-development",
       title: "Website Development",
-      description: "Modern, responsive web applications with excellent user experience.",
+      description: "Beautiful websites that work on phones, tablets, and computers.",
       slug: "web-development",
-      tagline: "Crafting Digital Experiences That Convert",
+      tagline: "Websites That Sell",
       heroImage: "/images/services/web-development-hero.svg",
       detailedDescription: "We craft responsive, SEO-friendly, and scalable websites that boost your online presence. From landing pages to enterprise portals, our web solutions are built with modern technologies and best practices to ensure optimal performance, security, and user experience.",
       benefits: [
@@ -198,9 +198,9 @@ export const siteConfig = {
     {
       key: "backend-development",
       title: "Backend Development",
-      description: "Scalable server-side applications and APIs with robust architecture.",
+      description: "The behind-the-scenes tech that makes your app work fast and safe.",
       slug: "backend-development",
-      tagline: "Powering Your Applications with Robust Infrastructure",
+      tagline: "The Engine Behind Your App",
       heroImage: "/images/services/backend-development-hero.svg",
       detailedDescription: "We help businesses scale with secure cloud solutions and robust backend systems. Our team builds high-performance APIs, databases, and server infrastructure using modern technologies like Node.js, Python, and cloud platforms including AWS, Azure, and GCP.",
       benefits: [
@@ -269,9 +269,9 @@ export const siteConfig = {
     {
       key: "ui-ux-design",
       title: "UI/UX Design",
-      description: "Beautiful, intuitive user interfaces that enhance user experience.",
+      description: "Making your app look great and easy to use.",
       slug: "ui-ux-design",
-      tagline: "Designing Experiences That Users Love",
+      tagline: "Design That Works",
       heroImage: "/images/services/ui-ux-design-hero.svg",
       detailedDescription: "We create intuitive designs that engage users and drive conversions. Our human-centered design approach focuses on usability, accessibility, and smooth interactions. From wireframes to high-fidelity prototypes, we ensure your product provides an exceptional user experience.",
       benefits: [

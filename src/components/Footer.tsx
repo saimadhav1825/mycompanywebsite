@@ -72,8 +72,8 @@ export function Footer(): React.JSX.Element {
                 <div className="w-10 h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden">
                   <div className="absolute inset-0 animate-shimmer"></div>
                   <Image 
-                    src="/navirasoft-favicon.svg" 
-                    alt="NaviraSoft logo" 
+                    src="/softcerosolutions-favicon.svg" 
+                    alt="SoftceroSolutions logo" 
                     width={24} 
                     height={24} 
                     className="relative z-10" 
@@ -88,7 +88,7 @@ export function Footer(): React.JSX.Element {
               </div>
               
               <p className="text-gray-300 leading-relaxed max-w-md">
-                We're passionate about creating exceptional digital experiences that help businesses grow and succeed in the modern world.
+                We&apos;re passionate about creating exceptional digital experiences that help businesses grow and succeed in the modern world.
               </p>
               
               {/* Social Links */}
@@ -142,17 +142,43 @@ export function Footer(): React.JSX.Element {
             className="space-y-4"
           >
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-            <div className="space-y-3">
-              {["About", "Services", "Projects", "Contact"].map((link) => (
-                <motion.a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
-                  whileHover={{ x: 5 }}
-                  className="block text-gray-300 hover:text-white transition-colors duration-300"
-                >
-                  {link}
-                </motion.a>
-              ))}
+            <div className="space-y-4">
+              {[
+                { name: "About", id: "about" },
+                { name: "Services", id: "services" },
+                { name: "Projects", id: "projects" },
+                { name: "Contact", id: "contact" }
+              ].map((link) => {
+                const scrollToSection = (sectionId: string) => {
+                  const element = document.getElementById(sectionId);
+                  if (element) {
+                    // Add offset for navbar height
+                    const navbarHeight = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                    
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth"
+                    });
+                  }
+                };
+                
+                return (
+                  <motion.a
+                    key={link.id}
+                    href={`#${link.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.id);
+                    }}
+                    whileHover={{ x: 5 }}
+                    className="block text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer py-1"
+                  >
+                    {link.name}
+                  </motion.a>
+                );
+              })}
             </div>
           </motion.div>
           
@@ -167,13 +193,14 @@ export function Footer(): React.JSX.Element {
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
             <div className="space-y-3">
               {siteConfig.services.map((service, idx) => (
-                <motion.div
-                  key={service.title ?? idx}
-                  whileHover={{ x: 5 }}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
-                >
-                  {service.title}
-                </motion.div>
+                <Link key={service.title ?? idx} href={`/services/${service.slug}`}>
+                  <motion.div
+                    whileHover={{ x: 5 }}
+                    className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
+                  >
+                    {service.title}
+                  </motion.div>
+                </Link>
               ))}
             </div>
           </motion.div>

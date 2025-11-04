@@ -45,10 +45,10 @@ interface ProjectDetails {
 // Content filtering and response system
 const BOT_RESPONSES = {
   inappropriate: "I'm here to help with business inquiries and project discussions. Please keep our conversation professional and focused on how we can assist with your development needs.",
-  spam: "I notice you're sending messages very quickly. Please take a moment to describe your project requirements, and I'll be happy to help.",
-  nonsense: "I'm not sure I understand. Could you please tell me more about your project or what specific services you're interested in?",
-  moderated: "I'm designed to assist with business inquiries. Let's focus on discussing your project needs - what type of development service can I help you with?",
-  offensive: "Let's keep our conversation professional. I'm here to help you with your development projects. What can I assist you with today?",
+  spam: "I notice you&apos;re sending messages very quickly. Please take a moment to describe your project requirements, and I'll be happy to help.",
+  nonsense: "I'm not sure I understand. Could you please tell me more about your project or what specific services you&apos;re interested in?",
+  moderated: "I'm designed to assist with business inquiries. Let&apos;s focus on discussing your project needs - what type of development service can I help you with?",
+  offensive: "Let&apos;s keep our conversation professional. I'm here to help you with your development projects. What can I assist you with today?",
   empty: "Please let me know how I can help you with your project. What type of development service are you interested in?",
   gibberish: "I want to make sure I understand your needs correctly. Could you please rephrase your question about your project requirements?",
 };
@@ -259,8 +259,8 @@ export function EnhancedChatbot(): React.JSX.Element {
     setTimeout(() => {
       let botResponse = "";
       let newStage = stage;
-      let updatedProjectDetails = { ...projectDetails };
-      let updatedClientInfo = { ...clientInfo };
+      const updatedProjectDetails = { ...projectDetails };
+      const updatedClientInfo = { ...clientInfo };
       let options: ChatOption[] = [];
 
       switch (stage) {
@@ -321,7 +321,7 @@ export function EnhancedChatbot(): React.JSX.Element {
             { text: "💰 $5,000 - $15,000", value: "5k-15k" },
             { text: "💰 $15,000 - $50,000", value: "15k-50k" },
             { text: "💰 $50,000+", value: "50k-plus" },
-            { text: "💬 Let's discuss", value: "discuss" }
+            { text: "💬 Let&apos;s discuss", value: "discuss" }
           ];
           break;
 
@@ -485,7 +485,7 @@ export function EnhancedChatbot(): React.JSX.Element {
                       </div>
                       <div>
                         <div className="text-white">Project Assistant</div>
-                        <div className="text-xs text-white/80 font-normal">Let's discuss your project</div>
+                        <div className="text-xs text-white/80 font-normal">Let&apos;s discuss your project</div>
                       </div>
                     </div>
                     <div className="text-xs bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/30">

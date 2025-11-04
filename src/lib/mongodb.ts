@@ -11,15 +11,25 @@ if (!MONGODB_URI) {
  * in development. This prevents connections growing exponentially
  * during API Route usage.
  */
-let cached = (global as any).mongoose;
+interface MongooseCache {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+}
+
+let cached = (global as { mongoose?: MongooseCache }).mongoose;
 
 if (!cached) {
-  cached = (global as any).mongoose = { conn: null, promise: null };
+  cached = (global as { mongoose?: MongooseCache }).mongoose = { conn: null, promise: null };
 }
 
 async function connectDB() {
   if (!MONGODB_URI) {
     throw new Error('MongoDB URI not available');
+  }
+
+  // Ensure cached is initialized
+  if (!cached) {
+    cached = { conn: null, promise: null };
   }
 
   if (cached.conn) {
