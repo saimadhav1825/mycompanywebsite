@@ -1,7 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Chat, { IMessage, IClientInfo, IProjectDetails } from '@/models/Chat';
 import nodemailer from 'nodemailer';
+
+// Types for chat data
+export interface IMessage {
+  id: string;
+  text: string;
+  sender: 'user' | 'bot';
+  timestamp: Date;
+}
+
+export interface IClientInfo {
+  name?: string;
+  email?: string;
+  phone?: string;
+  company?: string;
+}
+
+export interface IProjectDetails {
+  type?: string;
+  budget?: string;
+  timeline?: string;
+  description?: string;
+  requirements?: string;
+  features?: string[];
+}
 
 // Create nodemailer transporter
 const createTransporter = () => {
@@ -15,19 +37,8 @@ const createTransporter = () => {
 };
 
 interface ChatDataEmail {
-  clientInfo: {
-    name?: string;
-    email?: string;
-    phone?: string;
-    company?: string;
-  };
-  projectDetails: {
-    type?: string;
-    budget?: string;
-    timeline?: string;
-    description?: string;
-    requirements?: string;
-  };
+  clientInfo: IClientInfo;
+  projectDetails: IProjectDetails;
   messages: IMessage[];
   sessionId?: string;
 }
@@ -92,36 +103,37 @@ const sendEmailNotification = async (chatData: ChatDataEmail) => {
   }
 };
 
+// In-memory storage for chat sessions (only during active sessions)
+const chatSessions = new Map<string, {
+  sessionId: string;
+  messages: IMessage[];
+  clientInfo: IClientInfo;
+  projectDetails: IProjectDetails;
+  stage: string;
+  emailSent: boolean;
+}>();
+
 export async function POST(request: NextRequest) {
   try {
-    // Try to connect to database, but continue if it fails
-    try {
-      await connectDB();
-    } catch (dbError) {
-      console.warn('Database connection failed. Chat will work without persistence.');
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Chat working without persistence' 
-      });
-    }
-    
     const { sessionId, message, clientInfo, projectDetails, stage } = await request.json();
 
     if (!sessionId) {
       return NextResponse.json({ error: 'Session ID is required' }, { status: 400 });
     }
 
-    // Find or create chat session
-    let chat = await Chat.findOne({ sessionId });
+    // Get or create chat session in memory
+    let chat = chatSessions.get(sessionId);
     
     if (!chat) {
-      chat = new Chat({
+      chat = {
         sessionId,
         messages: [],
         clientInfo: {},
         projectDetails: {},
-        stage: 'greeting'
-      });
+        stage: 'greeting',
+        emailSent: false
+      };
+      chatSessions.set(sessionId, chat);
     }
 
     // Add new message if provided
@@ -149,20 +161,25 @@ export async function POST(request: NextRequest) {
       
       // If completed, send email notification
       if (stage === 'completed' && !chat.emailSent) {
-        await sendEmailNotification(chat);
+        await sendEmailNotification({
+          clientInfo: chat.clientInfo,
+          projectDetails: chat.projectDetails,
+          messages: chat.messages,
+          sessionId: chat.sessionId
+        });
         chat.emailSent = true;
-        chat.status = 'completed';
       }
     }
 
-    await chat.save();
+    // Update the session in memory
+    chatSessions.set(sessionId, chat);
 
     return NextResponse.json({ 
       success: true, 
       chat: {
         sessionId: chat.sessionId,
         stage: chat.stage,
-        status: chat.status
+        status: chat.stage === 'completed' ? 'completed' : 'active'
       }
     });
 
@@ -177,16 +194,6 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
-    // Try to connect to database, but continue if it fails
-    try {
-      await connectDB();
-    } catch (dbError) {
-      console.warn('Database connection failed. Chat data not available.');
-      return NextResponse.json({ 
-        error: 'Chat data not available - database connection failed' 
-      }, { status: 503 });
-    }
-    
     const { searchParams } = new URL(request.url);
     const sessionId = searchParams.get('sessionId');
 
@@ -194,7 +201,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Session ID is required' }, { status: 400 });
     }
 
-    const chat = await Chat.findOne({ sessionId });
+    const chat = chatSessions.get(sessionId);
     
     if (!chat) {
       return NextResponse.json({ error: 'Chat session not found' }, { status: 404 });

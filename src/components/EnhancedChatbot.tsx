@@ -25,7 +25,7 @@ type ChatOption = {
 type ChatStage = 'greeting' | 'project-type' | 'requirements' | 'budget' | 'timeline' | 'contact-info' | 'completed';
 
 type ProjectType = 'website' | 'mobile-app' | 'backend' | 'ui-ux' | 'other';
-type Budget = 'under-5k' | '5k-15k' | '15k-50k' | '50k-plus' | 'discuss';
+type Budget = 'under-1k' | '1k-3.5k' | '3.5k-10k' | '10k-plus' | 'discuss';
 
 interface ClientInfo {
   name?: string;
@@ -85,6 +85,153 @@ const BURST_LIMIT = 3; // Max messages in 10 seconds
 const messageTracker = new Map();
 const burstTracker = new Map();
 
+// Currency detection and formatting
+const CURRENCY_MAP: Record<string, { code: string; symbol: string; rate: number }> = {
+  'USD': { code: 'USD', symbol: '$', rate: 1 },
+  'EUR': { code: 'EUR', symbol: '€', rate: 0.92 },
+  'GBP': { code: 'GBP', symbol: '£', rate: 0.79 },
+  'INR': { code: 'INR', symbol: '₹', rate: 83.5 },
+  'CAD': { code: 'CAD', symbol: 'C$', rate: 1.36 },
+  'AUD': { code: 'AUD', symbol: 'A$', rate: 1.52 },
+  'JPY': { code: 'JPY', symbol: '¥', rate: 150 },
+  'CNY': { code: 'CNY', symbol: '¥', rate: 7.2 },
+  'SGD': { code: 'SGD', symbol: 'S$', rate: 1.35 },
+  'AED': { code: 'AED', symbol: 'د.إ', rate: 3.67 },
+  'SAR': { code: 'SAR', symbol: '﷼', rate: 3.75 },
+  'ZAR': { code: 'ZAR', symbol: 'R', rate: 18.5 },
+  'BRL': { code: 'BRL', symbol: 'R$', rate: 4.95 },
+  'MXN': { code: 'MXN', symbol: '$', rate: 17.2 },
+  'DKK': { code: 'DKK', symbol: 'kr', rate: 6.87 },
+  'NOK': { code: 'NOK', symbol: 'kr', rate: 10.8 },
+  'CHF': { code: 'CHF', symbol: 'CHF', rate: 0.88 },
+  'NZD': { code: 'NZD', symbol: 'NZ$', rate: 1.68 },
+  'HKD': { code: 'HKD', symbol: 'HK$', rate: 7.82 },
+  'MYR': { code: 'MYR', symbol: 'RM', rate: 4.75 },
+  'THB': { code: 'THB', symbol: '฿', rate: 36.5 },
+  'PHP': { code: 'PHP', symbol: '₱', rate: 56.2 },
+  'IDR': { code: 'IDR', symbol: 'Rp', rate: 15750 },
+  'VND': { code: 'VND', symbol: '₫', rate: 24500 },
+  'KRW': { code: 'KRW', symbol: '₩', rate: 1350 },
+  'TWD': { code: 'TWD', symbol: 'NT$', rate: 32.0 },
+};
+
+const detectCurrency = (): { code: string; symbol: string; rate: number } => {
+  // Only run on client side
+  if (typeof window === 'undefined' || typeof navigator === 'undefined') {
+    return CURRENCY_MAP['USD'];
+  }
+  
+  try {
+    // Get all available locales
+    const locales = navigator.languages || [navigator.language] || ['en-US'];
+    const primaryLocale = locales[0] || 'en-US';
+    
+    // Check timezone as additional indicator
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    
+    // Map regions to currencies
+    const regionToCurrency: Record<string, string> = {
+      'US': 'USD', 'GB': 'GBP', 'IN': 'INR', 'CA': 'CAD', 'AU': 'AUD',
+      'JP': 'JPY', 'CN': 'CNY', 'SG': 'SGD', 'AE': 'AED', 'SA': 'SAR',
+      'ZA': 'ZAR', 'BR': 'BRL', 'MX': 'MXN',
+      // EU countries
+      'DE': 'EUR', 'FR': 'EUR', 'IT': 'EUR', 'ES': 'EUR', 'NL': 'EUR',
+      'BE': 'EUR', 'AT': 'EUR', 'PT': 'EUR', 'FI': 'EUR', 'IE': 'EUR',
+      'GR': 'EUR', 'PL': 'EUR', 'SE': 'EUR', 'DK': 'DKK', 'NO': 'NOK',
+      'CH': 'CHF', 'NZ': 'NZD', 'HK': 'HKD', 'MY': 'MYR', 'TH': 'THB',
+      'PH': 'PHP', 'ID': 'IDR', 'VN': 'VND', 'KR': 'KRW', 'TW': 'TWD',
+    };
+    
+    // PRIORITY 1: Check timezone first (most reliable for India)
+    const tzLower = timezone.toLowerCase();
+    if (tzLower.includes('asia/kolkata') || 
+        tzLower.includes('kolkata') || 
+        tzLower.includes('mumbai') || 
+        tzLower.includes('delhi') ||
+        tzLower.includes('chennai') ||
+        tzLower.includes('bangalore') ||
+        tzLower.includes('hyderabad') ||
+        tzLower.includes('pune') ||
+        tzLower.includes('calcutta')) {
+      return CURRENCY_MAP['INR'];
+    }
+    
+    // PRIORITY 2: Check all locales for region codes
+    for (const loc of locales) {
+      const localeLower = loc.toLowerCase();
+      
+      // Special check for India - check multiple patterns
+      if (localeLower.includes('-in') || 
+          localeLower.includes('_in') || 
+          localeLower.includes('/in') ||
+          localeLower.endsWith('-in') ||
+          localeLower.startsWith('hi-in') ||
+          localeLower.startsWith('ta-in') ||
+          localeLower.startsWith('te-in') ||
+          localeLower.startsWith('kn-in') ||
+          localeLower.startsWith('mr-in') ||
+          localeLower.startsWith('gu-in') ||
+          localeLower.startsWith('pa-in') ||
+          localeLower.startsWith('bn-in') ||
+          localeLower.startsWith('en-in')) {
+        return CURRENCY_MAP['INR'];
+      }
+      
+      // Extract region code
+      const region = loc.split('-')[1] || loc.split('_')[1] || loc.split('/')[1] || '';
+      if (region) {
+        const regionUpper = region.toUpperCase();
+        if (regionToCurrency[regionUpper]) {
+          return CURRENCY_MAP[regionToCurrency[regionUpper]];
+        }
+      }
+    }
+    
+    // Final fallback: check timezone for other currencies
+    if (tzLower.includes('london') || tzLower.includes('europe/london')) {
+      return CURRENCY_MAP['GBP'];
+    }
+    if (tzLower.includes('europe/')) {
+      return CURRENCY_MAP['EUR'];
+    }
+    
+    return CURRENCY_MAP['USD'];
+  } catch {
+    return CURRENCY_MAP['USD'];
+  }
+};
+
+const formatCurrency = (amount: number, currency: { code: string; symbol: string; rate: number }): string => {
+  const convertedAmount = amount * currency.rate;
+  
+  // Debug logging
+  if (typeof window !== 'undefined' && currency.code === 'INR') {
+    console.log('Formatting INR:', { amount, convertedAmount, currency });
+  }
+  
+  // Special handling for currencies without decimals
+  if (currency.code === 'JPY' || currency.code === 'KRW' || currency.code === 'VND' || currency.code === 'IDR') {
+    return `${currency.symbol}${Math.round(convertedAmount).toLocaleString('en-IN')}`;
+  }
+  
+  // Special formatting for INR (Indian Rupee)
+  if (currency.code === 'INR') {
+    const rounded = Math.round(convertedAmount);
+    // Use Indian numbering system (lakhs, crores)
+    const formatted = rounded.toLocaleString('en-IN');
+    console.log('INR Formatting result:', formatted);
+    return `₹${formatted}`;
+  }
+  
+  // Format with appropriate decimals for other currencies
+  const formatted = convertedAmount.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: convertedAmount >= 1000 ? 0 : 2,
+  });
+  
+  return `${currency.symbol}${formatted}`;
+};
+
 export function EnhancedChatbot(): React.JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -96,6 +243,34 @@ export function EnhancedChatbot(): React.JSX.Element {
   const [projectDetails, setProjectDetails] = useState<ProjectDetails>({});
   const [warningCount, setWarningCount] = useState(0);
   const [showFilterWarning, setShowFilterWarning] = useState(false);
+  const [currency, setCurrency] = useState(() => {
+    const detected = detectCurrency();
+    // Debug logging (remove in production)
+    if (typeof window !== 'undefined') {
+      console.log('Currency Detection (Initial):', {
+        locale: navigator.language,
+        locales: navigator.languages,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        detected: detected.code,
+        symbol: detected.symbol
+      });
+    }
+    return detected;
+  });
+
+  // Re-detect currency after component mounts to ensure browser APIs are ready
+  useEffect(() => {
+    const detected = detectCurrency();
+    console.log('Currency Detection (After Mount):', {
+      locale: navigator.language,
+      locales: navigator.languages,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      detected: detected.code,
+      symbol: detected.symbol,
+      rate: detected.rate
+    });
+    setCurrency(detected);
+  }, []);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Content filtering functions
@@ -317,11 +492,11 @@ export function EnhancedChatbot(): React.JSX.Element {
           newStage = 'budget';
           botResponse = "Great! Now, what's your budget range for this project?";
           options = [
-            { text: "💰 Under $5,000", value: "under-5k" },
-            { text: "💰 $5,000 - $15,000", value: "5k-15k" },
-            { text: "💰 $15,000 - $50,000", value: "15k-50k" },
-            { text: "💰 $50,000+", value: "50k-plus" },
-            { text: "💬 Let&apos;s discuss", value: "discuss" }
+            { text: `💰 Under ${formatCurrency(1000, currency)}`, value: "under-1k" },
+            { text: `💰 ${formatCurrency(1000, currency)} - ${formatCurrency(3500, currency)}`, value: "1k-3.5k" },
+            { text: `💰 ${formatCurrency(3500, currency)} - ${formatCurrency(10000, currency)}`, value: "3.5k-10k" },
+            { text: `💰 ${formatCurrency(10000, currency)}+`, value: "10k-plus" },
+            { text: "💬 Let's discuss", value: "discuss" }
           ];
           break;
 
@@ -425,16 +600,41 @@ export function EnhancedChatbot(): React.JSX.Element {
     <>
       {/* Floating Chat Button */}
       <motion.div
-        className="fixed bottom-6 right-22 z-40"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 1, type: "spring" }}
+        className="fixed bottom-6 right-6 md:right-8 z-40"
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ delay: 1, type: "spring", stiffness: 200, damping: 15 }}
       >
-        <Button
-          onClick={() => setIsOpen(!isOpen)}
-          size="lg"
-          className="h-14 w-14 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 border-2 border-white/20 backdrop-blur-sm"
+        <motion.div
+          animate={!isOpen ? {
+            scale: [1, 1.05, 1],
+          } : {}}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="relative"
         >
+          {!isOpen && (
+            <motion.div
+              className="absolute inset-0 rounded-2xl bg-emerald-400 opacity-75 blur-xl"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.5, 0.3, 0.5]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          )}
+          <Button
+            onClick={() => setIsOpen(!isOpen)}
+            size="lg"
+            className="relative h-14 w-14 rounded-2xl shadow-2xl hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all duration-300 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 border-2 border-white/30 backdrop-blur-sm hover:scale-105 active:scale-95"
+          >
           <AnimatePresence mode="wait">
             {isOpen ? (
               <motion.div
@@ -459,62 +659,63 @@ export function EnhancedChatbot(): React.JSX.Element {
             )}
           </AnimatePresence>
         </Button>
+        </motion.div>
       </motion.div>
 
       {/* Chat Interface */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-6 md:right-22 z-50 w-[90vw] max-w-sm md:w-96 mx-4 md:mx-0 max-h-[80vh]"
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+            className="fixed bottom-24 right-6 md:right-8 z-50 w-[90vw] max-w-sm md:w-96 mx-4 md:mx-0 max-h-[85vh] flex flex-col"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ duration: 0.3, type: "spring" }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 25 }}
           >
-            <Card className="shadow-2xl border-0 bg-white/98 backdrop-blur-xl overflow-hidden">
+            <Card className="shadow-2xl border-0 bg-white/98 backdrop-blur-xl overflow-hidden flex flex-col h-full">
               {/* Header */}
-              <CardHeader className="pb-3 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 text-white relative overflow-hidden">
+              <CardHeader className="pb-3 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-700 text-white relative overflow-hidden flex-shrink-0">
                 {/* Background Pattern */}
                 <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0iZ3JpZCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBwYXR0ZXJuVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aCBkPSJtIDQwIDAgbCAwIDQwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMC4xIiBvcGFjaXR5PSIwLjEiLz48cGF0aCBkPSJtIDAgNDAgbCA0MCAwIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMC4xIiBvcGFjaXR5PSIwLjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-20"></div>
                 
                 <div className="relative z-10">
-                  <CardTitle className="flex items-center justify-between text-lg font-semibold">
-                    <div className="flex items-center gap-3">
-                      <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center">
+                  <CardTitle className="flex items-center justify-between gap-3 text-lg font-semibold">
+                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                      <div className="h-8 w-8 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0">
                         <Bot className="h-5 w-5 text-white" />
                       </div>
-                      <div>
-                        <div className="text-white">Project Assistant</div>
-                        <div className="text-xs text-white/80 font-normal">Let&apos;s discuss your project</div>
+                      <div className="min-w-0 flex-1">
+                        <div className="text-white truncate">Project Assistant</div>
+                        <div className="text-xs text-white/80 font-normal truncate">Let&apos;s discuss your project</div>
                       </div>
                     </div>
-                    <div className="text-xs bg-white/20 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/30">
+                    <div className="text-xs bg-white/20 backdrop-blur-sm px-2 sm:px-3 py-1.5 rounded-full border border-white/30 flex-shrink-0 whitespace-nowrap">
                       {stage === 'greeting' ? '👋 Welcome' : 
                        stage === 'project-type' ? '🎯 Project Type' :
                        stage === 'requirements' ? '📋 Requirements' :
                        stage === 'budget' ? '💰 Budget' :
                        stage === 'timeline' ? '📅 Timeline' :
-                       stage === 'contact-info' ? '📞 Contact Info' :
-                       '✅ Completed'}
+                       stage === 'contact-info' ? '📞 Contact' :
+                       '✅ Done'}
                     </div>
                   </CardTitle>
                 </div>
               </CardHeader>
 
               {/* Messages Area */}
-              <CardContent className="p-0">
-                <div className="h-56 sm:h-64 md:h-72 overflow-y-auto px-4 py-4 space-y-4 bg-gradient-to-b from-gray-50/50 to-white">
+              <CardContent className="p-0 flex-1 flex flex-col min-h-0">
+                <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 bg-gradient-to-b from-gray-50/50 via-white to-gray-50/30 scroll-smooth chat-scroll">
                   {messages.map((message) => (
                     <motion.div
                       key={message.id}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3 }}
-                      className={`flex gap-3 ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+                      className={`flex gap-2 sm:gap-3 items-start ${message.sender === "user" ? "justify-end" : "justify-start"}`}
                     >
                       {/* Bot Avatar */}
                       {message.sender === "bot" && (
-                        <div className="flex-shrink-0 mt-1">
+                        <div className="flex-shrink-0 mt-0.5">
                           <div className="h-8 w-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg">
                             <Bot className="h-4 w-4 text-white" />
                           </div>
@@ -522,17 +723,20 @@ export function EnhancedChatbot(): React.JSX.Element {
                       )}
 
                       {/* Message Content */}
-                      <div className={`flex flex-col max-w-[80%] ${message.sender === "user" ? "items-end" : "items-start"}`}>
+                      <div className={`flex flex-col max-w-[85%] sm:max-w-[80%] min-w-0 ${message.sender === "user" ? "items-end" : "items-start"}`}>
                         {/* Message Bubble */}
-                        <div
-                          className={`rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.2 }}
+                          className={`rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-lg ${
                             message.sender === "user"
-                              ? "bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-br-md"
-                              : "bg-white border border-gray-200 text-gray-800 rounded-bl-md"
+                              ? "bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-br-md hover:shadow-xl transition-shadow duration-200"
+                              : "bg-white border border-gray-200/80 text-gray-800 rounded-bl-md shadow-md hover:shadow-lg transition-shadow duration-200"
                           }`}
                         >
                           {message.text}
-                        </div>
+                        </motion.div>
 
                         {/* Options */}
                         {message.options && (
@@ -540,18 +744,18 @@ export function EnhancedChatbot(): React.JSX.Element {
                             {message.options.map((option, index) => (
                               <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: index * 0.1 }}
+                                initial={{ opacity: 0, x: -20, scale: 0.95 }}
+                                animate={{ opacity: 1, x: 0, scale: 1 }}
+                                transition={{ delay: index * 0.05, type: "spring", stiffness: 200 }}
                               >
-                                <Button
-                                  variant="outline"
-                                  size="sm"
-                                  className="w-full justify-start text-xs bg-white hover:bg-emerald-50 border-emerald-200 hover:border-emerald-300 text-gray-700 hover:text-emerald-700 rounded-xl py-2.5 px-4 transition-all duration-200"
+                                <motion.button
+                                  whileHover={{ scale: 1.02, x: 4 }}
+                                  whileTap={{ scale: 0.98 }}
+                                  className="w-full text-left text-xs bg-white hover:bg-gradient-to-r hover:from-emerald-50 hover:to-teal-50 border-2 border-emerald-200 hover:border-emerald-400 text-gray-700 hover:text-emerald-700 rounded-xl py-2.5 px-4 transition-all duration-200 shadow-sm hover:shadow-md font-medium"
                                   onClick={() => handleOptionClick(option)}
                                 >
-                                  <span className="truncate">{option.text}</span>
-                                </Button>
+                                  <span className="truncate block">{option.text}</span>
+                                </motion.button>
                               </motion.div>
                             ))}
                           </div>
@@ -565,7 +769,7 @@ export function EnhancedChatbot(): React.JSX.Element {
 
                       {/* User Avatar */}
                       {message.sender === "user" && (
-                        <div className="flex-shrink-0 mt-1">
+                        <div className="flex-shrink-0 mt-0.5">
                           <div className="h-8 w-8 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center shadow-lg">
                             <User className="h-4 w-4 text-white" />
                           </div>
@@ -579,18 +783,41 @@ export function EnhancedChatbot(): React.JSX.Element {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="flex gap-3 justify-start"
+                      className="flex gap-2 sm:gap-3 justify-start items-start"
                     >
-                      <div className="flex-shrink-0 mt-1">
-                        <div className="h-8 w-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg">
+                      <div className="flex-shrink-0 mt-0.5">
+                        <motion.div 
+                          className="h-8 w-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg"
+                          animate={{ 
+                            scale: [1, 1.1, 1],
+                            boxShadow: [
+                              "0 4px 6px -1px rgba(16, 185, 129, 0.3)",
+                              "0 10px 15px -3px rgba(16, 185, 129, 0.4)",
+                              "0 4px 6px -1px rgba(16, 185, 129, 0.3)"
+                            ]
+                          }}
+                          transition={{ duration: 1.5, repeat: Infinity }}
+                        >
                           <Bot className="h-4 w-4 text-white" />
-                        </div>
+                        </motion.div>
                       </div>
-                      <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-4 py-3 shadow-sm">
-                        <div className="flex gap-1.5">
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-100"></div>
-                          <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-200"></div>
+                      <div className="bg-white border border-gray-200 rounded-2xl rounded-bl-md px-4 py-3 shadow-md">
+                        <div className="flex gap-1.5 items-center">
+                          <motion.div 
+                            className="w-2 h-2 bg-emerald-500 rounded-full"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
+                          />
+                          <motion.div 
+                            className="w-2 h-2 bg-teal-500 rounded-full"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+                          />
+                          <motion.div 
+                            className="w-2 h-2 bg-cyan-500 rounded-full"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+                          />
                         </div>
                       </div>
                     </motion.div>
@@ -599,24 +826,28 @@ export function EnhancedChatbot(): React.JSX.Element {
                 </div>
 
                 {/* Input Area */}
-                <div className="border-t border-gray-200 bg-white px-4 py-4">
+                <div className="border-t border-gray-200/80 bg-white/95 backdrop-blur-sm px-4 py-4 flex-shrink-0">
                   {/* Filter Warning */}
                   {showFilterWarning && (
                     <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mb-3 p-2 bg-amber-50 border border-amber-200 rounded-lg"
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      className="mb-3 p-3 bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-400 rounded-lg shadow-sm"
                     >
-                      <div className="flex items-center gap-2 text-amber-700 text-xs">
-                        <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                      <div className="flex items-center gap-2 text-amber-700 text-xs font-medium">
+                        <motion.div 
+                          className="w-2 h-2 bg-amber-500 rounded-full"
+                          animate={{ scale: [1, 1.3, 1] }}
+                          transition={{ duration: 1, repeat: Infinity }}
+                        />
                         <span>Please keep our conversation professional and project-focused</span>
                       </div>
                     </motion.div>
                   )}
                   
                   <div className="flex gap-3 items-end">
-                    <div className="flex-1">
+                    <div className="flex-1 relative">
                       <Input
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
@@ -630,31 +861,42 @@ export function EnhancedChatbot(): React.JSX.Element {
                             ? "Describe your project requirements..."
                             : "Type your message..."
                         }
-                        className={`border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 rounded-xl bg-gray-50 focus:bg-white transition-all duration-200 resize-none ${
-                          warningCount >= 3 ? 'border-amber-300 bg-amber-50' : ''
+                        className={`border-2 rounded-xl bg-gray-50/80 focus:bg-white transition-all duration-200 resize-none pr-12 ${
+                          warningCount >= 3 
+                            ? 'border-amber-300 focus:border-amber-400 focus:ring-amber-400/30' 
+                            : 'border-gray-300 focus:border-emerald-500 focus:ring-emerald-500/30'
                         }`}
                         disabled={isLoading}
-                        maxLength={500} // Limit message length
+                        maxLength={500}
                       />
+                      {inputValue.length > 0 && (
+                        <div className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">
+                          {inputValue.length}/500
+                        </div>
+                      )}
                     </div>
-                    <Button
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
                       onClick={() => handleSendMessage(inputValue)}
-                      size="sm"
                       disabled={!inputValue.trim() || isLoading}
-                      className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl px-4 py-2 shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50"
+                      className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl px-4 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[44px] min-h-[44px]"
                     >
                       <Send className="h-4 w-4" />
-                    </Button>
+                    </motion.button>
                   </div>
                   
                   {/* Helper Text */}
-                  <div className="text-xs text-gray-500 mt-2 text-center">
-                    {warningCount >= 2 ? (
-                      <span className="text-amber-600">Please keep messages professional • Business inquiries only</span>
-                    ) : (
-                      <span>Powered by AI • Your data is secure</span>
-                    )}
-                  </div>
+                  {warningCount >= 2 && (
+                    <motion.div 
+                      className="text-xs text-amber-600 font-medium mt-2 text-center"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                    >
+                      Please keep messages professional • Business inquiries only
+                    </motion.div>
+                  )}
                 </div>
               </CardContent>
             </Card>

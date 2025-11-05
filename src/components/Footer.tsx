@@ -256,7 +256,7 @@ export function Footer(): React.JSX.Element {
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.3, type: "spring" }}
-            className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 text-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 z-30 flex items-center justify-center group border-2 border-white/20 backdrop-blur-sm"
+            className="fixed bottom-24 md:bottom-28 right-6 md:right-8 w-14 h-14 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 text-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 z-30 flex items-center justify-center group border-2 border-white/20 backdrop-blur-sm"
             aria-label="Scroll to top"
           >
             <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
