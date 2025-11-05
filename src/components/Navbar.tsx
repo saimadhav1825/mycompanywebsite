@@ -62,8 +62,9 @@ export function Navbar(): React.JSX.Element {
   };
 
   const menuVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1 }
+    hidden: { opacity: 0, y: -20, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 },
+    exit: { opacity: 0, y: -20, scale: 0.95 }
   };
 
   return (
@@ -88,20 +89,13 @@ export function Navbar(): React.JSX.Element {
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-300/40 to-transparent"></div>
       
-      {/* Enhanced Floating Glassmorphic Orbs */}
-      <div className="absolute top-2 right-1/4 w-8 h-8 bg-white/25 backdrop-blur-xl rounded-full border border-white/40 animate-float opacity-50 shadow-lg"></div>
-      <div className="absolute bottom-2 left-1/3 w-6 h-6 bg-emerald-400/25 backdrop-blur-xl rounded-full border border-emerald-300/40 animate-float delay-1000 opacity-60 shadow-md"></div>
-      <div className="absolute top-1/2 left-1/2 w-4 h-4 bg-teal-400/25 backdrop-blur-xl rounded-full border border-teal-300/40 animate-float delay-500 opacity-40 shadow-sm"></div>
-      <div className="absolute top-1 left-1/5 w-5 h-5 bg-cyan-400/20 backdrop-blur-lg rounded-full border border-cyan-300/30 animate-float delay-2000 opacity-45 shadow-md"></div>
-      <div className="absolute bottom-1 right-1/5 w-3 h-3 bg-emerald-300/30 backdrop-blur-md rounded-full border border-emerald-200/40 animate-float delay-1500 opacity-35 shadow-sm"></div>
+      {/* Enhanced Floating Glassmorphic Orbs - Reduced for better performance */}
+      <div className="absolute top-2 right-1/4 w-6 h-6 bg-white/20 backdrop-blur-xl rounded-full border border-white/30 animate-float opacity-40 shadow-md hidden sm:block"></div>
+      <div className="absolute bottom-2 left-1/3 w-5 h-5 bg-emerald-400/20 backdrop-blur-xl rounded-full border border-emerald-300/30 animate-float delay-1000 opacity-50 shadow-sm hidden sm:block"></div>
       
-      {/* Enhanced Floating particles */}
-      <div className="absolute top-3 right-1/6 w-1.5 h-1.5 bg-emerald-400/50 rounded-full animate-ping shadow-sm"></div>
-      <div className="absolute bottom-3 left-1/5 w-1 h-1 bg-teal-400/60 rounded-full animate-ping delay-800 shadow-sm"></div>
-      <div className="absolute top-4 left-3/4 w-0.5 h-0.5 bg-cyan-400/70 rounded-full animate-ping delay-1200"></div>
-      <div className="absolute top-2 left-2/3 w-1 h-1 bg-emerald-300/50 rounded-full animate-pulse delay-400"></div>
-      <div className="absolute bottom-4 right-1/3 w-0.5 h-0.5 bg-teal-300/60 rounded-full animate-pulse delay-1000"></div>
-      <div className="absolute top-5 left-1/6 w-1.5 h-1.5 bg-cyan-300/40 rounded-full animate-bounce delay-600"></div>
+      {/* Enhanced Floating particles - Reduced for better performance */}
+      <div className="absolute top-3 right-1/6 w-1 h-1 bg-emerald-400/40 rounded-full animate-ping shadow-sm hidden sm:block"></div>
+      <div className="absolute bottom-3 left-1/5 w-0.5 h-0.5 bg-teal-400/50 rounded-full animate-ping delay-800 shadow-sm hidden sm:block"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -337,8 +331,8 @@ export function Navbar(): React.JSX.Element {
             variants={menuVariants}
             initial="hidden"
             animate="visible"
-            exit="hidden"
-            transition={{ duration: 0.2 }}
+            exit="exit"
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="lg:hidden absolute top-full left-0 right-0 bg-white/98 backdrop-blur-xl border-b-2 border-white/30 shadow-2xl"
           >
             <div className="container mx-auto px-4 py-6">
@@ -348,14 +342,15 @@ export function Navbar(): React.JSX.Element {
                     return (
                       <div key={section}>
                         <motion.button
-                          whileHover={{ x: 10 }}
+                          whileHover={{ x: 5, scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                           onClick={() => {
                             setServicesOpen(!servicesOpen);
                             if (!servicesOpen) {
                               scrollToSection(section);
                             }
                           }}
-                          className={`text-left px-4 py-3 rounded-xl transition-all duration-300 w-full flex items-center justify-between ${
+                          className={`text-left px-4 py-3 rounded-xl transition-all duration-300 w-full flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-emerald-400/50 ${
                             activeSection === section
                               ? "bg-emerald-50 text-emerald-600 border-l-4 border-emerald-500"
                               : "text-gray-700 hover:bg-gray-50 hover:text-emerald-600"
@@ -402,9 +397,10 @@ export function Navbar(): React.JSX.Element {
                   return (
                     <motion.button
                       key={section}
-                      whileHover={{ x: 10 }}
+                      whileHover={{ x: 5, scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                       onClick={() => scrollToSection(section)}
-                      className={`text-left px-4 py-3 rounded-xl transition-all duration-300 ${
+                      className={`text-left px-4 py-3 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 ${
                         activeSection === section
                           ? "bg-emerald-50 text-emerald-600 border-l-4 border-emerald-500"
                           : "text-gray-700 hover:bg-gray-50 hover:text-emerald-600"
@@ -415,9 +411,10 @@ export function Navbar(): React.JSX.Element {
                   );
                 })}
                 <motion.button
-                  whileHover={{ x: 10 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => scrollToSection("contact")}
-                  className="mt-4 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-xl shadow-lg"
+                  className="mt-4 px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:ring-offset-2"
                 >
                   Get Started
                 </motion.button>

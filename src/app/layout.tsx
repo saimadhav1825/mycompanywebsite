@@ -94,8 +94,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Skip to content link for accessibility */}
+        <a href="#main-content" className="skip-to-content">
+          Skip to content
+        </a>
         <Navbar />
-        {children}
+        <main id="main-content">
+          {children}
+        </main>
         <LazyChatbot />
         <Toaster richColors position="top-right" />
         {/* JSON-LD Structured Data - Organization */}

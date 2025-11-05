@@ -214,19 +214,31 @@ export function Footer(): React.JSX.Element {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4"
+          className="pt-8 sm:pt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6"
         >
-          <div className="flex items-center gap-2 text-gray-400">
+          <div className="flex items-center gap-2 text-gray-300 text-sm sm:text-base">
             <span>© {year} {siteConfig.name}. Made with</span>
-            <Heart className="h-4 w-4 text-red-400 fill-current" />
+            <motion.div
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Heart className="h-4 w-4 sm:h-5 sm:w-5 text-red-400 fill-current" />
+            </motion.div>
             <span>for amazing clients</span>
           </div>
           
-          <div className="flex items-center gap-6 text-sm text-gray-400">
-            <Link href="/privacy-policy" className="hover:text-white transition-colors duration-300">
+          <div className="flex items-center gap-4 sm:gap-6 text-sm sm:text-base">
+            <Link 
+              href="/privacy-policy" 
+              className="text-gray-300 hover:text-white transition-all duration-300 hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:rounded-lg px-2 py-1 -mx-2 -my-1"
+            >
               Privacy Policy
             </Link>
-            <Link href="/terms-of-service" className="hover:text-white transition-colors duration-300">
+            <span className="text-gray-500">•</span>
+            <Link 
+              href="/terms-of-service" 
+              className="text-gray-300 hover:text-white transition-all duration-300 hover:underline underline-offset-4 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:rounded-lg px-2 py-1 -mx-2 -my-1"
+            >
               Terms of Service
             </Link>
           </div>

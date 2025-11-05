@@ -116,8 +116,28 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  /* Better focus states for accessibility */
+  a:focus-visible,
+  button:focus-visible {
+    @apply outline-none ring-2 ring-emerald-400/50 ring-offset-2 ring-offset-transparent rounded-lg;
+  }
+  /* Skip to content link for accessibility */
+  .skip-to-content {
+    @apply absolute -top-20 left-4 z-50 bg-emerald-600 text-white px-4 py-2 rounded-lg font-semibold shadow-lg transition-all duration-200 focus:top-4;
+  }
+  /* Improved typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    line-height: 1.2;
+  }
+  p {
+    line-height: 1.7;
   }
 }
 
