@@ -115,20 +115,22 @@ export function Hero(): React.JSX.Element {
             >
               <motion.button
                 onClick={() => scrollToSection('contact')}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 h-14 px-8 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-2xl shadow-xl hover:shadow-2xl transform transition-all duration-300 text-lg"
+                className="relative inline-flex items-center gap-3 h-14 px-8 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-semibold rounded-2xl shadow-xl hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transform transition-all duration-300 text-lg overflow-hidden group"
               >
-                Get a Free Quote
-                <ArrowRight className="h-5 w-5" />
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10">Get a Free Quote</span>
+                <ArrowRight className="h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.button
                 onClick={() => scrollToSection('projects')}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center h-14 px-8 bg-white/20 backdrop-blur-md border-2 border-gray-300 hover:border-emerald-500 hover:text-emerald-600 text-gray-700 font-semibold rounded-2xl shadow-lg hover:shadow-xl transform transition-all duration-300 text-lg"
+                className="relative inline-flex items-center justify-center h-14 px-8 bg-white/25 backdrop-blur-md border-2 border-gray-300/50 hover:border-emerald-500 hover:text-emerald-600 text-gray-700 font-semibold rounded-2xl shadow-lg hover:shadow-xl transform transition-all duration-300 text-lg overflow-hidden group"
               >
-                See Our Work
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10">See Our Work</span>
               </motion.button>
             </motion.div>
             

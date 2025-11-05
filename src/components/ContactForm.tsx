@@ -116,7 +116,7 @@ export function ContactForm(): React.JSX.Element {
             {...register("name")}
             onFocus={() => setFocusedField("name")}
             onBlur={() => setFocusedField(null)}
-            className="relative h-16 text-lg border-3 border-gray-200/50 focus:border-purple-400 bg-white/80 backdrop-blur-md placeholder:text-gray-500 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 pl-6 pr-6 font-medium focus:ring-4 focus:ring-purple-400/30"
+            className="relative h-16 text-lg border-2 border-gray-200/50 focus:border-purple-400 focus:border-2 bg-white/90 backdrop-blur-md placeholder:text-gray-500 rounded-2xl shadow-xl hover:shadow-[0_20px_40px_-10px_rgba(168,85,247,0.2)] transition-all duration-300 pl-6 pr-6 font-medium focus:ring-4 focus:ring-purple-400/30 focus:bg-white"
           />
           {focusedField === "name" && (
             <>
@@ -314,7 +314,7 @@ export function ContactForm(): React.JSX.Element {
             {...register("message")}
             onFocus={() => setFocusedField("message")}
             onBlur={() => setFocusedField(null)}
-            className="relative text-lg border-3 border-gray-200/50 focus:border-orange-400 bg-white/80 backdrop-blur-md placeholder:text-gray-500 rounded-2xl resize-none shadow-xl hover:shadow-2xl transition-all duration-300 p-6 font-medium focus:ring-4 focus:ring-orange-400/30 min-h-[140px]"
+            className="relative text-lg border-2 border-gray-200/50 focus:border-orange-400 focus:border-2 bg-white/90 backdrop-blur-md placeholder:text-gray-500 rounded-2xl resize-none shadow-xl hover:shadow-[0_20px_40px_-10px_rgba(251,146,60,0.2)] transition-all duration-300 p-6 font-medium focus:ring-4 focus:ring-orange-400/30 min-h-[140px] focus:bg-white"
           />
           {focusedField === "message" && (
             <>
@@ -426,10 +426,12 @@ export function ContactForm(): React.JSX.Element {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full h-16 text-lg font-semibold bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-800 hover:to-slate-900 text-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group border-0"
+                className="w-full h-16 text-lg font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-2xl shadow-xl hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all duration-300 relative overflow-hidden group border-0"
               >
                 {/* Subtle Background Shimmer */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
                 
                 <AnimatePresence mode="wait">
                   {isSubmitting ? (

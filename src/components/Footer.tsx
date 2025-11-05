@@ -142,7 +142,7 @@ export function Footer(): React.JSX.Element {
             className="space-y-4"
           >
             <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-            <div className="space-y-4">
+            <div className="space-y-2">
               {[
                 { name: "About", id: "about" },
                 { name: "Services", id: "services" },
@@ -191,12 +191,12 @@ export function Footer(): React.JSX.Element {
             className="space-y-4"
           >
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
-            <div className="space-y-3">
+            <div className="space-y-6">
               {siteConfig.services.map((service, idx) => (
                 <Link key={service.title ?? idx} href={`/services/${service.slug}`}>
                   <motion.div
                     whileHover={{ x: 5 }}
-                    className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer"
+                    className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer py-2"
                   >
                     {service.title}
                   </motion.div>

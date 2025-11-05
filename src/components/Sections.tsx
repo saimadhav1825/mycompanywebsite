@@ -193,25 +193,30 @@ export function ServicesSection(): React.JSX.Element {
             transition={{ duration: 0.6, delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="relative overflow-hidden rounded-2xl bg-white/25 backdrop-blur-xl border border-white/40 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 h-full group-hover:border-emerald-200/50">
+            <div className="relative overflow-hidden rounded-2xl bg-white/30 backdrop-blur-xl border-2 border-white/50 shadow-xl hover:shadow-[0_20px_60px_-15px_rgba(16,185,129,0.3)] transition-all duration-500 transform hover:-translate-y-3 h-full group-hover:border-emerald-400/60">
+              {/* Gradient Border Effect */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/20 via-teal-500/20 to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none blur-sm"></div>
+              
               {/* Enhanced Glassmorphic Background Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/8 to-teal-500/8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer transition-opacity duration-700 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer transition-opacity duration-700 pointer-events-none"></div>
               
               {/* Enhanced Floating Particles */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-emerald-400/50 rounded-full animate-ping pointer-events-none"></div>
-              <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/50 rounded-full animate-ping delay-1000 pointer-events-none"></div>
-              <div className="absolute top-6 left-6 w-1 h-1 bg-cyan-400/40 rounded-full animate-ping delay-500 pointer-events-none"></div>
-              <div className="absolute bottom-6 right-6 w-1.5 h-1.5 bg-emerald-300/60 rounded-full animate-ping delay-1500 pointer-events-none"></div>
+              <div className="absolute top-4 right-4 w-2.5 h-2.5 bg-emerald-400/60 rounded-full animate-ping pointer-events-none group-hover:scale-150 transition-transform"></div>
+              <div className="absolute bottom-4 left-4 w-2 h-2 bg-teal-400/60 rounded-full animate-ping delay-1000 pointer-events-none group-hover:scale-150 transition-transform"></div>
+              <div className="absolute top-6 left-6 w-1.5 h-1.5 bg-cyan-400/50 rounded-full animate-ping delay-500 pointer-events-none group-hover:scale-150 transition-transform"></div>
+              <div className="absolute bottom-6 right-6 w-2 h-2 bg-emerald-300/70 rounded-full animate-ping delay-1500 pointer-events-none group-hover:scale-150 transition-transform"></div>
               
               <div className="relative p-6 h-full flex flex-col">
                 <div className="text-center pb-4">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110 relative overflow-hidden">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-[0_10px_30px_-5px_rgba(16,185,129,0.4)] transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3 relative overflow-hidden">
                     {/* Shimmer Effect */}
                     <div className="absolute inset-0 animate-shimmer pointer-events-none"></div>
-                    {React.createElement(serviceIcons[idx], { className: "h-8 w-8 text-gray-800 relative z-10" })}
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/50 to-teal-400/50 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"></div>
+                    {React.createElement(serviceIcons[idx], { className: "h-8 w-8 text-white relative z-10 drop-shadow-lg" })}
                   </div>
-                  <div className="text-xl font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300">
+                  <div className="text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300 group-hover:scale-105 inline-block">
                     {service.title}
                   </div>
                 </div>
@@ -221,12 +226,15 @@ export function ServicesSection(): React.JSX.Element {
                     {service.description}
                   </div>
                   
-                  <div className="pt-4 border-t border-white/20 mt-auto">
+                  <div className="pt-4 border-t border-white/30 mt-auto">
                     <Link href={`/services/${service.slug}`}>
-                      <div className="flex items-center justify-center gap-2 text-emerald-600 font-medium text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer hover:text-emerald-700">
+                      <motion.div 
+                        whileHover={{ x: 5 }}
+                        className="flex items-center justify-center gap-2 text-emerald-600 font-semibold text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer hover:text-emerald-700"
+                      >
                         Learn More
-                        <ArrowRight className="h-4 w-4" />
-                      </div>
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </motion.div>
                     </Link>
                   </div>
                 </div>

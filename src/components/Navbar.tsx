@@ -198,21 +198,28 @@ export function Navbar(): React.JSX.Element {
                           className="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-xl border border-white/50 rounded-2xl shadow-2xl overflow-hidden z-50"
                         >
                           <div className="p-5">
-                            {siteConfig.services.map((service, index) => (
-                              <Link
-                                key={service.slug}
-                                href={`/services/${service.slug}`}
-                                onClick={() => setServicesOpen(false)}
-                              >
-                                <motion.div
-                                  whileHover={{ x: 5, backgroundColor: "rgba(16, 185, 129, 0.1)" }}
-                                  className={`px-4 py-4 rounded-xl text-gray-800 hover:text-emerald-600 transition-colors duration-200 cursor-pointer ${index < siteConfig.services.length - 1 ? 'mb-4' : ''}`}
+                            <div>
+                              {siteConfig.services.map((service, index) => (
+                                <div 
+                                  key={service.slug} 
+                                  className={index < siteConfig.services.length - 1 ? "mb-4" : ""}
                                 >
-                                  <div className="font-medium text-sm">{service.title}</div>
-                                  <div className="text-xs text-gray-500 mt-1">{service.tagline}</div>
-                                </motion.div>
-                              </Link>
-                            ))}
+                                  <Link
+                                    href={`/services/${service.slug}`}
+                                    onClick={() => setServicesOpen(false)}
+                                    className="block"
+                                  >
+                                    <motion.div
+                                      whileHover={{ x: 5 }}
+                                      className="block text-gray-800 hover:text-emerald-600 transition-colors duration-300 cursor-pointer py-1"
+                                    >
+                                      <div className="font-medium text-sm">{service.title}</div>
+                                      <div className="text-xs text-gray-500 mt-1">{service.tagline}</div>
+                                    </motion.div>
+                                  </Link>
+                                </div>
+                              ))}
+                            </div>
                           </div>
                         </motion.div>
                       )}
@@ -367,16 +374,23 @@ export function Navbar(): React.JSX.Element {
                               className="overflow-hidden"
                             >
                               <div className="pl-4 py-3">
-                                {siteConfig.services.map((service, index) => (
-                                  <Link key={service.slug} href={`/services/${service.slug}`} onClick={() => setIsOpen(false)}>
-                                    <motion.div
-                                      whileHover={{ x: 5 }}
-                                      className={`px-4 py-4 rounded-lg text-gray-600 hover:bg-emerald-50 hover:text-emerald-600 transition-colors duration-200 ${index < siteConfig.services.length - 1 ? 'mb-5' : ''}`}
+                                <div>
+                                  {siteConfig.services.map((service, index) => (
+                                    <div 
+                                      key={service.slug} 
+                                      className={index < siteConfig.services.length - 1 ? "mb-4" : ""}
                                     >
-                                      <div className="font-medium text-sm">{service.title}</div>
-                                    </motion.div>
-                                  </Link>
-                                ))}
+                                      <Link href={`/services/${service.slug}`} onClick={() => setIsOpen(false)} className="block">
+                                        <motion.div
+                                          whileHover={{ x: 5 }}
+                                          className="block text-gray-600 hover:text-emerald-600 transition-colors duration-300 cursor-pointer py-1"
+                                        >
+                                          <div className="font-medium text-sm">{service.title}</div>
+                                        </motion.div>
+                                      </Link>
+                                    </div>
+                                  ))}
+                                </div>
                               </div>
                             </motion.div>
                           )}
