@@ -43,20 +43,20 @@ export function Hero(): React.JSX.Element {
       <div className="absolute top-3/4 left-3/4 w-2.5 h-2.5 bg-cyan-400/50 rounded-full animate-ping delay-1200"></div>
       <div className="absolute top-1/6 right-1/2 w-1.5 h-1.5 bg-emerald-300/70 rounded-full animate-ping delay-300"></div>
       
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 lg:pl-0 lg:pr-16 py-20 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center max-w-7xl mx-auto">
           {/* Left Content */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8 text-center lg:text-left"
+            className="space-y-8 text-left -ml-16 lg:-ml-20"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium shadow-lg mx-auto lg:mx-0"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md border border-white/30 text-gray-800 rounded-full text-sm font-medium shadow-lg"
             >
               <Sparkles className="h-4 w-4" />
               🚀 Turn Your Ideas Into Success
@@ -77,7 +77,7 @@ export function Hero(): React.JSX.Element {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-2xl leading-relaxed mx-auto lg:mx-0"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 max-w-2xl leading-relaxed"
             >
               We make websites and apps that help your business grow. Simple, fast, and built just for you. Let&apos;s make your idea real!
             </motion.p>
@@ -87,7 +87,7 @@ export function Hero(): React.JSX.Element {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.7 }}
-              className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm font-medium text-gray-700 justify-center lg:justify-start"
+              className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm font-medium text-gray-700 justify-start"
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0"></div>
@@ -111,7 +111,7 @@ export function Hero(): React.JSX.Element {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 justify-start"
             >
               <motion.button
                 onClick={() => scrollToSection('contact')}
@@ -139,7 +139,7 @@ export function Hero(): React.JSX.Element {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-6 sm:pt-8 max-w-2xl mx-auto lg:mx-0"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-6 sm:pt-8 max-w-2xl"
             >
               {[
                 { value: "Ready To Launch", label: "Fresh Start" },
@@ -149,7 +149,7 @@ export function Hero(): React.JSX.Element {
                 <motion.div
                   key={stat.label}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="text-center p-3 sm:p-4 bg-white/20 backdrop-blur-md border border-white/30 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="text-left p-3 sm:p-4 bg-white/20 backdrop-blur-md border border-white/30 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent break-words">
                     {stat.value}
@@ -165,9 +165,9 @@ export function Hero(): React.JSX.Element {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex justify-center lg:justify-end mt-12 lg:mt-0"
+            className="relative flex justify-start mt-12 lg:mt-0"
           >
-            <div className="relative w-full max-w-md lg:max-w-2xl xl:max-w-4xl h-96 lg:h-[600px] xl:h-[700px] bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl overflow-hidden group">
+            <div className="relative w-full max-w-md lg:max-w-xl xl:max-w-2xl h-96 lg:h-[500px] xl:h-[600px] bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl overflow-hidden group">
               {/* Enhanced Glassmorphic Tech Icons - ALL ORIGINAL ONES */}
               <motion.div 
                 className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-7 md:left-7 lg:top-10 lg:left-10 xl:top-12 xl:left-12 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-24 lg:h-24 xl:w-28 xl:h-28 bg-white/40 backdrop-blur-xl rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
