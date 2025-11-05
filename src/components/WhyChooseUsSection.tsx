@@ -90,7 +90,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
         </motion.div>
 
         {/* Core Values */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {values.map((value, idx) => (
             <motion.div
               key={value.title}
@@ -99,17 +99,17 @@ export function WhyChooseUsSection(): React.JSX.Element {
               whileHover={{ y: -8, scale: 1.02 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="text-center group relative bg-white/20 backdrop-blur-xl rounded-2xl p-6 shadow-xl border border-white/40 hover:border-white/60 transition-all duration-300"
+              className="text-center group relative bg-white/20 backdrop-blur-xl rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-xl border border-white/40 hover:border-white/60 transition-all duration-300"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               
-              <div className="relative mb-6">
+              <div className="relative mb-4 sm:mb-6">
                 <motion.div
-                  whileHover={{ scale: 1.15, rotate: 5 }}
-                  className={`w-20 h-20 mx-auto bg-gradient-to-r ${value.color} rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-[0_15px_35px_-5px_rgba(16,185,129,0.4)] transition-all duration-300 relative overflow-hidden`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className={`w-16 h-16 sm:w-20 sm:h-20 mx-auto bg-gradient-to-r ${value.color} rounded-xl sm:rounded-2xl flex items-center justify-center shadow-xl group-hover:shadow-[0_15px_35px_-5px_rgba(16,185,129,0.4)] transition-all duration-300 relative overflow-hidden`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer transition-opacity duration-500"></div>
-                  <value.icon className="h-10 w-10 text-white relative z-10 drop-shadow-lg" />
+                  <value.icon className="h-8 w-8 sm:h-10 sm:w-10 text-white relative z-10 drop-shadow-lg" />
                 </motion.div>
               </div>
               
@@ -120,8 +120,8 @@ export function WhyChooseUsSection(): React.JSX.Element {
                 transition={{ duration: 0.6, delay: 0.2 + idx * 0.1 }}
                 className="relative z-10"
               >
-                <div className="text-lg font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">{value.title}</div>
-                <div className="text-sm text-gray-600 leading-relaxed">{value.description}</div>
+                <div className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-emerald-600 transition-colors">{value.title}</div>
+                <div className="text-xs sm:text-sm text-gray-600 leading-relaxed">{value.description}</div>
               </motion.div>
             </motion.div>
           ))}
@@ -139,7 +139,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
             🤝 Our Commitment to You
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {promises.map((promise, idx) => (
               <motion.div
                 key={idx}
@@ -148,7 +148,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
                 whileHover={{ scale: 1.05, y: -8 }}
-                className="relative bg-white/35 backdrop-blur-xl rounded-2xl p-6 shadow-xl hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.2)] border border-white/40 hover:border-white/60 group overflow-hidden text-center transition-all duration-300"
+                className="relative bg-white/35 backdrop-blur-xl rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-xl hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.2)] border border-white/40 hover:border-white/60 group overflow-hidden text-center transition-all duration-300"
               >
                 {/* Background Effects */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

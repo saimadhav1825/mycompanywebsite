@@ -420,14 +420,14 @@ export function ContactSection(): React.JSX.Element {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="flex-1 flex flex-col"
             >
-              {/* Enhanced Project Timeline */}
+              {/* Enhanced Project Timeline - Simplified */}
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.7 }}
-              className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/40 shadow-xl relative overflow-hidden"
-            >
+                className="mb-6 sm:mb-8 p-4 sm:p-6 bg-gradient-to-br from-white/30 to-white/10 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-white/40 shadow-xl relative overflow-hidden"
+              >
                 {/* Animated Background */}
                 <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-cyan-500/5"></div>
                 <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-teal-400/10 to-transparent rounded-bl-3xl"></div>
@@ -462,110 +462,42 @@ export function ContactSection(): React.JSX.Element {
                   </motion.div>
                 </motion.div>
                 
-                <div className="space-y-4 relative z-10">
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.9 }}
-                    className="flex items-center gap-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 group"
-                  >
+                <div className="space-y-3 sm:space-y-4 relative z-10">
+                  {[
+                    { step: 1, title: "Initial Chat", desc: "1-2 days • Free consultation", color: "from-emerald-500 to-emerald-600", icon: Heart, iconColor: "text-emerald-500" },
+                    { step: 2, title: "Project Plan", desc: "3-5 days • Detailed roadmap", color: "from-teal-500 to-teal-600", icon: Target, iconColor: "text-teal-500" },
+                    { step: 3, title: "Build & Test", desc: "2-8 weeks • Development phase", color: "from-cyan-500 to-cyan-600", icon: Rocket, iconColor: "text-cyan-500" },
+                    { step: 4, title: "Launch & Support", desc: "Ongoing • We're here for you", color: "from-blue-500 to-blue-600", icon: Star, iconColor: "text-blue-500" }
+                  ].map((item, idx) => (
                     <motion.div 
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                      className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg"
+                      key={item.step}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      whileHover={{ scale: 1.02, x: 4 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.9 + idx * 0.1 }}
+                      className="flex items-center gap-3 sm:gap-4 p-2.5 sm:p-3 bg-white/20 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/30 hover:bg-white/35 hover:shadow-md transition-all duration-300 group"
                     >
-                      <span className="text-white text-sm font-bold">1</span>
+                      <motion.div 
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: idx * 0.3 }}
+                        className={`w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r ${item.color} rounded-full flex items-center justify-center shadow-lg flex-shrink-0`}
+                      >
+                        <span className="text-white text-xs sm:text-sm font-bold">{item.step}</span>
+                      </motion.div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-semibold text-gray-900 text-sm sm:text-base truncate">{item.title}</div>
+                        <div className="text-gray-600 text-xs sm:text-sm truncate">{item.desc}</div>
+                      </div>
+                      <motion.div
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: idx * 0.5 }}
+                        className="flex-shrink-0 hidden sm:block"
+                      >
+                        <item.icon className={`h-5 w-5 ${item.iconColor}`} />
+                      </motion.div>
                     </motion.div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">Initial Chat</div>
-                      <div className="text-gray-600 text-xs sm:text-sm">1-2 days • Free consultation</div>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: [0, 10, -10, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <Heart className="h-5 w-5 text-emerald-500" />
-                    </motion.div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 1.0 }}
-                    className="flex items-center gap-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 group"
-                  >
-                    <motion.div 
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                      className="w-8 h-8 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full flex items-center justify-center shadow-lg"
-                    >
-                      <span className="text-white text-sm font-bold">2</span>
-                    </motion.div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">Project Plan</div>
-                      <div className="text-gray-600 text-xs sm:text-sm">3-5 days • Detailed roadmap</div>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: [0, -10, 10, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                    >
-                      <Target className="h-5 w-5 text-teal-500" />
-                    </motion.div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 1.1 }}
-                    className="flex items-center gap-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 group"
-                  >
-                    <motion.div 
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                      className="w-8 h-8 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full flex items-center justify-center shadow-lg"
-                    >
-                      <span className="text-white text-sm font-bold">3</span>
-                    </motion.div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">Build & Test</div>
-                      <div className="text-gray-600 text-xs sm:text-sm">2-8 weeks • Development phase</div>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: [0, 15, -15, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                    >
-                      <Rocket className="h-5 w-5 text-cyan-500" />
-                    </motion.div>
-                  </motion.div>
-                  
-                  <motion.div 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 1.2 }}
-                    className="flex items-center gap-4 p-3 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 transition-all duration-300 group"
-                  >
-                    <motion.div 
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                      className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg"
-                    >
-                      <span className="text-white text-sm font-bold">4</span>
-                    </motion.div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg">Launch & Support</div>
-                      <div className="text-gray-600 text-xs sm:text-sm">Ongoing • We&apos;re here for you</div>
-                    </div>
-                    <motion.div
-                      animate={{ rotate: [0, -15, 15, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                    >
-                      <Star className="h-5 w-5 text-blue-500 fill-current" />
-                    </motion.div>
-                  </motion.div>
+                  ))}
                 </div>
               </motion.div>
 

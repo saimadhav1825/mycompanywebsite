@@ -172,10 +172,11 @@ export function Footer(): React.JSX.Element {
                       e.preventDefault();
                       scrollToSection(link.id);
                     }}
-                    whileHover={{ x: 5 }}
-                    className="block text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer py-1"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                    className="block text-gray-300 hover:text-white transition-all duration-300 cursor-pointer py-2 px-2 rounded-lg hover:bg-white/5 relative group"
                   >
-                    {link.name}
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-emerald-400 rounded-r-full group-hover:h-full transition-all duration-300"></div>
+                    <span className="relative z-10 pl-3">{link.name}</span>
                   </motion.a>
                 );
               })}
@@ -191,14 +192,15 @@ export function Footer(): React.JSX.Element {
             className="space-y-4"
           >
             <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
-            <div className="space-y-6">
+            <div className="space-y-4">
               {siteConfig.services.map((service, idx) => (
                 <Link key={service.title ?? idx} href={`/services/${service.slug}`}>
                   <motion.div
-                    whileHover={{ x: 5 }}
-                    className="text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer py-2"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                    className="text-gray-300 hover:text-white transition-all duration-300 cursor-pointer py-3 px-2 rounded-lg hover:bg-white/5 relative group"
                   >
-                    {service.title}
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-0 bg-emerald-400 rounded-r-full group-hover:h-full transition-all duration-300"></div>
+                    <span className="relative z-10 pl-3">{service.title}</span>
                   </motion.div>
                 </Link>
               ))}

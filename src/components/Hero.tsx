@@ -139,7 +139,7 @@ export function Hero(): React.JSX.Element {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-8 max-w-2xl mx-auto lg:mx-0"
+              className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 pt-6 sm:pt-8 max-w-2xl mx-auto lg:mx-0"
             >
               {[
                 { value: "Ready To Launch", label: "Fresh Start" },
@@ -149,9 +149,9 @@ export function Hero(): React.JSX.Element {
                 <motion.div
                   key={stat.label}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="text-center p-4 bg-white/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="text-center p-3 sm:p-4 bg-white/20 backdrop-blur-md border border-white/30 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent break-words">
+                  <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent break-words">
                     {stat.value}
                   </div>
                   <div className="text-gray-600 text-xs sm:text-sm mt-1">{stat.label}</div>

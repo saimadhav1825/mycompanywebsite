@@ -138,26 +138,26 @@ export function ProjectsSection(): React.JSX.Element {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-wrap justify-center gap-4 mb-12 relative z-10"
+        className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 relative z-10 px-4"
       >
         {categories.map((category) => (
           <motion.button
             key={category.id}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setActiveCategory(category.id)}
-            className={`relative inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition-all duration-300 border-2 ${
+            className={`relative inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base transition-all duration-300 border-2 ${
               activeCategory === category.id
-                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-emerald-500 shadow-xl'
-                : 'bg-white/20 backdrop-blur-xl text-gray-700 border-white/40 hover:bg-white/30 hover:text-emerald-600 shadow-lg'
+                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-emerald-500 shadow-xl hover:shadow-2xl'
+                : 'bg-white/25 backdrop-blur-xl text-gray-700 border-white/40 hover:bg-white/35 hover:text-emerald-600 hover:border-emerald-300 shadow-lg'
             }`}
           >
-            <category.icon className="h-4 w-4" />
-            {category.label}
+            <category.icon className={`h-4 w-4 sm:h-5 sm:w-5 ${activeCategory === category.id ? 'text-white' : 'text-gray-600'}`} />
+            <span className="whitespace-nowrap">{category.label}</span>
             {activeCategory === category.id && (
               <motion.div
                 layoutId="activeCategory"
-                className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl -z-10"
+                className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl sm:rounded-2xl -z-10"
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               />
             )}
@@ -209,18 +209,19 @@ export function ProjectsSection(): React.JSX.Element {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {siteConfig.techStack.mobile.map((tech, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ scale: 1.05, x: 2 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.1 }}
-                  className="flex items-center gap-2 p-2 bg-white/40 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/50 transition-all duration-300"
+                  className="flex items-center gap-2 p-2 sm:p-2.5 bg-white/40 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/30 hover:bg-white/60 hover:border-emerald-300/50 transition-all duration-300 group"
                 >
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                  <span className="text-gray-700 text-sm font-medium">{tech}</span>
+                  <div className="w-2 h-2 bg-emerald-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                  <span className="text-gray-700 text-xs sm:text-sm font-medium truncate">{tech}</span>
                 </motion.div>
               ))}
             </div>
@@ -263,18 +264,19 @@ export function ProjectsSection(): React.JSX.Element {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {siteConfig.techStack.backend.map((tech, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ scale: 1.05, x: 2 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.1 }}
-                  className="flex items-center gap-2 p-2 bg-white/40 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/50 transition-all duration-300"
+                  className="flex items-center gap-2 p-2 sm:p-2.5 bg-white/40 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/30 hover:bg-white/60 hover:border-green-300/50 transition-all duration-300 group"
                 >
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700 text-sm font-medium">{tech}</span>
+                  <div className="w-2 h-2 bg-green-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                  <span className="text-gray-700 text-xs sm:text-sm font-medium truncate">{tech}</span>
                 </motion.div>
               ))}
             </div>
@@ -317,18 +319,19 @@ export function ProjectsSection(): React.JSX.Element {
               </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               {siteConfig.techStack.frontend.map((tech, idx) => (
                 <motion.div 
                   key={idx}
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ scale: 1.05, x: 2 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.1 }}
-                  className="flex items-center gap-2 p-2 bg-white/40 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/50 transition-all duration-300"
+                  className="flex items-center gap-2 p-2 sm:p-2.5 bg-white/40 backdrop-blur-sm rounded-lg sm:rounded-xl border border-white/30 hover:bg-white/60 hover:border-teal-300/50 transition-all duration-300 group"
                 >
-                  <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                  <span className="text-gray-700 text-sm font-medium">{tech}</span>
+                  <div className="w-2 h-2 bg-teal-500 rounded-full group-hover:scale-150 transition-transform"></div>
+                  <span className="text-gray-700 text-xs sm:text-sm font-medium truncate">{tech}</span>
                 </motion.div>
               ))}
             </div>
