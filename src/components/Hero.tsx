@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Code, Smartphone, Database, Globe, Palette, Settings, Zap, Monitor, Cpu, Cloud, Shield, Rocket } from "lucide-react";
-import React from "react";
+import React, { memo } from "react";
 
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
@@ -11,7 +11,7 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
-export function Hero(): React.JSX.Element {
+const HeroComponent = (): React.JSX.Element => {
   return (
     <section id="home" className="relative overflow-hidden min-h-screen flex items-center">
       {/* Enhanced Background Layers with Glassmorphic Effects */}
@@ -20,11 +20,9 @@ export function Hero(): React.JSX.Element {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(20,184,166,0.12),transparent_55%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.08),transparent_70%)]"></div>
       
-      {/* Enhanced Floating Glassmorphic Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-15 blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-15 blur-3xl animate-pulse delay-1000"></div>
-      <div className="absolute top-40 right-1/3 w-28 h-28 bg-gradient-to-r from-cyan-300 to-emerald-300 rounded-full opacity-12 blur-2xl animate-pulse delay-500"></div>
-      <div className="absolute bottom-40 left-1/3 w-36 h-36 bg-gradient-to-r from-emerald-300 to-teal-300 rounded-full opacity-10 blur-3xl animate-pulse delay-1500"></div>
+      {/* Enhanced Floating Glassmorphic Elements - Reduced for performance */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-15 blur-3xl animate-pulse gpu-accelerated"></div>
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-15 blur-3xl animate-pulse delay-1000 gpu-accelerated"></div>
       
       {/* Enhanced Glassmorphic Orbs with Shimmer Effects */}
       <div className="absolute top-1/3 right-1/4 w-24 h-24 bg-white/30 backdrop-blur-xl rounded-full border border-white/40 animate-float shadow-2xl relative overflow-hidden">
@@ -37,11 +35,9 @@ export function Hero(): React.JSX.Element {
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-teal-200/30 to-transparent animate-shimmer"></div>
       </div>
       
-      {/* Additional Floating Particles */}
-      <div className="absolute top-1/4 left-1/6 w-3 h-3 bg-emerald-400/50 rounded-full animate-ping"></div>
-      <div className="absolute bottom-1/4 right-1/6 w-2 h-2 bg-teal-400/60 rounded-full animate-ping delay-700"></div>
-      <div className="absolute top-3/4 left-3/4 w-2.5 h-2.5 bg-cyan-400/50 rounded-full animate-ping delay-1200"></div>
-      <div className="absolute top-1/6 right-1/2 w-1.5 h-1.5 bg-emerald-300/70 rounded-full animate-ping delay-300"></div>
+      {/* Additional Floating Particles - Reduced for performance */}
+      <div className="absolute top-1/4 left-1/6 w-3 h-3 bg-emerald-400/50 rounded-full animate-ping gpu-accelerated"></div>
+      <div className="absolute bottom-1/4 right-1/6 w-2 h-2 bg-teal-400/60 rounded-full animate-ping delay-700 gpu-accelerated"></div>
       
       <div className="container mx-auto px-4 lg:pl-0 lg:pr-16 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-center max-w-7xl mx-auto">
@@ -165,9 +161,9 @@ export function Hero(): React.JSX.Element {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative flex justify-start mt-12 lg:mt-0"
+            className="relative flex justify-start mt-12 lg:mt-0 gpu-accelerated"
           >
-            <div className="relative w-full max-w-md lg:max-w-xl xl:max-w-2xl h-96 lg:h-[500px] xl:h-[600px] bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl overflow-hidden group">
+            <div className="relative w-full max-w-md lg:max-w-xl xl:max-w-2xl h-96 lg:h-[500px] xl:h-[600px] bg-white/20 backdrop-blur-md rounded-3xl border border-white/30 shadow-2xl overflow-hidden group gpu-accelerated">
               {/* Enhanced Glassmorphic Tech Icons - ALL ORIGINAL ONES */}
               <motion.div 
                 className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-7 md:left-7 lg:top-10 lg:left-10 xl:top-12 xl:left-12 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-24 lg:h-24 xl:w-28 xl:h-28 bg-white/40 backdrop-blur-xl rounded-lg sm:rounded-xl md:rounded-2xl shadow-lg flex items-center justify-center border border-white/50 hover:shadow-2xl transition-all duration-300 group cursor-pointer"
@@ -441,4 +437,6 @@ export function Hero(): React.JSX.Element {
       </div>
     </section>
   );
-}
+};
+
+export const Hero = memo(HeroComponent);

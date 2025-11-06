@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo, useCallback, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -232,43 +232,41 @@ const formatCurrency = (amount: number, currency: { code: string; symbol: string
   return `${currency.symbol}${formatted}`;
 };
 
-export function EnhancedChatbot(): React.JSX.Element {
+const EnhancedChatbotComponent = (): React.JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+  const [sessionId] = useState(() => {
+    // Use a static ID on server, generate on client to avoid hydration mismatch
+    if (typeof window === 'undefined') {
+      return 'session_initial';
+    }
+    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  });
   const [stage, setStage] = useState<ChatStage>('greeting');
   const [clientInfo, setClientInfo] = useState<ClientInfo>({});
   const [projectDetails, setProjectDetails] = useState<ProjectDetails>({});
   const [warningCount, setWarningCount] = useState(0);
   const [showFilterWarning, setShowFilterWarning] = useState(false);
   const [currency, setCurrency] = useState(() => {
+    // Always return USD on initial render to avoid hydration mismatch
+    return CURRENCY_MAP['USD'];
+  });
+
+  // Detect currency after component mounts (client-side only)
+  useEffect(() => {
     const detected = detectCurrency();
-    // Debug logging (remove in production)
     if (typeof window !== 'undefined') {
-      console.log('Currency Detection (Initial):', {
+      console.log('Currency Detection (After Mount):', {
         locale: navigator.language,
         locales: navigator.languages,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         detected: detected.code,
-        symbol: detected.symbol
+        symbol: detected.symbol,
+        rate: detected.rate
       });
     }
-    return detected;
-  });
-
-  // Re-detect currency after component mounts to ensure browser APIs are ready
-  useEffect(() => {
-    const detected = detectCurrency();
-    console.log('Currency Detection (After Mount):', {
-      locale: navigator.language,
-      locales: navigator.languages,
-      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-      detected: detected.code,
-      symbol: detected.symbol,
-      rate: detected.rate
-    });
     setCurrency(detected);
   }, []);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -345,21 +343,22 @@ export function EnhancedChatbot(): React.JSX.Element {
     return null; // Message is acceptable
   };
 
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, scrollToBottom]);
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       initializeChat();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
-  const initializeChat = () => {
+  const initializeChat = useCallback(() => {
     const welcomeMessage: Message = {
       id: "1",
       text: "Hi 👋! I'm here to help you get started with your project. Are you looking for:",
@@ -375,9 +374,9 @@ export function EnhancedChatbot(): React.JSX.Element {
     };
     setMessages([welcomeMessage]);
     setStage('project-type');
-  };
+  }, []);
 
-  const saveToDatabase = async (newMessage?: Message, updatedClientInfo?: ClientInfo, updatedProjectDetails?: ProjectDetails, newStage?: ChatStage) => {
+  const saveToDatabase = useCallback(async (newMessage?: Message, updatedClientInfo?: ClientInfo, updatedProjectDetails?: ProjectDetails, newStage?: ChatStage) => {
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
@@ -401,9 +400,9 @@ export function EnhancedChatbot(): React.JSX.Element {
       // Silently handle the error - chat functionality will continue without database storage
       console.warn('Chat storage unavailable. Chat will continue without persistence.');
     }
-  };
+  }, [sessionId]);
 
-  const addMessage = (text: string, sender: "user" | "bot", options?: ChatOption[]) => {
+  const addMessage = useCallback((text: string, sender: "user" | "bot", options?: ChatOption[]) => {
     const newMessage: Message = {
       id: Date.now().toString(),
       text,
@@ -414,9 +413,9 @@ export function EnhancedChatbot(): React.JSX.Element {
     setMessages(prev => [...prev, newMessage]);
     saveToDatabase(newMessage);
     return newMessage;
-  };
+  }, [saveToDatabase]);
 
-  const handleOptionClick = (option: ChatOption) => {
+  const handleOptionClick = useCallback((option: ChatOption) => {
     addMessage(option.text, "user");
     
     setTimeout(() => {
@@ -426,9 +425,9 @@ export function EnhancedChatbot(): React.JSX.Element {
         handleBotResponse(option.value, option.text);
       }
     }, 500);
-  };
+  }, [addMessage]);
 
-  const handleBotResponse = (value: string, userText: string) => {
+  const handleBotResponse = useCallback((value: string, userText: string) => {
     setIsLoading(true);
     
     setTimeout(() => {
@@ -549,9 +548,9 @@ export function EnhancedChatbot(): React.JSX.Element {
       saveToDatabase(undefined, updatedClientInfo, updatedProjectDetails, newStage);
       setIsLoading(false);
     }, 1000);
-  };
+  }, [stage, projectDetails, clientInfo, currency, addMessage, saveToDatabase]);
 
-  const handleSendMessage = async (text: string) => {
+  const handleSendMessage = useCallback(async (text: string) => {
     if (!text.trim()) return;
 
     const sanitizedText = sanitizeMessage(text);
@@ -587,14 +586,18 @@ export function EnhancedChatbot(): React.JSX.Element {
         // Continue with the flow
       }, 1000);
     }
-  };
+  }, [stage, addMessage, handleBotResponse]);
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyPress = useCallback((e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSendMessage(inputValue);
     }
-  };
+  }, [inputValue, handleSendMessage]);
+
+  const toggleChat = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
 
   return (
     <>
@@ -631,7 +634,7 @@ export function EnhancedChatbot(): React.JSX.Element {
             />
           )}
           <Button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleChat}
             size="lg"
             className="relative h-14 w-14 rounded-2xl shadow-2xl hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.4)] transition-all duration-300 bg-gradient-to-br from-emerald-500 via-teal-500 to-cyan-600 hover:from-emerald-600 hover:via-teal-600 hover:to-cyan-700 border-2 border-white/30 backdrop-blur-sm hover:scale-105 active:scale-95"
           >
@@ -905,4 +908,6 @@ export function EnhancedChatbot(): React.JSX.Element {
       </AnimatePresence>
     </>
   );
-}
+};
+
+export const EnhancedChatbot = memo(EnhancedChatbotComponent);

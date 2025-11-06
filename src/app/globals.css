@@ -150,10 +150,32 @@
     background: rgba(16, 185, 129, 0.3);
     border-radius: 10px;
   }
-  .chat-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(16, 185, 129, 0.5);
-  }
-}
+        .chat-scroll::-webkit-scrollbar-thumb:hover {
+          background: rgba(16, 185, 129, 0.5);
+        }
+        /* Performance optimizations */
+        .animate-float,
+        .animate-shimmer,
+        .animate-ping {
+          will-change: transform, opacity;
+        }
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+          *,
+          *::before,
+          *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
+        }
+        /* GPU acceleration for animations */
+        .gpu-accelerated {
+          transform: translateZ(0);
+          backface-visibility: hidden;
+          perspective: 1000px;
+        }
+      }
 
 @tailwind base;
 @tailwind components;
@@ -195,16 +217,20 @@
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .animate-glow {
   animation: glow 3s ease-in-out infinite;
+  will-change: box-shadow;
 }
 
 .animate-shimmer {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
+  will-change: background-position;
 }
 
 /* Glassmorphism Utilities */

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { withSecurity, sanitizeObject, handleCORS, corsHeaders } from '@/lib/security';
 
 // Types for chat data
 export interface IMessage {
@@ -113,12 +114,24 @@ const chatSessions = new Map<string, {
   emailSent: boolean;
 }>();
 
-export async function POST(request: NextRequest) {
+async function handlePOST(request: NextRequest) {
   try {
-    const { sessionId, message, clientInfo, projectDetails, stage } = await request.json();
+    // Handle CORS preflight
+    const corsResponse = handleCORS(request);
+    if (corsResponse) return corsResponse;
 
-    if (!sessionId) {
-      return NextResponse.json({ error: 'Session ID is required' }, { status: 400 });
+    const body = await request.json();
+    
+    // Sanitize all inputs
+    const sanitizedBody = sanitizeObject(body);
+    const { sessionId, message, clientInfo, projectDetails, stage } = sanitizedBody;
+
+    // Validate sessionId
+    if (!sessionId || typeof sessionId !== 'string' || sessionId.length > 100) {
+      return NextResponse.json(
+        { error: 'Valid session ID is required' },
+        { status: 400, headers: corsHeaders }
+      );
     }
 
     // Get or create chat session in memory
@@ -138,9 +151,24 @@ export async function POST(request: NextRequest) {
 
     // Add new message if provided
     if (message) {
+      // Validate message structure
+      if (typeof message.text !== 'string' || message.text.length > 5000) {
+        return NextResponse.json(
+          { error: 'Invalid message. Text must be a string with max 5000 characters.' },
+          { status: 400, headers: corsHeaders }
+        );
+      }
+      
+      if (message.sender !== 'user' && message.sender !== 'bot') {
+        return NextResponse.json(
+          { error: 'Invalid message sender' },
+          { status: 400, headers: corsHeaders }
+        );
+      }
+
       chat.messages.push({
         id: Date.now().toString(),
-        text: message.text,
+        text: sanitizeObject({ text: message.text }).text,
         sender: message.sender,
         timestamp: new Date()
       });
@@ -181,39 +209,57 @@ export async function POST(request: NextRequest) {
         stage: chat.stage,
         status: chat.stage === 'completed' ? 'completed' : 'active'
       }
-    });
+    }, { headers: corsHeaders });
 
   } catch (error) {
     console.error('Error handling chat request:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     );
   }
 }
 
+// Export with security middleware
+export const POST = withSecurity(handlePOST);
+
 export async function GET(request: NextRequest) {
   try {
+    // Handle CORS preflight
+    const corsResponse = handleCORS(request);
+    if (corsResponse) return corsResponse;
+
     const { searchParams } = new URL(request.url);
     const sessionId = searchParams.get('sessionId');
 
-    if (!sessionId) {
-      return NextResponse.json({ error: 'Session ID is required' }, { status: 400 });
+    if (!sessionId || sessionId.length > 100) {
+      return NextResponse.json(
+        { error: 'Valid session ID is required' },
+        { status: 400, headers: corsHeaders }
+      );
     }
 
     const chat = chatSessions.get(sessionId);
     
     if (!chat) {
-      return NextResponse.json({ error: 'Chat session not found' }, { status: 404 });
+      return NextResponse.json(
+        { error: 'Chat session not found' },
+        { status: 404, headers: corsHeaders }
+      );
     }
 
-    return NextResponse.json({ chat });
+    return NextResponse.json({ chat }, { headers: corsHeaders });
 
   } catch (error) {
     console.error('Error fetching chat:', error);
     return NextResponse.json(
       { error: 'Internal server error' },
-      { status: 500 }
+      { status: 500, headers: corsHeaders }
     );
   }
+}
+
+// Handle OPTIONS for CORS
+export async function OPTIONS(request: NextRequest) {
+  return handleCORS(request) || new NextResponse(null, { status: 204, headers: corsHeaders });
 }

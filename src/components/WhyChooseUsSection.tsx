@@ -90,7 +90,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
         </motion.div>
 
         {/* Core Values */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-16 sm:mb-20">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 mb-16 sm:mb-20">
           {values.map((value, idx) => (
             <motion.div
               key={value.title}
@@ -99,7 +99,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
               whileHover={{ y: -8, scale: 1.02 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="text-center group relative bg-white/20 backdrop-blur-xl rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-xl border border-white/40 hover:border-white/60 transition-all duration-300"
+              className="text-center group relative bg-white/20 backdrop-blur-xl rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 shadow-xl border border-white/40 hover:border-emerald-300/60 hover:shadow-2xl transition-all duration-300"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
               
@@ -139,7 +139,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
             🤝 Our Commitment to You
           </h3>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10">
             {promises.map((promise, idx) => (
               <motion.div
                 key={idx}
@@ -148,7 +148,7 @@ export function WhyChooseUsSection(): React.JSX.Element {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.2 }}
                 whileHover={{ scale: 1.05, y: -8 }}
-                className="relative bg-white/35 backdrop-blur-xl rounded-xl sm:rounded-2xl p-5 sm:p-6 shadow-xl hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.2)] border border-white/40 hover:border-white/60 group overflow-hidden text-center transition-all duration-300"
+                className="relative bg-white/35 backdrop-blur-xl rounded-xl sm:rounded-2xl p-6 sm:p-7 md:p-8 shadow-xl hover:shadow-[0_20px_40px_-10px_rgba(16,185,129,0.2)] border border-white/40 hover:border-emerald-300/60 group overflow-hidden text-center transition-all duration-300"
               >
                 {/* Background Effects */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

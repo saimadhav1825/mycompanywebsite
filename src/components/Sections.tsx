@@ -68,28 +68,30 @@ export function AboutSection(): React.JSX.Element {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.8 }}
-            className="space-y-4"
+            className="space-y-4 sm:space-y-5"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-              <span className="text-gray-700">🚀 <strong>Revolutionary Tech Stack</strong> - We leverage the most advanced frameworks and tools</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-              <span className="text-gray-700">⚡ <strong>Lightning-Speed Delivery</strong> - From concept to launch in record time</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-cyan-500 rounded-full"></div>
-              <span className="text-gray-700">🎯 <strong>ROI-Focused Solutions</strong> - Every feature designed to maximize your business value</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-emerald-600 rounded-full"></div>
-              <span className="text-gray-700">💎 <strong>White-Glove Service</strong> - Premium support that goes above and beyond</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              <span className="text-gray-700">Ongoing support and maintenance for long-term success</span>
-            </div>
+            {[
+              { icon: "🚀", title: "Revolutionary Tech Stack", desc: "We leverage the most advanced frameworks and tools", color: "bg-emerald-500" },
+              { icon: "⚡", title: "Lightning-Speed Delivery", desc: "From concept to launch in record time", color: "bg-teal-500" },
+              { icon: "🎯", title: "ROI-Focused Solutions", desc: "Every feature designed to maximize your business value", color: "bg-cyan-500" },
+              { icon: "💎", title: "White-Glove Service", desc: "Premium support that goes above and beyond", color: "bg-emerald-600" },
+              { icon: "🔧", title: "Ongoing Support", desc: "Maintenance for long-term success", color: "bg-green-500" }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ x: 5, scale: 1.02 }}
+                className="flex items-start gap-4 p-3 sm:p-4 bg-white/20 backdrop-blur-sm rounded-xl border border-white/30 hover:bg-white/30 hover:border-emerald-300/50 transition-all duration-300 group"
+              >
+                <div className={`w-3 h-3 ${item.color} rounded-full flex-shrink-0 mt-1.5 group-hover:scale-125 transition-transform`}></div>
+                <div className="flex-1">
+                  <span className="text-gray-700 text-base sm:text-lg">
+                    <span className="mr-2">{item.icon}</span>
+                    <strong className="text-gray-900">{item.title}</strong>
+                    {item.desc && <span className="text-gray-600"> - {item.desc}</span>}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
         
@@ -99,7 +101,7 @@ export function AboutSection(): React.JSX.Element {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid grid-cols-2 gap-6"
+          className="grid grid-cols-2 gap-5 sm:gap-6"
         >
           {stats.map((stat, idx) => (
             <motion.div
@@ -110,7 +112,7 @@ export function AboutSection(): React.JSX.Element {
               transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
               className="relative group"
             >
-              <div className="relative bg-white/20 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-white/30 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className="relative bg-white/20 backdrop-blur-md rounded-2xl p-5 sm:p-6 shadow-xl border border-white/30 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group">
                 {/* Glassmorphic Background Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
@@ -183,7 +185,7 @@ export function ServicesSection(): React.JSX.Element {
         </p>
       </motion.div>
       
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative z-10">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 relative z-10">
         {siteConfig.services.map((service, idx) => (
           <motion.div
             key={service.title}
@@ -207,33 +209,34 @@ export function ServicesSection(): React.JSX.Element {
               <div className="absolute top-6 left-6 w-1.5 h-1.5 bg-cyan-400/50 rounded-full animate-ping delay-500 pointer-events-none group-hover:scale-150 transition-transform"></div>
               <div className="absolute bottom-6 right-6 w-2 h-2 bg-emerald-300/70 rounded-full animate-ping delay-1500 pointer-events-none group-hover:scale-150 transition-transform"></div>
               
-              <div className="relative p-5 sm:p-6 h-full flex flex-col">
-                <div className="text-center pb-3 sm:pb-4">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-[0_10px_30px_-5px_rgba(16,185,129,0.4)] transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3 relative overflow-hidden">
+              <div className="relative p-6 sm:p-7 md:p-8 h-full flex flex-col">
+                <div className="text-center pb-4 sm:pb-5">
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto mb-4 sm:mb-5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-[0_10px_30px_-5px_rgba(16,185,129,0.4)] transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-3 relative overflow-hidden">
                     {/* Shimmer Effect */}
                     <div className="absolute inset-0 animate-shimmer pointer-events-none"></div>
                     {/* Glow Effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/50 to-teal-400/50 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md"></div>
-                    {React.createElement(serviceIcons[idx], { className: "h-7 w-7 sm:h-8 sm:w-8 text-white relative z-10 drop-shadow-lg" })}
+                    {React.createElement(serviceIcons[idx], { className: "h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 text-white relative z-10 drop-shadow-lg" })}
                   </div>
-                  <div className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300 group-hover:scale-105 inline-block">
+                  <div className="text-xl sm:text-2xl md:text-2xl font-bold text-gray-900 group-hover:text-emerald-600 transition-colors duration-300 group-hover:scale-105 inline-block mt-2">
                     {service.title}
                   </div>
                 </div>
                 
                 <div className="flex-1 flex flex-col">
-                  <div className="text-xs sm:text-sm text-gray-600 leading-relaxed mb-4 sm:mb-6 text-center flex-1">
+                  <div className="text-sm sm:text-base text-gray-600 leading-relaxed mb-5 sm:mb-6 text-center flex-1">
                     {service.description}
                   </div>
                   
-                  <div className="pt-3 sm:pt-4 border-t border-white/30 mt-auto">
+                  <div className="pt-4 sm:pt-5 border-t border-white/30 mt-auto">
                     <Link href={`/services/${service.slug}`}>
                       <motion.div 
-                        whileHover={{ x: 5 }}
-                        className="flex items-center justify-center gap-2 text-emerald-600 font-semibold text-xs sm:text-sm group-hover:gap-3 transition-all duration-300 cursor-pointer hover:text-emerald-700"
+                        whileHover={{ x: 5, scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex items-center justify-center gap-2 text-emerald-600 font-semibold text-sm sm:text-base group-hover:gap-3 transition-all duration-300 cursor-pointer hover:text-emerald-700 bg-emerald-50/50 group-hover:bg-emerald-50 rounded-lg px-4 py-2.5 group-hover:shadow-md"
                       >
                         Learn More
-                        <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
                       </motion.div>
                     </Link>
                   </div>
@@ -323,7 +326,7 @@ export function ProcessSection(): React.JSX.Element {
         {/* Timeline Line */}
         <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-emerald-200 via-teal-200 to-cyan-200 hidden lg:block"></div>
         
-        <div className="space-y-12 lg:space-y-16">
+        <div className="space-y-10 sm:space-y-12 lg:space-y-16">
           {steps.map((step, idx) => (
             <motion.div
               key={step.number}
@@ -336,8 +339,11 @@ export function ProcessSection(): React.JSX.Element {
               }`}
             >
               {/* Step Number and Icon */}
-              <div className="relative z-20">
-                <div className="relative w-20 h-20 bg-white/20 backdrop-blur-md rounded-full border-4 border-white/30 shadow-xl flex items-center justify-center overflow-hidden">
+              <div className="relative z-20 lg:z-10">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className="relative w-20 h-20 sm:w-24 sm:h-24 bg-white/20 backdrop-blur-md rounded-full border-4 border-white/30 shadow-xl flex items-center justify-center overflow-hidden group cursor-pointer"
+                >
                   {/* Glassmorphic Background Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5"></div>
                   
@@ -345,22 +351,25 @@ export function ProcessSection(): React.JSX.Element {
                   <div className="absolute top-2 right-2 w-1.5 h-1.5 bg-emerald-400/40 rounded-full animate-ping"></div>
                   <div className="absolute bottom-2 left-2 w-1 h-1 bg-teal-400/40 rounded-full animate-ping delay-1000"></div>
                   
-                  <div className={`w-12 h-12 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden`}>
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center shadow-lg relative overflow-hidden group-hover:shadow-xl transition-all duration-300`}>
                     {/* Shimmer Effect */}
                     <div className="absolute inset-0 animate-shimmer"></div>
-                    <step.icon className="h-6 w-6 text-gray-800 relative z-10" />
+                    <step.icon className="h-6 w-6 sm:h-7 sm:w-7 text-white relative z-10" />
                   </div>
                   
                   {/* Step Number */}
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center text-gray-800 text-xs font-bold shadow-lg">
+                  <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-bold shadow-lg group-hover:scale-110 transition-transform">
                     {step.number}
                   </div>
-                </div>
+                </motion.div>
               </div>
               
               {/* Content */}
-              <div className={`flex-1 text-center lg:text-left ${idx % 2 === 0 ? 'lg:pl-8' : 'lg:pr-8'}`}>
-                <div className="relative bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-xl border border-white/30 overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+              <div className={`flex-1 text-center lg:text-left ${idx % 2 === 0 ? 'lg:pl-8' : 'lg:pr-8'} w-full lg:w-auto`}>
+                <motion.div
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="relative bg-white/20 backdrop-blur-md rounded-2xl p-6 sm:p-8 shadow-xl border border-white/30 overflow-hidden hover:shadow-2xl transition-all duration-500 transform group"
+                >
                   {/* Glassmorphic Background Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
@@ -369,17 +378,17 @@ export function ProcessSection(): React.JSX.Element {
                   <div className="absolute bottom-4 left-4 w-1.5 h-1.5 bg-teal-400/40 rounded-full animate-ping delay-1000"></div>
                   
                   <div className="relative z-10">
-                    <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4 group-hover:text-emerald-600 transition-colors duration-300">
                       {step.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                       {step.description}
                     </p>
                   </div>
                   
                   {/* Hover Glow Effect */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/0 via-emerald-500/10 to-teal-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
